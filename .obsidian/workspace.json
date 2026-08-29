@@ -190,6 +190,7 @@
   },
   "active": "c86df63c55ba3ebd",
   "lastOpenFiles": [
+    "push_to_github.sh",
     "10_Concepts/ポートフォリオ設計と技術選定ストーリー.md",
     "05_master_portfolio_portal/README.md",
     "start_portal.sh",
@@ -225,7 +226,6 @@
     "03_creative_brand_lp/README.md",
     "10_Concepts/Reactによる状態管理とタイマー設計.md",
     "10_Concepts/FlaskとREST_APIの基礎.md",
-    "00_ポートフォリオ総合マップ.md",
     "02_task_billing_saas/venv/lib/python3.14/site-packages/werkzeug/debug/shared/more.png",
     "02_task_billing_saas/venv/lib/python3.14/site-packages/werkzeug/debug/shared/less.png",
     "02_task_billing_saas/venv/lib/python3.14/site-packages/werkzeug/debug/shared/console.png"
