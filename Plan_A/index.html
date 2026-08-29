@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UVU SUPPLY CO. | Official Store (Plan A - Standard Streetwear)</title>
+    
+    <!-- SEOメタタグ -->
+    <meta name="description" content="ストリートアパレルブランド「UVU SUPPLY CO.」の公式オンラインストア。NYの洗練された無機質さと、東京・渋谷・裏原宿のストリート/HIP HOPカルチャーを融合させたアパレルを展開。">
+    <meta name="keywords" content="UVU, UVU SUPPLY, ストリートファッション, HIP HOP, 裏原宿, 渋谷, ニューヨーク">
+    
+    <!-- OGPタグ -->
+    <meta property="og:title" content="UVU SUPPLY CO. | Official Store (Plan A)">
+    <meta property="og:description" content="From 212 to 03: The Underground Syndicate. NY × Tokyoのストリートカルチャーを融合させたハイエンドアパレル。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="plan-a-theme">
+
+    <!-- 比較切り替え通知バー -->
+    <div class="version-banner">
+        <span>【A案】ハイエンド・ダークストリート スタイル表示中</span>
+        <a href="../Plan_B/index.html" class="switch-link">【B案】和モダン×モノクロ案を見る <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">UVU SUPPLY CO.</a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#new-arrivals">NEW ARRIVALS</a></li>
+                    <li><a href="#lookbook">LOOKBOOK</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-utilities">
+                <button class="icon-btn" aria-label="検索"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="icon-btn cart-btn" id="cartBtn" aria-label="カート">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Heroセクション -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1548624149-f7b2e65cbd22?auto=format&fit=crop&w=1920&q=80" alt="NY street background">
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="hero-content">
+                <span class="badge">SPRING / SUMMER 2026</span>
+                <h1 class="hero-title">FROM 212 TO 03:<br>THE UNDERGROUND SYNDICATE</h1>
+                <p class="hero-sub">NYの冷徹なストリートと東京・裏原宿の原点が交錯する、ハイエンド・グラフィックアパレル。</p>
+                <div class="hero-actions">
+                    <a href="#new-arrivals" class="btn primary-btn">SHOP COLLECTION</a>
+                    <a href="#lookbook" class="btn secondary-btn">VIEW LOOKBOOK</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Arrivals -->
+        <section class="section" id="new-arrivals">
+            <div class="container">
+                <div class="section-title-container">
+                    <h2 class="section-title">NEW ARRIVALS</h2>
+                    <p class="section-subtitle">2026 カプセルコレクション</p>
+                </div>
+                
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80" alt="UVU Heavyweight Hoodie">
+                            <span class="tag">NEW</span>
+                        </div>
+                        <div class="product-details">
+                            <span class="category">HOODIE</span>
+                            <h3 class="name">UVU Heavyweight Logo Hoodie</h3>
+                            <p class="price">¥18,800</p>
+                            <button class="add-to-cart-btn" onclick="addToCart('UVU Heavyweight Logo Hoodie', 18800)">ADD TO CART</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Tokyo Graphic Tee">
+                        </div>
+                        <div class="product-details">
+                            <span class="category">TEE</span>
+                            <h3 class="name">Tokyo Syndicate Graphic Tee</h3>
+                            <p class="price">¥8,800</p>
+                            <button class="add-to-cart-btn" onclick="addToCart('Tokyo Syndicate Graphic Tee', 8800)">ADD TO CART</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80" alt="Bomber Jacket">
+                            <span class="tag">LIMITED</span>
+                        </div>
+                        <div class="product-details">
+                            <span class="category">OUTER</span>
+                            <h3 class="name">03-212 Flight Bomber Jacket</h3>
+                            <p class="price">¥34,000</p>
+                            <button class="add-to-cart-btn" onclick="addToCart('03-212 Flight Bomber Jacket', 34000)">ADD TO CART</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80" alt="Street Cap">
+                        </div>
+                        <div class="product-details">
+                            <span class="category">HEADWEAR</span>
+                            <h3 class="name">UVU 3D Embroidered Cap</h3>
+                            <p class="price">¥6,800</p>
+                            <button class="add-to-cart-btn" onclick="addToCart('UVU 3D Embroidered Cap', 6800)">ADD TO CART</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lookbook -->
+        <section class="section dark-bg" id="lookbook">
+            <div class="container">
+                <div class="section-title-container center">
+                    <h2 class="section-title">SPRING / SUMMER 2026 LOOKBOOK</h2>
+                </div>
+                <div class="lookbook-masonry">
+                    <div class="lookbook-item">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Look 1">
+                    </div>
+                    <div class="lookbook-item">
+                        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80" alt="Look 2">
+                    </div>
+                    <div class="lookbook-item">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80" alt="Look 3">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <span class="badge">ABOUT THE BRAND</span>
+                        <h2>THE SYNTHESIS OF TWO METROPOLISES</h2>
+                        <p>UVU SUPPLY CO. は、ニューヨークの212エリアと東京・渋谷/裏原宿の03エリアのカルチャーを融合させたハイエンド・ストリートウェアレーベルです。</p>
+                        <p>無機質なグラフィックと重厚なファブリックが描く、現代ストリートのリアルを追求しています。</p>
+                    </div>
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80" alt="About UVU">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">UVU SUPPLY CO.</a>
+                    <p>© 2026 UVU SUPPLY CO. All Rights Reserved.</p>
+                </div>
+                <div class="socials">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let count = 0;
+        function addToCart(name, price) {
+            count++;
+            document.getElementById('cartCount').textContent = count;
+            alert(name + ' をカートに追加しました。');
+        }
+    </script>
+</body>
+</html>

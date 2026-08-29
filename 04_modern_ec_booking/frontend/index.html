@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMEN | Modern E-Commerce & Booking</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: "#f0f9ff",
+                            100: "#e0f2fe",
+                            500: "#0ea5e9",
+                            600: "#0284c7",
+                            700: "#0369a1",
+                            900: "#0c4a6e",
+                        },
+                        lux: {
+                            bg: "#f8fafc",
+                            surface: "#ffffff",
+                            border: "#e2e8f0"
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .card-ec {
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-ec:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.08), 0 8px 10px -6px rgba(14, 165, 233, 0.04);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ナビゲーションバー (白ベース・クリーン) -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200 px-6 sm:px-10 py-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded-xl bg-sky-600 flex items-center justify-center shadow-md shadow-sky-500/20 text-white font-bold font-serif text-lg">
+                L
+            </div>
+            <div>
+                <span class="font-extrabold text-lg tracking-wider text-slate-900 font-serif">LUMEN</span>
+                <span class="ml-2 text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200 font-semibold">Store & Reserve</span>
+            </div>
+        </div>
+
+        <!-- タブ切り替えボタン -->
+        <div class="flex items-center space-x-1 sm:space-x-2 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-semibold">
+            <button id="tab-store-btn" onclick="switchView('store')" class="px-4 py-2 rounded-lg transition flex items-center space-x-1.5 bg-white text-sky-700 shadow-sm">
+                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                <span>商品ストア</span>
+            </button>
+            <button id="tab-booking-btn" onclick="switchView('booking')" class="px-4 py-2 rounded-lg transition flex items-center space-x-1.5 text-slate-600 hover:text-slate-900">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                <span>体験・サロン予約</span>
+            </button>
+        </div>
+
+        <!-- カート開閉ボタン -->
+        <div class="flex items-center space-x-3">
+            <button onclick="toggleCart(true)" class="relative p-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 shadow-sm transition flex items-center">
+                <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+                <span id="cart-badge" class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full bg-sky-600 text-white text-[11px] font-bold flex items-center justify-center shadow-md animate-pulse">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-6 py-10">
+        
+        <!-- 1. ストア画面 (初期表示) -->
+        <div id="store-view">
+            <!-- ストアヘッダー -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Curated Life & Audio</h1>
+                    <p class="text-xs text-slate-500 mt-1">洗練されたデザインと確かな品質を誇るセレクトアイテム</p>
+                </div>
+
+                <!-- フィルター＆ソート -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <div class="flex space-x-1 bg-white p-1 rounded-xl border border-slate-200 shadow-sm text-xs font-medium" id="category-filter-group">
+                        <button onclick="filterCategory('All')" class="cat-btn px-3 py-1.5 rounded-lg bg-sky-600 text-white font-semibold shadow-sm transition">All</button>
+                        <button onclick="filterCategory('Lifestyle')" class="cat-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">Lifestyle</button>
+                        <button onclick="filterCategory('Wellness')" class="cat-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">Wellness</button>
+                        <button onclick="filterCategory('Audio')" class="cat-btn px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">Audio</button>
+                    </div>
+                    <select id="sort-select" onchange="changeSort(this.value)" class="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 shadow-sm focus:outline-none focus:border-sky-500">
+                        <option value="default">並び替え: おすすめ順</option>
+                        <option value="price_asc">価格が安い順</option>
+                        <option value="price_desc">価格が高い順</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- クーポン案内バナー -->
+            <div class="mb-8 p-4 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white flex flex-wrap justify-between items-center gap-3 shadow-md shadow-sky-500/10">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="tag" class="w-5 h-5"></i>
+                    <span class="text-xs font-semibold">特別クーポン配布中！注文時にコード入力で割引適用</span>
+                </div>
+                <div class="flex items-center space-x-2 font-mono text-xs">
+                    <span class="px-2.5 py-1 rounded bg-white/20 font-bold">SPECIAL10</span>
+                    <span class="text-white/80">(10% OFF)</span>
+                </div>
+            </div>
+
+            <!-- 商品グリッドコンテナ (6つの初期商品を完全配置) -->
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Product 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 card-ec flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-mono uppercase font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">Wellness</span>
+                            <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">在庫あり (15点)</span>
+                        </div>
+                        <div class="h-40 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-4">
+                            <i data-lucide="wind" class="w-14 h-14 text-sky-500"></i>
+                        </div>
+                        <div class="flex items-center space-x-1 text-amber-500 text-xs mb-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <span class="font-bold">4.9</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">AURA Ceramic Diffuser</h3>
+                        <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">手仕事の温もりと超音波テクノロジーが融合した、極上アロマディフューザー。</p>
+                    </div>
+                    <div class="pt-5 border-t border-slate-100 mt-4 flex items-center justify-between">
+                        <div class="font-extrabold text-slate-900 text-lg font-mono">¥12,800</div>
+                        <button onclick="addToCart(1)" class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs transition flex items-center space-x-1.5 shadow-md shadow-sky-600/20">
+                            <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+                            <span>カートに入れる</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 card-ec flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-mono uppercase font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">Lifestyle</span>
+                            <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">在庫あり (22点)</span>
+                        </div>
+                        <div class="h-40 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-4">
+                            <i data-lucide="coffee" class="w-14 h-14 text-amber-600"></i>
+                        </div>
+                        <div class="flex items-center space-x-1 text-amber-500 text-xs mb-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <span class="font-bold">4.8</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Titanium Coffee Dripper</h3>
+                        <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">航空宇宙グレードの純チタンから削り出された、雑味のない至高のドリップ体験。</p>
+                    </div>
+                    <div class="pt-5 border-t border-slate-100 mt-4 flex items-center justify-between">
+                        <div class="font-extrabold text-slate-900 text-lg font-mono">¥8,400</div>
+                        <button onclick="addToCart(2)" class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs transition flex items-center space-x-1.5 shadow-md shadow-sky-600/20">
+                            <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+                            <span>カートに入れる</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 card-ec flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-mono uppercase font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">Lifestyle</span>
+                            <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-200">残りわずか (8点)</span>
+                        </div>
+                        <div class="h-40 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-4">
+                            <i data-lucide="book-open" class="w-14 h-14 text-indigo-500"></i>
+                        </div>
+                        <div class="flex items-center space-x-1 text-amber-500 text-xs mb-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <span class="font-bold">4.9</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Minimal Leather Folio</h3>
+                        <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">植物タンニン鞣しイタリアンレザーを使用した、一生モノの多機能ドキュメントケース。</p>
+                    </div>
+                    <div class="pt-5 border-t border-slate-100 mt-4 flex items-center justify-between">
+                        <div class="font-extrabold text-slate-900 text-lg font-mono">¥16,500</div>
+                        <button onclick="addToCart(3)" class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs transition flex items-center space-x-1.5 shadow-md shadow-sky-600/20">
+                            <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+                            <span>カートに入れる</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 card-ec flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-mono uppercase font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">Wellness</span>
+                            <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">在庫あり (30点)</span>
+                        </div>
+                        <div class="h-40 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-4">
+                            <i data-lucide="bell" class="w-14 h-14 text-yellow-600"></i>
+                        </div>
+                        <div class="flex items-center space-x-1 text-amber-500 text-xs mb-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <span class="font-bold">4.7</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Acoustic Brass Bell</h3>
+                        <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">心地よい倍音と長い余韻が空間を清める、真鍮削り出しの瞑想用デスクベル。</p>
+                    </div>
+                    <div class="pt-5 border-t border-slate-100 mt-4 flex items-center justify-between">
+                        <div class="font-extrabold text-slate-900 text-lg font-mono">¥6,200</div>
+                        <button onclick="addToCart(4)" class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs transition flex items-center space-x-1.5 shadow-md shadow-sky-600/20">
+                            <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+                            <span>カートに入れる</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 card-ec flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-mono uppercase font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">Audio</span>
+                            <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">在庫あり (12点)</span>
+                        </div>
+                        <div class="h-40 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-4">
+                            <i data-lucide="headphones" class="w-14 h-14 text-purple-600"></i>
+                        </div>
+                        <div class="flex items-center space-x-1 text-amber-500 text-xs mb-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <span class="font-bold">5.0</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Precision Studio Headphone</h3>
+                        <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">フラットな周波数特性と圧倒的な空間再現性を誇る、リファレンスモニター。</p>
+                    </div>
+                    <div class="pt-5 border-t border-slate-100 mt-4 flex items-center justify-between">
+                        <div class="font-extrabold text-slate-900 text-lg font-mono">¥42,000</div>
+                        <button onclick="addToCart(5)" class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs transition flex items-center space-x-1.5 shadow-md shadow-sky-600/20">
+                            <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+                            <span>カートに入れる</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 card-ec flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-mono uppercase font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">Wellness</span>
+                            <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">在庫あり (25点)</span>
+                        </div>
+                        <div class="h-40 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-4">
+                            <i data-lucide="flame" class="w-14 h-14 text-rose-500"></i>
+                        </div>
+                        <div class="flex items-center space-x-1 text-amber-500 text-xs mb-1">
+                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                            <span class="font-bold">4.6</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Organic Botanical Candle</h3>
+                        <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">天然ソイワックスと高地ラベンダー精油を使用した、煤の出ないクリーンキャンドル。</p>
+                    </div>
+                    <div class="pt-5 border-t border-slate-100 mt-4 flex items-center justify-between">
+                        <div class="font-extrabold text-slate-900 text-lg font-mono">¥4,800</div>
+                        <button onclick="addToCart(6)" class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs transition flex items-center space-x-1.5 shadow-md shadow-sky-600/20">
+                            <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+                            <span>カートに入れる</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 2. 予約画面 (タブ切り替え) -->
+        <div id="booking-view" class="hidden max-w-4xl mx-auto space-y-8">
+            <div class="text-center max-w-xl mx-auto">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Private Experience & Reservation</h1>
+                <p class="text-xs text-slate-500 mt-1.5">プライベート試聴会や抽出マスタークラスをオンラインで即時予約いただけます。</p>
+            </div>
+
+            <div id="booking-alert" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center space-x-2 font-medium">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+                <span id="booking-alert-text"></span>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-2">1. ご希望の体験プラン</label>
+                        <select id="booking-service" onchange="updateBookingSlots()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500">
+                            <option value="プレミアム音響プライベート試聴会">プレミアム音響プライベート試聴会 (無料 / 60分)</option>
+                            <option value="ハンドドリップ抽出マスタークラス">ハンドドリップ抽出マスタークラス (¥3,500 / 90分)</option>
+                            <option value="空間音響パーソナルカウンセリング">空間音響パーソナルカウンセリング (無料 / 45分)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-2">2. 予約希望日</label>
+                        <input type="date" id="booking-date" value="2026-09-10" min="2026-09-01" max="2026-09-30" onchange="updateBookingSlots()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800 focus:outline-none focus:border-sky-500 font-mono" />
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-2">3. 時間枠を選択</label>
+                        <div id="slots-container" class="grid grid-cols-2 gap-2">
+                            <!-- スロットボタン -->
+                        </div>
+                    </div>
+                </div>
+
+                <form id="booking-form" onsubmit="submitBooking(event)" class="space-y-4 flex flex-col justify-between border-t md:border-t-0 md:border-l border-slate-100 pt-6 md:pt-0 md:pl-8">
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-slate-900 text-sm">お客様情報</h3>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">お名前</label>
+                            <input type="text" id="booking-cust-name" required value="鈴木 一郎" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-sky-500" />
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-600 mb-1">メールアドレス</label>
+                            <input type="email" id="booking-cust-email" required value="suzuki@example.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-sky-500" />
+                        </div>
+
+                        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1 text-xs text-slate-600 font-mono">
+                            <div>予約プラン: <span id="summary-service" class="font-semibold text-slate-900">プレミアム音響プライベート試聴会</span></div>
+                            <div>日時: <span id="summary-datetime" class="font-semibold text-slate-900">2026-09-10 (14:00 - 15:00)</span></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shadow-lg shadow-sky-600/20 transition flex items-center justify-center space-x-2">
+                        <i data-lucide="check" class="w-4 h-4"></i>
+                        <span>この日時で予約を確定する</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- スライドイン・ショッピングカート -->
+    <div id="cart-drawer" class="hidden fixed inset-0 z-50 overflow-hidden">
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" onclick="toggleCart(false)"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between border-l border-slate-200">
+                <div class="px-6 py-5 border-b border-slate-200 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="shopping-bag" class="w-4 h-4 text-sky-600"></i>
+                        <h2 class="text-base font-bold text-slate-900">ショッピングカート</h2>
+                        <span id="cart-count-label" class="text-xs text-slate-400">(0点)</span>
+                    </div>
+                    <button onclick="toggleCart(false)" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <div id="cart-items-list" class="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+                    <div class="text-center py-16 text-slate-400 space-y-2">
+                        <i data-lucide="shopping-cart" class="w-10 h-10 mx-auto text-slate-300"></i>
+                        <p class="text-xs">カートに商品が入っていません</p>
+                    </div>
+                </div>
+
+                <div id="cart-footer" class="p-6 border-t border-slate-200 bg-slate-50 space-y-4">
+                    <div class="space-y-1">
+                        <div class="flex space-x-2">
+                            <input type="text" id="coupon-input" placeholder="クーポンコード (SPECIAL10)" class="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-mono text-slate-800 uppercase focus:outline-none focus:border-sky-500" />
+                            <button onclick="applyCoupon()" class="px-3.5 py-2 rounded-xl bg-slate-800 text-white text-xs font-semibold hover:bg-slate-700">適用</button>
+                        </div>
+                        <div id="coupon-message"></div>
+                    </div>
+
+                    <div class="space-y-1.5 text-xs text-slate-600 font-mono">
+                        <div class="flex justify-between"><span>小計</span><span id="cart-subtotal">¥0</span></div>
+                        <div id="cart-discount-row" class="hidden flex justify-between text-emerald-600 font-semibold"><span>割引</span><span id="cart-discount">-¥0</span></div>
+                        <div class="flex justify-between"><span>消費税 (10%)</span><span id="cart-tax">¥0</span></div>
+                        <div class="flex justify-between text-sm font-bold text-slate-900 pt-2 border-t border-slate-200">
+                            <span>合計金額 (税込)</span>
+                            <span id="cart-total" class="text-sky-600 text-base">¥0</span>
+                        </div>
+                    </div>
+
+                    <button onclick="openCheckoutModal()" class="w-full py-3.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shadow-lg shadow-sky-600/20 transition flex items-center justify-center space-x-2">
+                        <i data-lucide="credit-card" class="w-4 h-4"></i>
+                        <span>Stripe テスト決済へ進む</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stripe 決済モーダル -->
+    <div id="checkout-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl p-8 max-w-lg w-full shadow-2xl border border-slate-200 relative">
+            <form id="stripe-checkout-form" onsubmit="processCheckout(event)" class="space-y-5">
+                <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-sky-600"></i>
+                        <h3 class="font-bold text-slate-900 text-sm">Stripe 安全なテスト決済</h3>
+                    </div>
+                    <button type="button" onclick="closeCheckoutModal()" class="text-slate-400 hover:text-slate-600">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">お名前</label>
+                        <input type="text" id="cust-name" required value="鈴木 一郎" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-sky-500" />
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">メールアドレス</label>
+                        <input type="email" id="cust-email" required value="suzuki@example.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-sky-500" />
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                        <label class="block text-xs font-bold text-slate-700">クレジットカード情報 (Test Mode)</label>
+                        <div class="relative">
+                            <input type="text" readonly value="4242 •••• •••• 4242" class="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-mono text-slate-700" />
+                            <i data-lucide="credit-card" class="w-4 h-4 text-slate-400 absolute right-3 top-3"></i>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <input type="text" readonly value="12 / 28" class="bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-mono text-slate-700" />
+                            <input type="text" readonly value="CVC: 123" class="bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-mono text-slate-700" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-sky-50 border border-sky-100 flex justify-between items-center text-xs">
+                    <span class="text-sky-800 font-medium">請求総額:</span>
+                    <span id="modal-total-display" class="font-extrabold text-sky-900 text-base font-mono">¥0</span>
+                </div>
+
+                <button type="submit" id="btn-submit-pay" class="w-full py-3.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shadow-lg shadow-sky-600/20 transition flex items-center justify-center space-x-2">
+                    <i data-lucide="lock" class="w-4 h-4"></i>
+                    <span id="btn-pay-text">決済を完了する (Test)</span>
+                </button>
+            </form>
+
+            <div id="checkout-complete-view" class="hidden text-center space-y-4 py-4">
+                <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+                    <i data-lucide="check" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 font-serif">ご注文ありがとうございました！</h3>
+                <p class="text-xs text-slate-500">注文番号: <span id="complete-order-num" class="font-mono font-bold text-slate-800"></span></p>
+
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-left space-y-2 font-mono">
+                    <div class="flex justify-between"><span>お名前:</span><span id="complete-cust-name" class="font-bold"></span></div>
+                    <div class="flex justify-between"><span>決済ステータス:</span><span class="text-emerald-600 font-bold">Stripe 決済完了</span></div>
+                    <div class="flex justify-between border-t border-slate-200 pt-2 font-bold text-sm">
+                        <span>お支払総額:</span>
+                        <span id="complete-total" class="text-sky-600"></span>
+                    </div>
+                </div>
+
+                <button onclick="closeCheckoutModal()" class="w-full py-3 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-slate-800">
+                    ストアへ戻る
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <footer class="bg-white border-t border-slate-200 py-10 px-6 text-center text-xs text-slate-500 space-y-2 mt-20">
+        <div class="font-serif font-bold text-slate-800">LUMEN Store & Reservation</div>
+        <p>Crafted with <span class="text-sky-600 font-semibold">Vanilla JS + Tailwind CSS + FastAPI + SQLite</span> | 💼 Portfolio Project 04</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

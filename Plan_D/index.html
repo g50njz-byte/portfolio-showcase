@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAW STREET CULTURE | Plan D - Underground & HIPHOP Showcase</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dela+Gothic+One&family=Montserrat:ital,wght@0,800;0,900;1,900&family=Permanent+Marker&family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ノイズオーバーレイ -->
+    <div class="noise-overlay"></div>
+
+    <!-- ストリートカスタムカーソル -->
+    <div class="street-cursor" id="streetCursor">
+        <span class="cursor-crosshair">+</span>
+    </div>
+
+    <!-- 無限ティッカー（トップバー） -->
+    <div class="top-marquee">
+        <div class="marquee-track">
+            <span>RAW & UNCUT STREET CULTURE</span> // <span>HIPHOP & GRAFFITI ARCHIVE</span> // <span>NO COMPROMISE</span> // <span>UNDERGROUND VIBES ONLY</span> // <span>RAW & UNCUT STREET CULTURE</span> // <span>HIPHOP & GRAFFITI ARCHIVE</span> //
+        </div>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="street-header" id="streetHeader">
+        <div class="header-inner">
+            <a href="#" class="street-logo">
+                <span class="logo-txt-glitch" data-text="RAW_CREW">RAW_CREW</span>
+                <span class="badge-tag">EST. 2026</span>
+            </a>
+            
+            <nav class="street-nav">
+                <a href="#hero" class="nav-btn active">01//MAIN</a>
+                <a href="#culture" class="nav-btn">02//CULTURE</a>
+                <a href="#archive" class="nav-btn">03//ARCHIVE</a>
+                <a href="#crew" class="nav-btn">04//MANIFESTO</a>
+                <a href="#contact" class="nav-btn btn-highlight">JOIN THE CREW</a>
+            </nav>
+
+            <button class="nav-toggle-btn" id="navToggle">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION (RAW STREET & HIPHOP IMPACT) -->
+        <section id="hero" class="hero-street">
+            <div class="hero-media-wrap">
+                <video class="hero-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=2000&q=85">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-breakdancer-performing-on-the-street-41527-large.mp4" type="video/mp4">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-young-man-skateboarding-in-a-skatepark-42777-large.mp4" type="video/mp4">
+                </video>
+                <div class="hero-darken"></div>
+            </div>
+
+            <div class="hero-street-content">
+                <div class="glitch-badge">
+                    <i class="fa-solid fa-bolt"></i> PLAN D // RAW STREET & HIPHOP SHOWCASE
+                </div>
+
+                <h1 class="street-main-title">
+                    <span class="glitch-title" data-text="UNCONTROLLED">UNCONTROLLED</span>
+                    <span class="graffiti-sub">STREET SOUND & ART</span>
+                </h1>
+
+                <p class="street-lead">
+                    路地のグラフィティ、ブレイクビーツの重低音、アンダーグラウンドの熱量。無骨で妥協のないストリートカルチャーの真髄を全画面で叩きつける。
+                </p>
+
+                <div class="street-cta-group">
+                    <a href="#culture" class="raw-btn btn-neon">
+                        <span>EXPLORE CULTURE</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                    <a href="#archive" class="raw-btn btn-outline">
+                        <span>VIEW ARCHIVE</span>
+                        <i class="fa-solid fa-play"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 右サイドのミリタリーステッカー装飾 -->
+            <div class="street-side-sticker">
+                <span class="sticker-code">SYS.99-RAW</span>
+                <span class="sticker-vert">HIPHOP / DANCE / GRAFFITI</span>
+            </div>
+        </section>
+
+
+        <!-- MARQUEE BAR 2 -->
+        <div class="middle-marquee">
+            <div class="marquee-track reverse">
+                <span>★ BREAKDANCE</span> <span>★ BEATMAKING</span> <span>★ GRAFFITI ART</span> <span>★ SKATEBOARDING</span> <span>★ STREET WEAR</span> <span>★ BREAKDANCE</span> <span>★ BEATMAKING</span> <span>★ GRAFFITI ART</span> <span>★ SKATEBOARDING</span>
+            </div>
+        </div>
+
+
+        <!-- CULTURE SECTION (HIPHOP & STREET ELEMENTS) -->
+        <section id="culture" class="culture-section">
+            <div class="street-section-head">
+                <span class="tag-label">[ 02 / PILLARS ]</span>
+                <h2 class="section-big-title">STREET ELEMENTS</h2>
+            </div>
+
+            <div class="culture-grid">
+                <!-- CARD 1: DJ & BEAT -->
+                <div class="culture-card">
+                    <div class="card-image-box" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=85');"></div>
+                    <div class="card-neon-border"></div>
+                    <div class="card-overlay-txt">
+                        <span class="card-tag-num">01</span>
+                        <h3 class="card-h3">HEAVY BEATS & DJING</h3>
+                        <p class="card-p">重低音が鳴り響く地下クラブの熱気。ターンテーブルとアナログレコードが織りなすリズムの核心。</p>
+                        <span class="card-badge">BOOM BAP / TRAP</span>
+                    </div>
+                </div>
+
+                <!-- CARD 2: GRAFFITI & ART -->
+                <div class="culture-card">
+                    <div class="card-image-box" style="background-image: url('https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=1200&q=85');"></div>
+                    <div class="card-neon-border"></div>
+                    <div class="card-overlay-txt">
+                        <span class="card-tag-num">02</span>
+                        <h3 class="card-h3">GRAFFITI & WALL ART</h3>
+                        <p class="card-p">シャッターとコンクリート壁に刻まれるタギング。スプレー缶のキャンバスが生み出す都市の表情。</p>
+                        <span class="card-badge">SPRAY CAN ART</span>
+                    </div>
+                </div>
+
+                <!-- CARD 3: DANCE & SKATE -->
+                <div class="culture-card">
+                    <div class="card-image-box" style="background-image: url('https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=1200&q=85');"></div>
+                    <div class="card-neon-border"></div>
+                    <div class="card-overlay-txt">
+                        <span class="card-tag-num">03</span>
+                        <h3 class="card-h3">BREAKING & SKATE</h3>
+                        <p class="card-p">アスファルトの上で躍動する身体表現。ストリートをプレイグラウンドに変える自由な精神。</p>
+                        <span class="card-badge">FREESTYLE MOTION</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- INTERACTIVE MEDIA ARCHIVE SECTION (フル画面ストリート動画 & ビジュアル) -->
+        <section id="archive" class="archive-section">
+            <div class="street-section-head">
+                <span class="tag-label">[ 03 / VISUAL FOOTAGE ]</span>
+                <h2 class="section-big-title">UNDERGROUND REEL</h2>
+            </div>
+
+            <div class="reel-container">
+                <div class="reel-media-wrapper" id="reelMediaWrap" style="background-image: url('https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=1400&q=85');">
+                    <video class="reel-video" id="reelVideo" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=1400&q=85">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-young-man-skateboarding-in-a-skatepark-42777-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="reel-fallback-badge">LIVE VISUAL SHOWCASE</div>
+                    <div class="reel-overlay-scanline"></div>
+                </div>
+
+                <div class="reel-info-panel">
+                    <div class="reel-status"><span class="live-dot"></span> REC 00:24:99 // LIVE SESSION</div>
+                    <h3 class="reel-title" id="reelTitle">TOKYO NIGHT SESSION 2026</h3>
+                    <p class="reel-desc" id="reelDesc">真夜中のアスファルトで繰り広げられるセッション。即興のフリースタイルとビートが重なり合う瞬間。</p>
+                    
+                    <div class="reel-selector">
+                        <button class="reel-btn active" 
+                                data-src="https://assets.mixkit.co/videos/preview/mixkit-young-man-skateboarding-in-a-skatepark-42777-large.mp4" 
+                                data-img="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=1400&q=85"
+                                data-title="TOKYO NIGHT SESSION 2026" 
+                                data-desc="真夜中のアスファルトで繰り広げられるセッション。即興のフリースタイルとビートが重なり合う瞬間。">
+                            01. SKATE SESSION
+                        </button>
+                        <button class="reel-btn" 
+                                data-src="https://assets.mixkit.co/videos/preview/mixkit-breakdancer-performing-on-the-street-41527-large.mp4" 
+                                data-img="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1400&q=85"
+                                data-title="STREET BREAKDANCE BATTLE" 
+                                data-desc="原宿のサイファーで火花を散らすブレイクダンス。力強いパワームーブとステップ。">
+                            02. DANCE BATTLE
+                        </button>
+                        <button class="reel-btn" 
+                                data-src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-in-a-black-outfit-41549-large.mp4" 
+                                data-img="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=1400&q=85"
+                                data-title="RAW GRAFFITI SHOWCASE" 
+                                data-desc="巨大ウォールアート制作ドキュメンタリー。無数のグラフィティスプレーが描く軌跡。">
+                            03. GRAFFITI WALL
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- MANIFESTO & CREW SECTION -->
+        <section id="crew" class="crew-section">
+            <div class="crew-inner">
+                <div class="manifesto-box">
+                    <span class="manifesto-tag">// CREW MANIFESTO</span>
+                    <h2 class="manifesto-head">"NEVER ASK FOR PERMISSION TO CREATE."</h2>
+                    <p class="manifesto-p">
+                        俺たちはトレンドを追わない。ストリートの喧騒と自分たちの直感だけを信じる。<br>
+                        音、壁画、ダンス、ファッション。表現のすべてが都市へのステートメントだ。
+                    </p>
+                    
+                    <div class="crew-stats">
+                        <div class="c-stat">
+                            <span class="c-val">100%</span>
+                            <span class="c-lbl">STREET AUTHENTIC</span>
+                        </div>
+                        <div class="c-stat">
+                            <span class="c-val">00</span>
+                            <span class="c-lbl">COMPROMISE</span>
+                        </div>
+                        <div class="c-stat">
+                            <span class="c-val">24/7</span>
+                            <span class="c-lbl">CREATIVE FREEDOM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FOOTER & CONTACT -->
+        <section id="contact" class="street-footer-section">
+            <div class="footer-hero-txt">
+                <span class="huge-txt">GET IN THE GAME</span>
+            </div>
+
+            <div class="footer-content container">
+                <div class="contact-box">
+                    <h3 class="c-box-title">CONNECT WITH THE CREW</h3>
+                    <p class="c-box-sub">コラボレーション、イベント出演、グラフィティワーク等のご相談。</p>
+                    
+                    <a href="mailto:crew@raw-street.example" class="btn-raw-action">
+                        <span>SEND MESSAGE</span>
+                        <i class="fa-solid fa-bolt"></i>
+                    </a>
+                </div>
+
+                <div class="footer-links-row">
+                    <div class="f-brand">
+                        <span class="f-logo">RAW_CREW // PLAN D</span>
+                        <p>Underground Street & HIPHOP Culture Homepage</p>
+                    </div>
+                    <div class="f-nav">
+                        <a href="#hero">MAIN</a>
+                        <a href="#culture">CULTURE</a>
+                        <a href="#archive">ARCHIVE</a>
+                        <a href="#crew">MANIFESTO</a>
+                        <a href="../index.html">← COMPARISON PORTAL</a>
+                    </div>
+                </div>
+
+                <div class="footer-copy">
+                    &copy; 2026 RAW STREET CULTURE ARCHIVE. ALL RIGHTS RESERVED.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

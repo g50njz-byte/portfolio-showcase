@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazuhiro Suzuki | Full-Stack & AI Engineer Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            500: "#c59345",
+                            600: "#b07b36",
+                            700: "#92602e",
+                        },
+                        brand: {
+                            50: "#f0f9ff",
+                            100: "#e0f2fe",
+                            500: "#0ea5e9",
+                            600: "#0284c7",
+                            700: "#0369a1",
+                            900: "#0c4a6e",
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+        .card-portal {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-portal:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 40px -15px rgba(2, 132, 199, 0.12);
+        }
+        .subtle-hero-bg {
+            background: radial-gradient(1000px circle at 50% 10%, rgba(224, 242, 254, 0.5), transparent 70%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-sky-600 selection:text-white subtle-hero-bg">
+
+    <!-- ナビゲーションバー (白ベース・クリーン) -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 px-6 sm:px-12 py-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-white font-bold font-serif text-base shadow-sm">
+                KS
+            </div>
+            <div>
+                <span class="font-extrabold text-lg tracking-tight text-slate-900 font-sans">Kazuhiro Suzuki</span>
+                <span class="ml-2 text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-semibold">Portfolio</span>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold text-slate-600">
+            <a href="#about" class="hover:text-sky-600 transition">About</a>
+            <a href="#projects" class="hover:text-sky-600 transition">Projects (4)</a>
+            <a href="#skills" class="hover:text-sky-600 transition">Skill Matrix</a>
+            <a href="#architecture" class="hover:text-sky-600 transition">Architecture</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[11px] font-semibold">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Open for Opportunities</span>
+            </span>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section (白ベース・清潔感・高信頼) -->
+    <section id="about" class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center space-y-6">
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[11px] font-mono tracking-wider text-sky-700 font-semibold shadow-sm">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sky-600"></i>
+            <span>Full-Stack Engineering & Generative AI Integration</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 font-serif tracking-tight leading-[1.15]">
+            モダンWeb技術と生成AIで、<br class="hidden sm:inline">
+            <span class="text-sky-600 font-sans">ビジネスを加速する</span> プロダクトを創る。
+        </h1>
+
+        <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
+            React / Next.js / Vue.js 3 による洗練されたフロントエンドと、FastAPI / Flask による型安全なバックエンドAPI、そして Google Gemini 2.0 API を活用した実用的なAI機能を一気通貫で設計・開発します。
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-3 pt-4">
+            <a href="#projects" class="px-8 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-xl shadow-slate-900/10 transition flex items-center space-x-2">
+                <span>制作プロジェクトを見る</span>
+                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+            <a href="#skills" class="px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold text-xs transition shadow-sm flex items-center space-x-2">
+                <i data-lucide="cpu" class="w-4 h-4 text-sky-600"></i>
+                <span>技術スタック一覧</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- 2. 4大プロジェクト・ショーケース -->
+    <section id="projects" class="max-w-6xl mx-auto px-6 py-20 border-t border-slate-100">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-12">
+            <div>
+                <span class="text-xs font-mono uppercase tracking-widest text-sky-600 font-semibold">Featured Work</span>
+                <h2 class="text-3xl font-extrabold font-serif text-slate-900 mt-1">制作ポートフォリオ作品群</h2>
+            </div>
+            <p class="text-xs text-slate-500 max-w-md">
+                単なる画面モックではなく、データベース永続化、認証、トランザクション、AI連携まで完全実装された4つの独立したWebアプリケーションです。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Project 01 -->
+            <div class="bg-white rounded-3xl p-8 border border-slate-200 card-portal flex flex-col justify-between shadow-sm">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200">
+                            Project 01 • AI Dashboard
+                        </span>
+                        <span class="text-xs font-mono font-semibold text-slate-400">Port: 8080</span>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-slate-900 font-serif">AIデータ分析＆予測ダッシュボード</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        FastAPI + Pydantic v2 の高速バックエンドと、Chart.js による売上シミュレーション・リアルタイム回帰分析エンジンを搭載。
+                    </p>
+
+                    <!-- 技術タグ -->
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">FastAPI</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">Pydantic v2</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">Tailwind CSS</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">Chart.js</span>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-100 mt-6 flex items-center justify-between">
+                    <a href="http://localhost:8080" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition flex items-center space-x-1.5">
+                        <span>アプリを開く</span>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <a href="http://localhost:8080/docs" target="_blank" class="text-xs text-sky-600 hover:underline font-mono">Swagger 仕様書 →</a>
+                </div>
+            </div>
+
+            <!-- Project 02 -->
+            <div class="bg-white rounded-3xl p-8 border border-slate-200 card-portal flex flex-col justify-between shadow-sm">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            Project 02 • SaaS & Billing
+                        </span>
+                        <span class="text-xs font-mono font-semibold text-slate-400">Port: 5055</span>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-slate-900 font-serif">TaskFlow & 稼働時間・請求書発行SaaS</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        React によるカンバンボード、リアルタイムタイマー稼働計測、SQLite連動、そしてワンクリックでの印刷対応請求書（PDF）自動生成。
+                    </p>
+
+                    <!-- 技術タグ -->
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">React (SPA)</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">Flask (Python)</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">SQLite3</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">Print CSS</span>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-100 mt-6 flex items-center justify-between">
+                    <a href="http://localhost:5055" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition flex items-center space-x-1.5">
+                        <span>アプリを開く</span>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <span class="text-xs text-slate-400 font-mono">SQLite CRUD 連動</span>
+                </div>
+            </div>
+
+            <!-- Project 03 -->
+            <div class="bg-white rounded-3xl p-8 border border-slate-200 card-portal flex flex-col justify-between shadow-sm">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                            Project 03 • Creative LP & AI
+                        </span>
+                        <span class="text-xs font-mono font-semibold text-slate-400">Port: 8090</span>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-slate-900 font-serif">AURA - クリエイティブLP ＆ Gemini AI</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Vue.js 3 + GSAP による極上の白×ゴールド高級デザイン。Google AI Studio（Gemini 2.0 API）と直結し、リアルタイムでキャッチコピーを考案。
+                    </p>
+
+                    <!-- 技術タグ -->
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">Vue.js 3</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">GSAP Motion</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">Gemini 2.0 API</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">Luxury UI</span>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-100 mt-6 flex items-center justify-between">
+                    <a href="http://localhost:8090" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition flex items-center space-x-1.5">
+                        <span>アプリを開く</span>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <span class="text-xs text-amber-700 font-mono font-semibold">Gemini 2.0 直結</span>
+                </div>
+            </div>
+
+            <!-- Project 04 -->
+            <div class="bg-white rounded-3xl p-8 border border-slate-200 card-portal flex flex-col justify-between shadow-sm">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[10px] font-mono uppercase font-bold px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+                            Project 04 • EC & Booking
+                        </span>
+                        <span class="text-xs font-mono font-semibold text-slate-400">Port: 8095</span>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-slate-900 font-serif">LUMEN - ECストア ＆ 日時予約プラットフォーム</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        スライドインカート、クーポン割引計算、Stripe決済シミュレータ、空き枠判定カレンダー予約、在庫トランザクションを統合。
+                    </p>
+
+                    <!-- 技術タグ -->
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">React</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">FastAPI</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">Stripe Flow</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-[11px] font-medium font-mono">Booking Engine</span>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-100 mt-6 flex items-center justify-between">
+                    <a href="http://localhost:8095" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition flex items-center space-x-1.5">
+                        <span>アプリを開く</span>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <span class="text-xs text-indigo-600 font-mono font-semibold">Stripe 決済シミュレーション</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. Skill Matrix & 技術体系図 -->
+    <section id="skills" class="max-w-6xl mx-auto px-6 py-20 border-t border-slate-100">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+            <span class="text-xs font-mono uppercase tracking-widest text-sky-600 font-semibold">Technical Proficiency</span>
+            <h2 class="text-3xl font-extrabold font-serif text-slate-900">フルスタック・スキルマトリクス</h2>
+            <p class="text-xs text-slate-500">設計・フロントエンド・API・AI・データベースの全レイヤーを包括する実践技術</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Frontend -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center space-x-2 text-sky-600">
+                    <i data-lucide="layout" class="w-5 h-5"></i>
+                    <h3 class="font-bold text-sm text-slate-900">Frontend UI/UX</h3>
+                </div>
+                <ul class="space-y-2 text-xs text-slate-600 font-medium">
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span><span>React / Next.js (SPA & Hooks)</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span><span>Vue.js 3 (Composition API)</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span><span>Tailwind CSS (Clean & Dark)</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span><span>GSAP (ScrollTrigger Motion)</span></li>
+                </ul>
+            </div>
+
+            <!-- Backend -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center space-x-2 text-emerald-600">
+                    <i data-lucide="server" class="w-5 h-5"></i>
+                    <h3 class="font-bold text-sm text-slate-900">Backend & API</h3>
+                </div>
+                <ul class="space-y-2 text-xs text-slate-600 font-medium">
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span><span>FastAPI (Async & Typed)</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span><span>Flask (Lightweight REST)</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span><span>Pydantic v2 (Validation)</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span><span>Uvicorn / WSGI Routing</span></li>
+                </ul>
+            </div>
+
+            <!-- AI & Integration -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center space-x-2 text-amber-600">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    <h3 class="font-bold text-sm text-slate-900">AI & External APIs</h3>
+                </div>
+                <ul class="space-y-2 text-xs text-slate-600 font-medium">
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span>Google AI Studio / Gemini API</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span>Structured JSON Generation</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span>Stripe Checkout Flow</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span>Chart.js Data Visualization</span></li>
+                </ul>
+            </div>
+
+            <!-- Database & Architecture -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex items-center space-x-2 text-purple-600">
+                    <i data-lucide="database" class="w-5 h-5"></i>
+                    <h3 class="font-bold text-sm text-slate-900">Database & DevOps</h3>
+                </div>
+                <ul class="space-y-2 text-xs text-slate-600 font-medium">
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span><span>SQLite3 (Relational Modeling)</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span><span>Transaction & Stock Lock</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span><span>Automated Start Scripts (.sh)</span></li>
+                    <li class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span><span>Obsidian Vault Knowledge Map</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. Architecture & Engineering Philosophy -->
+    <section id="architecture" class="max-w-5xl mx-auto px-6 py-20 border-t border-slate-100">
+        <div class="bg-slate-900 rounded-3xl p-8 sm:p-12 text-white space-y-6 shadow-2xl">
+            <span class="text-xs font-mono uppercase tracking-widest text-sky-400 font-semibold">Engineering Philosophy</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold font-serif">開発において大切にしている3つの原則</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                <div class="space-y-2">
+                    <div class="text-sky-400 font-bold text-sm font-mono">01. 型安全と堅牢性</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Pydanticや適切なステート管理を用い、予期せぬ実行時エラーを未然に防ぐクリーンなアーキテクチャを構築します。
+                    </p>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-sky-400 font-bold text-sm font-mono">02. ユーザー体験 (CX)</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        白ベースの清潔感、滑らかなアニメーション、瞬時の画面フィードバックを追求し、触っていて心地よいUIを提供します。
+                    </p>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-sky-400 font-bold text-sm font-mono">03. 実務ビジネス直結</div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        在庫引き落とし、クーポン計算、空き枠制御、請求書発行など、実際のビジネス現場で求められる業務ロジックを徹底的に作り込みます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-slate-50 border-t border-slate-200 py-12 px-6 text-center text-xs text-slate-500 space-y-3">
+        <div class="font-serif font-bold text-base text-slate-800">Kazuhiro Suzuki | Engineering Portfolio</div>
+        <p>Managed with <span class="text-sky-600 font-semibold">Antigravity AI Elite Organization & Obsidian Vault</span></p>
+        <p class="text-[11px] text-slate-400">© 2026 Kazuhiro Suzuki. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

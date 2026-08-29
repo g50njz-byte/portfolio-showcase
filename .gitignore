@@ -1,0 +1,22 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+*.egg-info/
+
+# macOS
+.DS_Store
+
+# Environment & Keys
+.env
+*.key
+
+# Temporary Databases (Keep seeds, ignore local runtime writes if needed)
+# *.db
+
+# Logs
+*.log

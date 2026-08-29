@@ -1,0 +1,233 @@
+{
+  "main": {
+    "id": "69f2a7b07152d050",
+    "type": "split",
+    "children": [
+      {
+        "id": "7d433460b95f1ba9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c86df63c55ba3ebd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10_Concepts/SQLiteによるデータモデリング.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SQLiteによるデータモデリング"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a41d4f475b89cf64",
+    "type": "split",
+    "children": [
+      {
+        "id": "50ba9e28db7b90b6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bccc1cceae23d93c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "eff796a97039355d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "3d03d224c8c18363",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6837370b3e078ac3",
+    "type": "split",
+    "children": [
+      {
+        "id": "afe17a8e5a2aaed8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9b57a20f83f1dc43",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Project_Streetwear_Web/00_Master_Plan.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "バックリンク"
+            }
+          },
+          {
+            "id": "f9f41ce80534e9ee",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Project_Streetwear_Web/00_Master_Plan.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "アウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "985e96194284262e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "397e7958ff8ca5b8",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
+          },
+          {
+            "id": "4612b2bec4f6a1d7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Project_Streetwear_Web/00_Master_Plan.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "アウトライン"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false,
+      "bases:新規ベースを作成": false
+    }
+  },
+  "active": "c86df63c55ba3ebd",
+  "lastOpenFiles": [
+    "10_Concepts/ポートフォリオ設計と技術選定ストーリー.md",
+    "05_master_portfolio_portal/README.md",
+    "start_portal.sh",
+    "05_master_portfolio_portal/start.sh",
+    "app.js",
+    "05_master_portfolio_portal/app.js",
+    "05_master_portfolio_portal/index.html",
+    "05_master_portfolio_portal",
+    "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip/_vendor 2",
+    "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip/_internal 2",
+    "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip/__pycache__ 2",
+    "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip/py 2.typed",
+    "10_Concepts/Stripe決済API連携の基本フロー.md",
+    "10_Concepts/オンライン予約システムの空き枠判定ロジック.md",
+    "10_Concepts/ECカートと在庫管理のトランザクション設計.md",
+    "04_modern_ec_booking/venv/lib/python3.14/site-packages/starlette-1.6.0.dist-info/licenses/LICENSE.md",
+    "04_modern_ec_booking/venv/lib/python3.14/site-packages/uvicorn-0.52.4.dist-info/licenses/LICENSE.md",
+    "04_modern_ec_booking/venv/lib/python3.14/site-packages/idna-3.19.dist-info/licenses/LICENSE.md",
+    "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip-26.2.1.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+    "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip/_vendor/idna/LICENSE.md",
+    "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip-25.2.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+    "04_modern_ec_booking/README.md",
+    "10_Concepts/Gemini_APIによるリアルタイム生成連携.md",
+    "10_Concepts/GSAPによるスクロール連動アニメーション.md",
+    "10_Concepts/Vue3とComposition_APIの基礎.md",
+    "03_creative_brand_lp/venv/lib/python3.14/site-packages/starlette-1.6.0.dist-info/licenses/LICENSE.md",
+    "03_creative_brand_lp/venv/lib/python3.14/site-packages/uvicorn-0.52.4.dist-info/licenses/LICENSE.md",
+    "03_creative_brand_lp/venv/lib/python3.14/site-packages/idna-3.19.dist-info/licenses/LICENSE.md",
+    "03_creative_brand_lp/venv/lib/python3.14/site-packages/pip-26.2.1.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+    "03_creative_brand_lp/venv/lib/python3.14/site-packages/pip/_vendor/idna/LICENSE.md",
+    "03_creative_brand_lp/venv/lib/python3.14/site-packages/~ip-25.2.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+    "03_creative_brand_lp/venv/lib/python3.14/site-packages/pip-25.2.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+    "03_creative_brand_lp/README.md",
+    "10_Concepts/Reactによる状態管理とタイマー設計.md",
+    "10_Concepts/FlaskとREST_APIの基礎.md",
+    "00_ポートフォリオ総合マップ.md",
+    "02_task_billing_saas/venv/lib/python3.14/site-packages/werkzeug/debug/shared/more.png",
+    "02_task_billing_saas/venv/lib/python3.14/site-packages/werkzeug/debug/shared/less.png",
+    "02_task_billing_saas/venv/lib/python3.14/site-packages/werkzeug/debug/shared/console.png"
+  ]
+}

@@ -1,0 +1,939 @@
+/* ==========================================================================
+   Portfolio Plan A: 高級生食パン 匠 -TAKUMI- BRAND SITE STYLESHEET
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. ROOT VARIABLES & RESET
+   -------------------------------------------------------------------------- */
+:root {
+    --bg-dark: #0b0f19;
+    --bg-card: #121826;
+    --bg-paper: #fcfbf9;
+    --gold-primary: #d4af37;
+    --gold-hover: #f1c40f;
+    --text-white: #ffffff;
+    --text-muted: #94a3b8;
+    --text-dark: #1e293b;
+    --border-gold: rgba(212, 175, 55, 0.3);
+
+    --font-mincho: 'Shippori Mincho', serif;
+    --font-cinzel: 'Cinzel', serif;
+    --font-sans: 'Noto Sans JP', sans-serif;
+
+    --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------------------------------
+   2. JAPANESE CUSTOM CURSOR
+   -------------------------------------------------------------------------- */
+.jp-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: var(--gold-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+.jp-cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gold-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+    .jp-cursor, .jp-cursor-follower { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   3. PORTFOLIO META BADGE & MODAL
+   -------------------------------------------------------------------------- */
+.portfolio-meta-badge {
+    position: fixed;
+    top: 100px;
+    right: 24px;
+    z-index: 900;
+    background: linear-gradient(135deg, var(--gold-primary), #9a7b1c);
+    color: #000;
+    padding: 10px 18px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-meta-badge:hover {
+    transform: scale(1.05);
+}
+
+.portfolio-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: var(--bg-card);
+    border: 1px solid var(--gold-primary);
+    padding: 48px;
+    max-width: 800px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-tag {
+    font-family: var(--font-cinzel);
+    color: var(--gold-primary);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.modal-title {
+    font-family: var(--font-mincho);
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+    color: var(--gold-primary);
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.modal-col h3 {
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.modal-col p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.modal-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-primary);
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   4. HEADER & NAV
+   -------------------------------------------------------------------------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 24px 48px;
+    transition: all 0.4s var(--transition-smooth);
+}
+
+.site-header.scrolled {
+    padding: 14px 48px;
+    background: rgba(11, 15, 25, 0.9);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-gold);
+}
+
+.header-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-logo {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-kanji {
+    font-family: var(--font-mincho);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #000;
+    background: linear-gradient(135deg, var(--gold-primary), #9a7b1c);
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.main-name {
+    font-family: var(--font-mincho);
+    font-size: 1.15rem;
+    font-weight: 800;
+    display: block;
+    letter-spacing: 0.1em;
+}
+
+.sub-name {
+    font-family: var(--font-cinzel);
+    font-size: 0.65rem;
+    color: var(--gold-primary);
+    letter-spacing: 0.2em;
+    display: block;
+}
+
+.main-nav {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-family: var(--font-mincho);
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 4px 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--gold-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--gold-primary);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.header-reserve-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--gold-primary), #9a7b1c);
+    color: #000;
+    text-decoration: none;
+    font-family: var(--font-mincho);
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 10px 24px;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+
+.header-reserve-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--gold-primary);
+}
+
+/* --------------------------------------------------------------------------
+   5. HERO SECTION (100vw x 100vh FULL-BLEED)
+   -------------------------------------------------------------------------- */
+.hero-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-bg-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.hero-img-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5);
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    filter: brightness(0.5) contrast(1.1);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(11, 15, 25, 0.2) 0%, rgba(11, 15, 25, 0.85) 100%),
+                linear-gradient(to bottom, rgba(11, 15, 25, 0.4) 0%, rgba(11, 15, 25, 0.95) 100%);
+    z-index: 3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 24px;
+}
+
+.gold-subtitle {
+    display: inline-block;
+    font-family: var(--font-mincho);
+    color: var(--gold-primary);
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--gold-primary);
+    padding-bottom: 4px;
+}
+
+.vertical-title-wrap {
+    margin-bottom: 28px;
+}
+
+.vertical-title {
+    font-family: var(--font-mincho);
+    font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    line-height: 1.25;
+}
+
+.hero-desc {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 650px;
+    margin: 0 auto 36px auto;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--gold-primary), #9a7b1c);
+    color: #000;
+    padding: 16px 36px;
+    font-family: var(--font-mincho);
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-gold:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 32px;
+    border: 1px solid var(--gold-primary);
+    color: var(--gold-primary);
+    font-family: var(--font-mincho);
+    font-size: 0.95rem;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: background 0.3s ease;
+}
+
+.btn-ghost:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.scroll-guide {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.guide-text {
+    font-family: var(--font-cinzel);
+    font-size: 0.65rem;
+    color: var(--gold-primary);
+    letter-spacing: 0.25em;
+}
+
+.guide-line {
+    width: 1px;
+    height: 40px;
+    background-color: var(--gold-primary);
+    animation: guideAnim 2s infinite ease-in-out;
+}
+
+@keyframes guideAnim {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    50.1% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* --------------------------------------------------------------------------
+   6. SECTION TITLE BOX
+   -------------------------------------------------------------------------- */
+.section-title-box {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.section-en {
+    font-family: var(--font-cinzel);
+    font-size: 0.75rem;
+    color: var(--gold-primary);
+    letter-spacing: 0.3em;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.section-ja {
+    font-family: var(--font-mincho);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.section-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
+.gold-line {
+    width: 60px;
+    height: 2px;
+    background-color: var(--gold-primary);
+    margin: 16px auto 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   7. CONCEPT SECTION
+   -------------------------------------------------------------------------- */
+.concept-section {
+    padding: 140px 48px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.concept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.concept-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    overflow: hidden;
+    transition: transform 0.4s ease;
+}
+
+.card-img-wrap {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: brightness(0.85);
+}
+
+.card-num {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: var(--gold-primary);
+    color: #000;
+    font-family: var(--font-mincho);
+    font-size: 1.2rem;
+    font-weight: 800;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-txt {
+    padding: 32px;
+}
+
+.card-title {
+    font-family: var(--font-mincho);
+    font-size: 1.35rem;
+    margin-bottom: 16px;
+    color: var(--gold-primary);
+}
+
+.card-p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+}
+
+.concept-card:hover {
+    transform: translateY(-8px);
+}
+
+.concept-card:hover .card-img {
+    transform: scale(1.08);
+    filter: brightness(1);
+}
+
+/* --------------------------------------------------------------------------
+   8. LINEUP SECTION
+   -------------------------------------------------------------------------- */
+.lineup-section {
+    padding: 140px 48px;
+    background-color: #080c14;
+    border-top: 1px solid var(--border-gold);
+    border-bottom: 1px solid var(--border-gold);
+}
+
+.lineup-grid {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.lineup-item {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    background-color: var(--gold-primary);
+    color: #000;
+    font-family: var(--font-mincho);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 12px;
+}
+
+.item-img-box {
+    height: 280px;
+    overflow: hidden;
+}
+
+.item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9);
+}
+
+.item-info {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.item-header {
+    margin-bottom: 16px;
+}
+
+.item-name {
+    font-family: var(--font-mincho);
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+}
+
+.item-price {
+    font-family: var(--font-mincho);
+    color: var(--gold-primary);
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.item-price small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.item-desc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.item-spec {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.item-reserve-btn {
+    margin-top: auto;
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    color: var(--gold-primary);
+    border: 1px solid var(--gold-primary);
+    padding: 12px 0;
+    text-decoration: none;
+    font-family: var(--font-mincho);
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.item-reserve-btn:hover {
+    background-color: var(--gold-primary);
+    color: #000;
+}
+
+/* --------------------------------------------------------------------------
+   9. RESERVATION SECTION
+   -------------------------------------------------------------------------- */
+.reservation-section {
+    padding: 140px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reserve-form {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    padding: 56px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-family: var(--font-mincho);
+    font-size: 0.9rem;
+    color: var(--gold-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group select, .form-group input {
+    background-color: #080c14;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 14px 16px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group select:focus, .form-group input:focus {
+    border-color: var(--gold-primary);
+}
+
+.submit-reserve-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold-primary), #9a7b1c);
+    color: #000;
+    border: none;
+    padding: 20px 0;
+    font-family: var(--font-mincho);
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-reserve-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   10. SHOP SECTION
+   -------------------------------------------------------------------------- */
+.shop-section {
+    padding: 140px 48px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.shop-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    padding: 40px 32px;
+}
+
+.shop-name {
+    font-family: var(--font-mincho);
+    font-size: 1.4rem;
+    color: var(--gold-primary);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-gold);
+    padding-bottom: 10px;
+}
+
+.shop-card p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.shop-card p i {
+    color: var(--gold-primary);
+}
+
+/* --------------------------------------------------------------------------
+   11. FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+    background-color: #05070c;
+    border-top: 1px solid var(--border-gold);
+    padding: 60px 48px 30px 48px;
+}
+
+.footer-inner {
+    max-width: 1600px;
+    margin: 0 auto 40px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-logo-kanji {
+    font-family: var(--font-mincho);
+    font-size: 1.5rem;
+    color: #000;
+    background: var(--gold-primary);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-brand p {
+    font-family: var(--font-mincho);
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-family: var(--font-mincho);
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--gold-primary);
+}
+
+.footer-copy {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* --------------------------------------------------------------------------
+   12. REVEAL ANIMATIONS
+   -------------------------------------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .site-header { padding: 16px 24px; }
+    .main-nav { display: none; }
+    .nav-toggle { display: flex; }
+    .concept-grid, .lineup-grid, .shop-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .reserve-form { padding: 32px 20px; }
+    .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+}

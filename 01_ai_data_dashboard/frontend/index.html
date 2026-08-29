@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Analytics & Prediction Dashboard | Portfolio</title>
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: "#eef2ff",
+                            500: "#6366f1",
+                            600: "#4f46e5",
+                            700: "#4338ca",
+                        },
+                        dark: {
+                            bg: "#0a0d14",
+                            card: "#111625",
+                            border: "#1f293d"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap");
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background-color: #0a0d14;
+            color: #e2e8f0;
+        }
+        .font-mono {
+            font-family: "JetBrains Mono", monospace;
+        }
+        .glass-card {
+            background: rgba(17, 22, 37, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-hover {
+            transition: all 0.25s ease;
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.15);
+        }
+        .glow-indigo {
+            box-shadow: 0 0 20px -5px rgba(99, 102, 241, 0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- ナビゲーションバー -->
+    <header class="sticky top-0 z-50 glass-card border-b border-gray-800/80 px-6 py-3.5 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+                <div class="flex items-center space-x-2">
+                    <span class="font-extrabold text-lg text-white tracking-tight">AI Insights Engine</span>
+                    <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono">v1.4.0</span>
+                </div>
+                <p class="text-xs text-gray-400">FastAPI + Next.js Stack / Real-time Analytics</p>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-3">
+            <a href="/docs" target="_blank" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gray-800/60 hover:bg-gray-800 text-xs text-gray-300 border border-gray-700/60 transition">
+                <i data-lucide="file-code-2" class="w-4 h-4 text-indigo-400"></i>
+                <span>FastAPI Swagger /docs</span>
+            </a>
+            <div class="flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-lg">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-xs text-emerald-400 font-medium">Engine Active (14.2ms)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-1 p-6 max-w-7xl mx-auto w-full space-y-6">
+
+        <!-- KPI メトリクスカード一覧 -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="kpi-container">
+            <!-- JSで動的挿入 -->
+            <div class="glass-card rounded-2xl p-5 animate-pulse h-28"></div>
+            <div class="glass-card rounded-2xl p-5 animate-pulse h-28"></div>
+            <div class="glass-card rounded-2xl p-5 animate-pulse h-28"></div>
+            <div class="glass-card rounded-2xl p-5 animate-pulse h-28"></div>
+        </section>
+
+        <!-- メイングリッド: グラフ & 特徴量 -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- 左2カラム: トレンド予測チャート -->
+            <div class="lg:col-span-2 glass-card rounded-2xl p-6 flex flex-col">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h2 class="text-base font-bold text-white flex items-center space-x-2">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-indigo-400"></i>
+                            <span>リアルタイム需要予測 & トレンド推移</span>
+                        </h2>
+                        <p class="text-xs text-gray-400 mt-0.5">過去実績データとAI予測区間（Upper / Lower Bound）の推移</p>
+                    </div>
+                    <button id="btn-refresh" class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 transition" title="データ再取得">
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                <div class="relative flex-1 min-h-[300px]">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 右1カラム: 特徴量重要度 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col">
+                <div class="mb-4">
+                    <h2 class="text-base font-bold text-white flex items-center space-x-2">
+                        <i data-lucide="bar-chart-2" class="w-5 h-5 text-violet-400"></i>
+                        <span>AIモデル特徴量重要度 (SHAP)</span>
+                    </h2>
+                    <p class="text-xs text-gray-400 mt-0.5">予測寄与度の高い主要パラメータ一覧</p>
+                </div>
+                <div class="relative flex-1 min-h-[280px]">
+                    <canvas id="featureChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 下段グリッド: シミュレーション実験 & AIインサイト -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- 左1カラム: インタラクティブ・パラメータシミュレーター -->
+            <div class="glass-card rounded-2xl p-6 border-indigo-500/30 glow-indigo">
+                <div class="flex items-center space-x-2 mb-4 pb-3 border-b border-gray-800">
+                    <div class="p-2 rounded-lg bg-indigo-500/20 text-indigo-400">
+                        <i data-lucide="sliders" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-white">AIハイパーパラメータ・シミュレーター</h3>
+                        <p class="text-xs text-gray-400">FastAPIへPOST送信し即時推論</p>
+                    </div>
+                </div>
+
+                <form id="sim-form" class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-300">学習率 (Learning Rate)</span>
+                            <span id="val-lr" class="font-mono text-indigo-400 font-bold">0.010</span>
+                        </div>
+                        <input type="range" id="input-lr" min="0.001" max="0.1" step="0.001" value="0.01" class="w-full accent-indigo-500 bg-gray-800 rounded-lg cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-300">エポック数 (Epochs)</span>
+                            <span id="val-epochs" class="font-mono text-indigo-400 font-bold">50</span>
+                        </div>
+                        <input type="range" id="input-epochs" min="10" max="200" step="5" value="50" class="w-full accent-indigo-500 bg-gray-800 rounded-lg cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-300">ノイズ耐性 (Noise Level)</span>
+                            <span id="val-noise" class="font-mono text-indigo-400 font-bold">0.10</span>
+                        </div>
+                        <input type="range" id="input-noise" min="0.0" max="0.5" step="0.05" value="0.1" class="w-full accent-indigo-500 bg-gray-800 rounded-lg cursor-pointer">
+                    </div>
+
+                    <button type="submit" id="btn-simulate" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold text-xs flex items-center justify-center space-x-2 transition shadow-lg shadow-indigo-500/20">
+                        <i data-lucide="play" class="w-4 h-4"></i>
+                        <span>シミュレーションを実行</span>
+                    </button>
+                </form>
+
+                <!-- シミュレーション結果表示領域 -->
+                <div id="sim-result" class="mt-4 p-3 rounded-xl bg-gray-900/80 border border-gray-800 text-xs space-y-2 hidden">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">推定予測精度:</span>
+                        <span id="res-acc" class="font-mono font-bold text-emerald-400 text-sm">--</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">期待ROI効果:</span>
+                        <span id="res-roi" class="font-mono font-bold text-indigo-400 text-sm">--</span>
+                    </div>
+                    <div id="res-recs" class="text-gray-300 border-t border-gray-800 pt-2 text-[11px] leading-relaxed"></div>
+                </div>
+            </div>
+
+            <!-- 右2カラム: AIインサイト＆通知リスト -->
+            <div class="lg:col-span-2 glass-card rounded-2xl p-6 flex flex-col">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-base font-bold text-white flex items-center space-x-2">
+                        <i data-lucide="sparkles" class="w-5 h-5 text-amber-400"></i>
+                        <span>AI自動生成インサイト＆アラート</span>
+                    </h3>
+                    <span class="text-xs text-gray-400">Auto-Generated by LLM/Statistical Engine</span>
+                </div>
+
+                <div id="insights-container" class="space-y-3 flex-1 overflow-y-auto">
+                    <!-- JSで動的生成 -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="glass-card border-t border-gray-800/80 px-6 py-4 mt-8 text-center text-xs text-gray-500">
+        <p>Built with <span class="text-indigo-400 font-semibold">FastAPI + Next.js + Tailwind CSS</span> | 💼 Portfolio Project 01</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

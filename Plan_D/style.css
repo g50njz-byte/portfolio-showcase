@@ -1,0 +1,788 @@
+/* ==========================================================================
+   Plan D: RAW STREET & HIPHOP SHOWCASE STYLESHEET
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES & RESET
+   -------------------------------------------------------------------------- */
+:root {
+    --bg-black: #050505;
+    --bg-card: #0e0e0e;
+    --neon-lime: #d4ff00;
+    --neon-red: #ff003c;
+    --text-white: #ffffff;
+    --text-muted: #888888;
+    --border-street: 2px solid #222222;
+    --border-highlight: 2px solid #d4ff00;
+
+    --font-impact: 'Black Ops One', cursive;
+    --font-graffiti: 'Permanent Marker', cursive;
+    --font-heading: 'Dela Gothic One', sans-serif;
+    --font-sans: 'Montserrat', 'Noto Sans JP', sans-serif;
+
+    --transition-fast: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    line-height: 1.5;
+    cursor: crosshair;
+}
+
+/* --------------------------------------------------------------------------
+   2. NOISE & CUSTOM CURSOR
+   -------------------------------------------------------------------------- */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient(rgba(212, 255, 0, 0.03) 1px, transparent 0);
+    background-size: 4px 4px;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.street-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--neon-lime);
+    color: var(--neon-lime);
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-impact);
+    font-size: 1.2rem;
+    transition: transform 0.05s ease;
+}
+
+/* --------------------------------------------------------------------------
+   3. MARQUEE BARS
+   -------------------------------------------------------------------------- */
+.top-marquee {
+    background-color: var(--neon-lime);
+    color: #000000;
+    font-family: var(--font-impact);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    padding: 6px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+}
+
+.middle-marquee {
+    background-color: var(--neon-red);
+    color: #ffffff;
+    font-family: var(--font-impact);
+    font-size: 1.1rem;
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+}
+
+.marquee-track {
+    display: inline-block;
+    animation: marqueeAnim 20s linear infinite;
+}
+
+.marquee-track.reverse {
+    animation: marqueeAnimRev 22s linear infinite;
+}
+
+@keyframes marqueeAnim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeAnimRev {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+/* --------------------------------------------------------------------------
+   4. HEADER & NAV
+   -------------------------------------------------------------------------- */
+.street-header {
+    position: fixed;
+    top: 32px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 16px 40px;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: var(--border-street);
+}
+
+.header-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.street-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-txt-glitch {
+    font-family: var(--font-impact);
+    font-size: 2rem;
+    color: var(--neon-lime);
+    letter-spacing: 0.08em;
+    position: relative;
+}
+
+.badge-tag {
+    background: var(--neon-red);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 900;
+    padding: 2px 6px;
+    font-family: var(--font-sans);
+}
+
+.street-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-btn {
+    color: var(--text-white);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    transition: var(--transition-fast);
+}
+
+.nav-btn:hover, .nav-btn.active {
+    color: var(--neon-lime);
+    border-color: var(--neon-lime);
+    background-color: rgba(212, 255, 0, 0.08);
+}
+
+.nav-btn.btn-highlight {
+    background-color: var(--neon-lime);
+    color: #000;
+    border: 2px solid var(--neon-lime);
+}
+
+.nav-btn.btn-highlight:hover {
+    background-color: #ffffff;
+    color: #000;
+    box-shadow: 0 0 20px var(--neon-lime);
+}
+
+.nav-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--neon-lime);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   5. HERO SECTION (100vw x 100vh RAW STREET IMPACT)
+   -------------------------------------------------------------------------- */
+.hero-street {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px;
+    overflow: hidden;
+}
+
+.hero-media-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5) contrast(1.3) grayscale(40%);
+}
+
+.hero-darken {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.9) 100%),
+                linear-gradient(to top, #050505 0%, transparent 60%);
+}
+
+.hero-street-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1100px;
+    padding: 0 24px;
+}
+
+.glitch-badge {
+    display: inline-block;
+    background-color: var(--neon-red);
+    color: #fff;
+    font-family: var(--font-impact);
+    font-size: 0.9rem;
+    padding: 6px 16px;
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.street-main-title {
+    margin-bottom: 24px;
+}
+
+.glitch-title {
+    display: block;
+    font-family: var(--font-impact);
+    font-size: clamp(3.5rem, 9vw, 9.5rem);
+    line-height: 0.9;
+    color: #ffffff;
+    text-shadow: 4px 4px 0px var(--neon-red), -4px -4px 0px var(--neon-lime);
+    letter-spacing: 0.04em;
+}
+
+.graffiti-sub {
+    display: block;
+    font-family: var(--font-graffiti);
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    color: var(--neon-lime);
+    transform: rotate(-2deg);
+    margin-top: 10px;
+}
+
+.street-lead {
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 780px;
+    margin: 0 auto 36px auto;
+    font-weight: 700;
+    line-height: 1.8;
+}
+
+.street-cta-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.raw-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 36px;
+    font-family: var(--font-impact);
+    font-size: 1.1rem;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: var(--transition-bounce);
+}
+
+.raw-btn.btn-neon {
+    background-color: var(--neon-lime);
+    color: #000000;
+    box-shadow: 6px 6px 0px #ffffff;
+}
+
+.raw-btn.btn-neon:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px var(--neon-red);
+}
+
+.raw-btn.btn-outline {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.raw-btn.btn-outline:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.street-side-sticker {
+    position: absolute;
+    right: 40px;
+    bottom: 80px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    font-family: var(--font-impact);
+    color: var(--neon-lime);
+    font-size: 0.8rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. CULTURE SECTION (PILLARS)
+   -------------------------------------------------------------------------- */
+.culture-section {
+    padding: 120px 40px;
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+.street-section-head {
+    margin-bottom: 60px;
+    border-left: 6px solid var(--neon-lime);
+    padding-left: 24px;
+}
+
+.tag-label {
+    font-family: var(--font-impact);
+    color: var(--neon-lime);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+}
+
+.section-big-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    letter-spacing: 0.04em;
+}
+
+.culture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.culture-card {
+    position: relative;
+    height: 550px;
+    background-color: var(--bg-card);
+    border: var(--border-street);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 32px;
+    transition: var(--transition-fast);
+}
+
+.card-image-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6) contrast(1.2) grayscale(30%);
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.card-neon-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    transition: border-color 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.card-overlay-txt {
+    position: relative;
+    z-index: 3;
+}
+
+.card-tag-num {
+    font-family: var(--font-impact);
+    font-size: 2rem;
+    color: var(--neon-lime);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.card-h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.card-p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+}
+
+.card-badge {
+    display: inline-block;
+    background: #000;
+    color: var(--neon-lime);
+    border: 1px solid var(--neon-lime);
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 10px;
+}
+
+.culture-card:hover {
+    transform: translateY(-8px);
+}
+
+.culture-card:hover .card-image-box {
+    transform: scale(1.08);
+    filter: brightness(0.85) contrast(1.3) grayscale(0%);
+}
+
+.culture-card:hover .card-neon-border {
+    border-color: var(--neon-lime);
+}
+
+/* --------------------------------------------------------------------------
+   7. REEL & MEDIA ARCHIVE SECTION
+   -------------------------------------------------------------------------- */
+.archive-section {
+    padding: 120px 40px;
+    background-color: #000000;
+}
+
+.reel-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.reel-media-wrapper {
+    position: relative;
+    height: 600px;
+    border: 3px solid var(--neon-lime);
+    overflow: hidden;
+    box-shadow: 12px 12px 0px #111111;
+    background-size: cover;
+    background-position: center;
+    background-color: #111111;
+}
+
+.reel-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+}
+
+.reel-fallback-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 3;
+    background-color: var(--neon-lime);
+    color: #000;
+    font-family: var(--font-impact);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+}
+
+.reel-overlay-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.4) 51%);
+    background-size: 100% 4px;
+    pointer-events: none;
+}
+
+.reel-info-panel {
+    padding: 24px;
+}
+
+.reel-status {
+    font-family: var(--font-impact);
+    color: var(--neon-red);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.live-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--neon-red);
+    border-radius: 50%;
+    animation: blinkDot 1s infinite;
+}
+
+@keyframes blinkDot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+
+.reel-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+    color: var(--neon-lime);
+}
+
+.reel-desc {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 32px;
+}
+
+.reel-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.reel-btn {
+    background-color: var(--bg-card);
+    color: #fff;
+    border: var(--border-street);
+    padding: 16px 20px;
+    font-family: var(--font-impact);
+    font-size: 0.95rem;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.reel-btn:hover, .reel-btn.active {
+    background-color: var(--neon-lime);
+    color: #000;
+    border-color: var(--neon-lime);
+}
+
+/* --------------------------------------------------------------------------
+   8. CREW & MANIFESTO
+   -------------------------------------------------------------------------- */
+.crew-section {
+    padding: 160px 40px;
+    background-image: radial-gradient(#1a1a1a 1px, transparent 0);
+    background-size: 16px 16px;
+    text-align: center;
+}
+
+.crew-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.manifesto-tag {
+    font-family: var(--font-impact);
+    color: var(--neon-red);
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 24px;
+}
+
+.manifesto-head {
+    font-family: var(--font-impact);
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    text-shadow: 4px 4px 0px #000;
+}
+
+.manifesto-p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    line-height: 2;
+    font-weight: 700;
+}
+
+.crew-stats {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+.c-val {
+    font-family: var(--font-impact);
+    font-size: 4rem;
+    color: var(--neon-lime);
+    display: block;
+}
+
+.c-lbl {
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   9. FOOTER & CONTACT
+   -------------------------------------------------------------------------- */
+.street-footer-section {
+    background-color: #000000;
+    border-top: 3px solid var(--neon-lime);
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-hero-txt {
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+
+.huge-txt {
+    font-family: var(--font-impact);
+    font-size: 12vw;
+    color: rgba(255, 255, 255, 0.05);
+    letter-spacing: 0.05em;
+    line-height: 0.8;
+}
+
+.contact-box {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 100px auto;
+}
+
+.c-box-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.c-box-sub {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 40px;
+}
+
+.btn-raw-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--neon-red);
+    color: #fff;
+    padding: 24px 56px;
+    font-family: var(--font-impact);
+    font-size: 1.4rem;
+    text-decoration: none;
+    box-shadow: 8px 8px 0px #ffffff;
+    transition: var(--transition-bounce);
+}
+
+.btn-raw-action:hover {
+    background-color: var(--neon-lime);
+    color: #000;
+    box-shadow: 12px 12px 0px var(--neon-red);
+}
+
+.footer-links-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #222;
+    padding: 40px 0;
+}
+
+.f-logo {
+    font-family: var(--font-impact);
+    color: var(--neon-lime);
+    font-size: 1.2rem;
+}
+
+.f-nav {
+    display: flex;
+    gap: 24px;
+}
+
+.f-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+.f-nav a:hover {
+    color: #fff;
+}
+
+.footer-copy {
+    text-align: center;
+    padding: 20px 0 40px 0;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* --------------------------------------------------------------------------
+   10. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .culture-grid { grid-template-columns: 1fr; }
+    .reel-container { grid-template-columns: 1fr; }
+    .reel-media-wrapper { height: 400px; }
+    .crew-stats { flex-direction: column; gap: 32px; }
+    .street-nav { display: none; }
+    .nav-toggle-btn { display: block; }
+    .footer-links-row { flex-direction: column; gap: 24px; text-align: center; }
+}
