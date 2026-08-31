@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="ja" class="dark">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow & Invoice SaaS | Portfolio</title>
+    <title>TaskFlow & Invoice SaaS | Kazuhiro Suzuki</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
@@ -16,11 +15,6 @@
                             500: "#6366f1",
                             600: "#4f46e5",
                             700: "#4338ca",
-                        },
-                        dark: {
-                            bg: "#0b0f19",
-                            card: "#121827",
-                            border: "#1e293b"
                         }
                     }
                 }
@@ -29,7 +23,7 @@
     </script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- React & Babel for SPA -->
+    <!-- React & Babel for Standalone In-Browser Execution -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -37,16 +31,11 @@
         @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap");
         body {
             font-family: "Plus Jakarta Sans", sans-serif;
-            background-color: #0b0f19;
-            color: #e2e8f0;
+            background-color: #f8fafc;
+            color: #0f172a;
         }
         .font-mono {
             font-family: "JetBrains Mono", monospace;
-        }
-        .glass-panel {
-            background: rgba(18, 24, 39, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
         }
         @media print {
             body { background: white !important; color: black !important; }
@@ -58,6 +47,241 @@
 <body class="min-h-screen flex flex-col antialiased">
     <div id="root"></div>
 
-    <script type="text/babel" src="app.js"></script>
+    <script type="text/babel">
+        // TaskFlow & Invoice SaaS Logic
+        const { useState, useEffect, useRef } = React;
+
+        function App() {
+            const [tasks, setTasks] = useState([
+                { id: 1, title: "FastAPI エンドポイント設計", project_name: "ECリニューアル", hourly_rate: 6500, status: "done", priority: "high" },
+                { id: 2, title: "Stripe 決済連携シミュレータ", project_name: "ECリニューアル", hourly_rate: 6500, status: "in_progress", priority: "high" },
+                { id: 3, title: "GSAP スクロール演出調整", project_name: "ブランドLP制作", hourly_rate: 5500, status: "todo", priority: "medium" }
+            ]);
+            const [timeLogs, setTimeLogs] = useState([
+                { id: 1, project_name: "ECリニューアル", duration_seconds: 7200, notes: "API設計レビュー", created_at: "2026-08-29" },
+                { id: 2, project_name: "ブランドLP制作", duration_seconds: 10800, notes: "Heroセクション実装", created_at: "2026-08-29" }
+            ]);
+            const [currentView, setCurrentView] = useState("kanban"); // "kanban" | "timer" | "invoice"
+            
+            // タイマー状態
+            const [timerSeconds, setTimerSeconds] = useState(0);
+            const [isTimerRunning, setIsTimerRunning] = useState(false);
+            const [selectedProject, setSelectedProject] = useState("ECリニューアル");
+            const [timerNote, setTimerNote] = useState("機能実装とテスト");
+            const timerRef = useRef(null);
+
+            useEffect(() => {
+                if (isTimerRunning) {
+                    timerRef.current = setInterval(() => setTimerSeconds(s => s + 1), 1000);
+                } else {
+                    clearInterval(timerRef.current);
+                }
+                return () => clearInterval(timerRef.current);
+            }, [isTimerRunning]);
+
+            useEffect(() => {
+                if (window.lucide) window.lucide.createIcons();
+            });
+
+            const formatTime = (secs) => {
+                const h = Math.floor(secs / 3600);
+                const m = Math.floor((secs % 3600) / 60);
+                const s = secs % 60;
+                return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            };
+
+            const stopAndSaveTimer = () => {
+                setIsTimerRunning(false);
+                if (timerSeconds > 0) {
+                    setTimeLogs(prev => [
+                        { id: Date.now(), project_name: selectedProject, duration_seconds: timerSeconds, notes: timerNote, created_at: "今日" },
+                        ...prev
+                    ]);
+                    setTimerSeconds(0);
+                    alert("稼働ログを記録しました！");
+                }
+            };
+
+            const moveTaskStatus = (taskId, nextStatus) => {
+                setTasks(prev => prev.map(t => t.id === taskId ? { ...t, status: nextStatus } : t));
+            };
+
+            const totalHours = timeLogs.reduce((sum, l) => sum + (l.duration_seconds / 3600), 0);
+            const totalEarnings = timeLogs.reduce((sum, l) => {
+                const rate = l.project_name.includes("EC") ? 6500 : 5500;
+                return sum + Math.floor((l.duration_seconds / 3600) * rate);
+            }, 0);
+
+            return (
+                <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+                    {/* ヘッダー */}
+                    <header className="sticky top-0 z-40 bg-white border-b border-slate-200 px-6 sm:px-10 py-4 flex items-center justify-between shadow-sm">
+                        <div className="flex items-center space-x-3">
+                            <a href="../../works.html" className="text-xs text-slate-500 hover:text-indigo-600 flex items-center space-x-1 font-semibold mr-2">
+                                <span>← 戻る</span>
+                            </a>
+                            <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold font-serif text-lg shadow-sm">
+                                T
+                            </div>
+                            <div>
+                                <span className="font-extrabold text-lg tracking-wider text-slate-900 font-serif">TaskFlow</span>
+                                <span className="ml-2 text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 font-semibold">SaaS & Invoice</span>
+                            </div>
+                        </div>
+
+                        <div className="flex items-center space-x-1 sm:space-x-2 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-semibold">
+                            <button onClick={() => setCurrentView("kanban")} className={`px-4 py-2 rounded-lg transition ${currentView === "kanban" ? "bg-white text-indigo-700 shadow-sm" : "text-slate-600"}`}>
+                                📋 カンバンボード
+                            </button>
+                            <button onClick={() => setCurrentView("timer")} className={`px-4 py-2 rounded-lg transition ${currentView === "timer" ? "bg-white text-indigo-700 shadow-sm" : "text-slate-600"}`}>
+                                ⏱️ 稼働タイマー
+                            </button>
+                            <button onClick={() => setCurrentView("invoice")} className={`px-4 py-2 rounded-lg transition ${currentView === "invoice" ? "bg-white text-indigo-700 shadow-sm" : "text-slate-600"}`}>
+                                🧾 請求書発行
+                            </button>
+                        </div>
+                    </header>
+
+                    {/* サマリーバー */}
+                    <div className="max-w-6xl w-full mx-auto px-6 pt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                            <div className="text-xs text-slate-500 font-medium">総計測稼働時間</div>
+                            <div className="text-2xl font-bold font-mono text-slate-900 mt-1">{totalHours.toFixed(1)} 時間</div>
+                        </div>
+                        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                            <div className="text-xs text-slate-500 font-medium">売上見込額 (時給連動)</div>
+                            <div className="text-2xl font-bold font-mono text-indigo-600 mt-1">¥{totalEarnings.toLocaleString()}</div>
+                        </div>
+                        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                            <div className="text-xs text-slate-500 font-medium">アクティブタスク数</div>
+                            <div className="text-2xl font-bold font-mono text-slate-900 mt-1">{tasks.filter(t => t.status !== "done").length} 件</div>
+                        </div>
+                    </div>
+
+                    {/* メインコンテンツ */}
+                    <main className="flex-1 max-w-6xl w-full mx-auto px-6 py-8">
+                        {currentView === "kanban" && (
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {["todo", "in_progress", "done"].map(status => (
+                                    <div key={status} className="bg-slate-100/80 p-5 rounded-2xl border border-slate-200 space-y-4">
+                                        <div className="flex justify-between items-center font-bold text-xs uppercase tracking-wider text-slate-700">
+                                            <span>{status === "todo" ? "📌 To Do" : status === "in_progress" ? "⚡ 進行中" : "✅ 完了"}</span>
+                                            <span className="px-2 py-0.5 rounded-full bg-white text-slate-600 font-mono shadow-sm">
+                                                {tasks.filter(t => t.status === status).length}
+                                            </span>
+                                        </div>
+                                        <div className="space-y-3">
+                                            {tasks.filter(t => t.status === status).map(t => (
+                                                <div key={t.id} className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                                                    <div className="flex justify-between items-center text-[10px] font-mono">
+                                                        <span className="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 font-semibold">{t.project_name}</span>
+                                                        <span className="text-slate-400 font-bold">¥{t.hourly_rate.toLocaleString()}/h</span>
+                                                    </div>
+                                                    <h4 className="text-xs font-bold text-slate-900">{t.title}</h4>
+                                                    <div className="pt-2 flex justify-end space-x-1 border-t border-slate-50 text-[11px]">
+                                                        {status !== "todo" && <button onClick={() => moveTaskStatus(t.id, "todo")} className="px-2 py-1 bg-slate-50 hover:bg-slate-100 rounded text-slate-600">← ToDo</button>}
+                                                        {status !== "in_progress" && <button onClick={() => moveTaskStatus(t.id, "in_progress")} className="px-2 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded font-semibold">進行中</button>}
+                                                        {status !== "done" && <button onClick={() => moveTaskStatus(t.id, "done")} className="px-2 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded font-semibold">完了 →</button>}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {currentView === "timer" && (
+                            <div className="max-w-xl mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-sm text-center space-y-6">
+                                <div className="text-xs font-mono uppercase tracking-widest text-indigo-600 font-semibold">Real-Time Stopwatch</div>
+                                <div className="text-6xl font-extrabold font-mono text-slate-900 tracking-wider">
+                                    {formatTime(timerSeconds)}
+                                </div>
+
+                                <div className="space-y-3 text-left">
+                                    <div>
+                                        <label className="block text-xs font-semibold text-slate-700 mb-1">プロジェクト</label>
+                                        <select value={selectedProject} onChange={e => setSelectedProject(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800">
+                                            <option value="ECリニューアル">ECリニューアル (時給: ¥6,500)</option>
+                                            <option value="ブランドLP制作">ブランドLP制作 (時給: ¥5,500)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-semibold text-slate-700 mb-1">作業メモ</label>
+                                        <input type="text" value={timerNote} onChange={e => setTimerNote(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-800" />
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-center space-x-3 pt-2">
+                                    {!isTimerRunning ? (
+                                        <button onClick={() => setIsTimerRunning(true)} className="px-8 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-lg shadow-indigo-600/20">
+                                            ▶ 計測スタート
+                                        </button>
+                                    ) : (
+                                        <button onClick={stopAndSaveTimer} className="px-8 py-3.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-lg shadow-rose-600/20">
+                                            ⏹ 計測停止してログ保存
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                        )}
+
+                        {currentView === "invoice" && (
+                            <div className="max-w-3xl mx-auto bg-white p-10 rounded-3xl border border-slate-200 shadow-lg space-y-8">
+                                <div className="flex justify-between items-start border-b border-slate-200 pb-6">
+                                    <div>
+                                        <h2 className="text-3xl font-extrabold font-serif text-slate-900">御 請 求 書</h2>
+                                        <p className="text-xs text-slate-400 font-mono mt-1">請求番号: INV-202608-001</p>
+                                    </div>
+                                    <div className="text-right text-xs text-slate-600 space-y-1">
+                                        <div className="font-bold text-slate-900">鈴木 和博 エンジニアリング</div>
+                                        <div>発行日: 2026年8月29日</div>
+                                    </div>
+                                </div>
+
+                                <table className="w-full text-xs">
+                                    <thead>
+                                        <tr className="border-b border-slate-200 text-slate-500 font-semibold">
+                                            <th className="py-2 text-left">品目・作業内容</th>
+                                            <th className="py-2 text-right">稼働時間</th>
+                                            <th className="py-2 text-right">単価 (時給)</th>
+                                            <th className="py-2 text-right">金額</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-slate-100 font-mono">
+                                        {timeLogs.map(l => {
+                                            const rate = l.project_name.includes("EC") ? 6500 : 5500;
+                                            const amount = Math.floor((l.duration_seconds / 3600) * rate);
+                                            return (
+                                                <tr key={l.id}>
+                                                    <td className="py-3 font-sans font-medium text-slate-800">{l.project_name} - {l.notes}</td>
+                                                    <td className="py-3 text-right">{(l.duration_seconds / 3600).toFixed(1)}h</td>
+                                                    <td className="py-3 text-right">¥{rate.toLocaleString()}</td>
+                                                    <td className="py-3 text-right font-bold text-slate-900">¥{amount.toLocaleString()}</td>
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+
+                                <div className="border-t-2 border-slate-900 pt-4 flex justify-between items-center text-sm font-bold">
+                                    <span>ご請求総額 (税込)</span>
+                                    <span className="text-2xl text-indigo-600 font-mono font-extrabold">¥{Math.floor(totalEarnings * 1.1).toLocaleString()}</span>
+                                </div>
+
+                                <div className="pt-4 flex justify-end">
+                                    <button onClick={() => window.print()} className="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center space-x-2">
+                                        <span>🖨️ この請求書を印刷 / PDF保存</span>
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </main>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
 </body>
 </html>
