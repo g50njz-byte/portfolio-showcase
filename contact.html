@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Estimate | Kazuhiro Suzuki Web & AI Engineering</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { 500: "#c59345", 600: "#b07b36", 700: "#92602e" },
+                        brand: { 50: "#f0f9ff", 100: "#e0f2fe", 500: "#0ea5e9", 600: "#0284c7", 700: "#0369a1", 900: "#0c4a6e" }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #ffffff; color: #0f172a; overflow-x: hidden; }
+        .subtle-hero-bg { background: radial-gradient(1000px circle at 50% 0%, rgba(224, 242, 254, 0.5), transparent 70%); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-sky-600 selection:text-white subtle-hero-bg">
+
+    <!-- 共通ナビゲーションバー -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 sm:px-12 py-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-white font-bold font-serif text-base shadow-sm group-hover:bg-sky-600 transition">
+                    KS
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-slate-900 font-sans">Kazuhiro Suzuki</span>
+                    <span class="ml-2 text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-semibold">HQ</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold text-slate-600">
+            <a href="index.html" class="nav-link hover:text-sky-600 transition">HOME</a>
+            <a href="services.html" class="nav-link hover:text-sky-600 transition">SERVICES & PRICING</a>
+            <a href="works.html" class="nav-link hover:text-sky-600 transition">WORKS & CASE STUDIES</a>
+            <a href="about.html" class="nav-link hover:text-sky-600 transition">ABOUT & SKILLS</a>
+            <a href="process.html" class="nav-link hover:text-sky-600 transition">PROCESS & FAQ</a>
+            <a href="contact.html" class="nav-link text-sky-600 font-bold transition">CONTACT</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <a href="contact.html" class="hidden sm:inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold shadow-sm transition">
+                <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                <span>無料お見積もり</span>
+            </a>
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- モバイルメニュー -->
+    <div id="mobile-menu" class="hidden md:hidden flex-col bg-white border-b border-slate-200 px-6 py-4 space-y-3 text-sm font-semibold text-slate-700 shadow-lg">
+        <a href="index.html" class="hover:text-sky-600 py-1">HOME（トップ）</a>
+        <a href="services.html" class="hover:text-sky-600 py-1">SERVICES & PRICING（サービス・料金）</a>
+        <a href="works.html" class="hover:text-sky-600 py-1">WORKS & CASE STUDIES（制作実績）</a>
+        <a href="about.html" class="hover:text-sky-600 py-1">ABOUT & SKILLS（事業概要・スキル）</a>
+        <a href="process.html" class="hover:text-sky-600 py-1">PROCESS & FAQ（制作の流れ・FAQ）</a>
+        <a href="contact.html" class="text-sky-600 font-bold py-1">CONTACT（お見積もり・相談）</a>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-1 max-w-5xl mx-auto px-6 py-12 sm:py-16 space-y-16">
+
+        <!-- ページヘッダー -->
+        <section class="text-center space-y-4 max-w-2xl mx-auto">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-xs font-mono tracking-wider text-sky-700 font-semibold shadow-sm">
+                <i data-lucide="send" class="w-3.5 h-3.5 text-sky-600"></i>
+                <span>Get in Touch & Free Consultation</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-serif tracking-tight">
+                無料お見積もり・ご相談
+            </h1>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Webサイト制作、オンライン予約・ECシステムの構築、生成AIの導入など、お気軽にご相談ください。24時間以内に必ずご返信いたします。
+            </p>
+        </section>
+
+        <!-- お問い合わせフォーム ＆ 案内カード -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- フォーム領域 -->
+            <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <form onsubmit="event.preventDefault(); alert('お問い合わせありがとうございます。メッセージを送信いたしました。24時間以内に折り返しご連絡いたします。');" class="space-y-5">
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">
+                            お名前 / 貴社名 <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" required placeholder="例: 山田 太郎 / 株式会社サンプル" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-sky-600 focus:ring-1 focus:ring-sky-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">
+                            メールアドレス <span class="text-red-500">*</span>
+                        </label>
+                        <input type="email" required placeholder="example@domain.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-sky-600 focus:ring-1 focus:ring-sky-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-2">
+                            ご相談のカテゴリ（複数選択可）
+                        </label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
+                            <label class="flex items-center space-x-2 bg-slate-50 p-2.5 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-100">
+                                <input type="checkbox" class="rounded text-sky-600 focus:ring-0">
+                                <span>LP / Webサイト制作</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-slate-50 p-2.5 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-100">
+                                <input type="checkbox" class="rounded text-sky-600 focus:ring-0" checked>
+                                <span>予約 ＆ ECシステム開発</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-slate-50 p-2.5 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-100">
+                                <input type="checkbox" class="rounded text-sky-600 focus:ring-0">
+                                <span>生成AI導入・業務自動化</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-slate-50 p-2.5 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-100">
+                                <input type="checkbox" class="rounded text-sky-600 focus:ring-0">
+                                <span>月額保守・技術顧問</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">
+                                ご予算感
+                            </label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-sky-600 bg-white">
+                                <option>〜20万円</option>
+                                <option selected>20万〜50万円</option>
+                                <option>50万〜100万円</option>
+                                <option>100万円以上</option>
+                                <option>未定・相談して決めたい</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">
+                                希望納期
+                            </label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-sky-600 bg-white">
+                                <option>なるべく早く (特急)</option>
+                                <option selected>1ヶ月以内</option>
+                                <option>2〜3ヶ月以内</option>
+                                <option>未定・相談して決めたい</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">
+                            ご相談内容・ご要望 <span class="text-red-500">*</span>
+                        </label>
+                        <textarea rows="4" required placeholder="現在の課題や、作りたいサイトのイメージ、参考URLなどがございましたらご自由にご記入ください。" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-sky-600 focus:ring-1 focus:ring-sky-600"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 px-6 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-sm tracking-wide shadow-md transition flex items-center justify-center space-x-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>この内容で送信する（無料）</span>
+                    </button>
+                    
+                    <p class="text-[11px] text-slate-500 text-center">
+                        ※ご記入いただいた情報は、お問い合わせ対応以外の目的には使用いたしません。
+                    </p>
+                </form>
+            </div>
+
+            <!-- 右側: 案内カード -->
+            <div class="lg:col-span-5 space-y-6">
+                
+                <div class="bg-slate-900 text-white p-8 rounded-3xl space-y-4">
+                    <h3 class="text-lg font-bold font-serif">ご相談にあたってのお約束</h3>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>24時間以内の迅速返信</strong>: いただいたメッセージには必ず1営業日以内にご返信します。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>オンラインZoom相談（30分無料）</strong>: 画面共有しながら要件を整理できます。</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400 mt-0.5 flex-shrink-0"></i>
+                            <span><strong>無理な営業は一切なし</strong>: ご予算や実現可能性に合わせた最適な選択肢をご案内します。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-sky-50 border border-sky-100 p-6 rounded-2xl space-y-2 text-xs text-sky-900">
+                    <span class="font-bold block text-sm">💡 お急ぎの場合・チャットでのご相談</span>
+                    <p class="text-slate-600 leading-relaxed">
+                        クラウドワークスやランサーズ等のクラウドソーシング経由でのご相談・ご契約も柔軟に対応可能です。
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- 共通フッター -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-12 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-3 md:col-span-2">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center text-white font-bold font-serif">KS</div>
+                    <span class="font-bold text-white text-base">Kazuhiro Suzuki Web & AI Lab</span>
+                </div>
+                <p class="text-slate-400 text-xs leading-relaxed max-w-sm">
+                    モダンフロントエンド、FastAPIバックエンド、生成AI統合に特化したフルスタック開発。
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase font-mono text-[11px]">Pages</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-white transition">Home（トップ）</a></li>
+                    <li><a href="services.html" class="hover:text-white transition">Services（サービス・料金）</a></li>
+                    <li><a href="works.html" class="hover:text-white transition">Works（制作実績・事例）</a></li>
+                    <li><a href="about.html" class="hover:text-white transition">About（事業概要・スキル）</a></li>
+                    <li><a href="process.html" class="hover:text-white transition">Process（制作の流れ・FAQ）</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase font-mono text-[11px]">Contact & Social</h4>
+                <ul class="space-y-2">
+                    <li><a href="contact.html" class="hover:text-white transition">無料お見積もり・ご相談</a></li>
+                    <li><a href="https://github.com/g50njz-byte" target="_blank" class="hover:text-white transition">GitHub Profile</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 pt-8 mt-8 border-t border-slate-800 text-center text-slate-500 text-[11px]">
+            &copy; 2026 Kazuhiro Suzuki. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- 共通スクリプト -->
+    <script src="common.js"></script>
+</body>
+</html>

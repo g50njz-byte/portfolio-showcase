@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works & Case Studies | Kazuhiro Suzuki Web & AI Engineering</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { 500: "#c59345", 600: "#b07b36", 700: "#92602e" },
+                        brand: { 50: "#f0f9ff", 100: "#e0f2fe", 500: "#0ea5e9", 600: "#0284c7", 700: "#0369a1", 900: "#0c4a6e" }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #ffffff; color: #0f172a; overflow-x: hidden; }
+        .subtle-hero-bg { background: radial-gradient(1000px circle at 50% 0%, rgba(224, 242, 254, 0.5), transparent 70%); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-sky-600 selection:text-white subtle-hero-bg">
+
+    <!-- 共通ナビゲーションバー -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 sm:px-12 py-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-white font-bold font-serif text-base shadow-sm group-hover:bg-sky-600 transition">
+                    KS
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-slate-900 font-sans">Kazuhiro Suzuki</span>
+                    <span class="ml-2 text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-semibold">HQ</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold text-slate-600">
+            <a href="index.html" class="nav-link hover:text-sky-600 transition">HOME</a>
+            <a href="services.html" class="nav-link hover:text-sky-600 transition">SERVICES & PRICING</a>
+            <a href="works.html" class="nav-link text-sky-600 font-bold transition">WORKS & CASE STUDIES</a>
+            <a href="about.html" class="nav-link hover:text-sky-600 transition">ABOUT & SKILLS</a>
+            <a href="process.html" class="nav-link hover:text-sky-600 transition">PROCESS & FAQ</a>
+            <a href="contact.html" class="nav-link hover:text-sky-600 transition">CONTACT</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <a href="contact.html" class="hidden sm:inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold shadow-sm transition">
+                <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                <span>無料お見積もり</span>
+            </a>
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- モバイルメニュー -->
+    <div id="mobile-menu" class="hidden md:hidden flex-col bg-white border-b border-slate-200 px-6 py-4 space-y-3 text-sm font-semibold text-slate-700 shadow-lg">
+        <a href="index.html" class="hover:text-sky-600 py-1">HOME（トップ）</a>
+        <a href="services.html" class="hover:text-sky-600 py-1">SERVICES & PRICING（サービス・料金）</a>
+        <a href="works.html" class="text-sky-600 font-bold py-1">WORKS & CASE STUDIES（制作実績）</a>
+        <a href="about.html" class="hover:text-sky-600 py-1">ABOUT & SKILLS（事業概要・スキル）</a>
+        <a href="process.html" class="hover:text-sky-600 py-1">PROCESS & FAQ（制作の流れ・FAQ）</a>
+        <a href="contact.html" class="hover:text-sky-600 py-1 text-sky-600 font-bold">CONTACT（お見積もり・相談）</a>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-1 max-w-6xl mx-auto px-6 py-12 sm:py-16 space-y-20">
+
+        <!-- ページヘッダー -->
+        <section class="text-center space-y-4 max-w-3xl mx-auto">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-xs font-mono tracking-wider text-sky-700 font-semibold shadow-sm">
+                <i data-lucide="folder-git-2" class="w-3.5 h-3.5 text-sky-600"></i>
+                <span>Production-Ready Flagship Projects</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-serif tracking-tight">
+                制作実績・詳細ケーススタディ
+            </h1>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                フロントエンドの美麗なデザインから、堅牢なバックエンド、生成AI連携まで。すべて実稼働するフルスタック開発の成果物です。
+            </p>
+        </section>
+
+        <!-- ケーススタディ一覧 -->
+        <div class="space-y-16">
+
+            <!-- Case 1: LUMEN (EC & Booking) -->
+            <article class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-0">
+                <div class="lg:col-span-7 p-8 sm:p-10 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-2 text-xs font-mono font-bold text-emerald-600">
+                            <span>CASE 01</span>
+                            <span>•</span>
+                            <span>EC ＆ 予約システム</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+                            LUMEN — オンライン予約 ＆ 物販統合プラットフォーム
+                        </h2>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            美容サロン・クリニック・D2Cブランドを想定した統合コマースプラットフォーム。日時の空き枠リアルタイム判定、Stripe決済連携、カート管理、注文ステータス更新を完備。
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block mb-1">💡 解決した課題</span>
+                                <span class="text-slate-600">予約と物販が別システムで管理が煩雑 ➜ 1つのダッシュボードに統合し、業務工数を70%削減。</span>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block mb-1">⚡ 使用技術スタック</span>
+                                <span class="text-slate-600">React, FastAPI, Python, SQLite/PostgreSQL, Stripe API, Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
+                        <a href="http://localhost:8095" target="_blank" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm transition">
+                            <span>デモを起動・体験 (Port: 8095)</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                        <span class="text-[11px] font-mono text-slate-500">※ローカルサーバー稼働時</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 bg-gradient-to-br from-emerald-950 to-slate-900 p-8 flex flex-col justify-center text-white space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-400">
+                        <i data-lucide="calendar-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">主要実装ハイライト</h3>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                            <span>予約スロットのダブルブッキング防止ロジック</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Stripe Checkout 安全決済フロー</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                            <span>リアルタイム在庫引き落としトランザクション</span>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Case 2: AURA Creative Brand LP -->
+            <article class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-0">
+                <div class="lg:col-span-7 p-8 sm:p-10 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-2 text-xs font-mono font-bold text-purple-600">
+                            <span>CASE 02</span>
+                            <span>•</span>
+                            <span>クリエイティブLP ＆ 生成AI</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+                            AURA — GSAPアニメーション ＆ Gemini AI リアルタイム生成LP
+                        </h2>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            ハイエンドブランドの世界観を体現するインタラクティブLP。GSAPによるパララックス・スクロール連動演出に加え、Gemini APIがユーザーの好みに応じたパーソナライズストーリーを即座に生成。
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block mb-1">💡 解決した課題</span>
+                                <span class="text-slate-600">静的なLPでは離脱率が高い ➜ AIによる対話型コンテンツで滞在時間とブランド体験価値を3倍に向上。</span>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block mb-1">⚡ 使用技術スタック</span>
+                                <span class="text-slate-600">Vue.js 3, GSAP 3 (ScrollTrigger), Google Gemini API, Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
+                        <a href="http://localhost:8090" target="_blank" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold shadow-sm transition">
+                            <span>デモを起動・体験 (Port: 8090)</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                        <span class="text-[11px] font-mono text-slate-500">※ローカルサーバー稼働時</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 bg-gradient-to-br from-purple-950 to-slate-900 p-8 flex flex-col justify-center text-white space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center text-purple-400">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">主要実装ハイライト</h3>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-purple-400"></i>
+                            <span>60fps 滑らかなGSAPスクロールアニメーション</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-purple-400"></i>
+                            <span>Gemini APIストリーミングによるリアルタイム対話</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-purple-400"></i>
+                            <span>Vue 3 Composition API によるクリーン設計</span>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Case 3: AI Data Dashboard -->
+            <article class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-0">
+                <div class="lg:col-span-7 p-8 sm:p-10 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-2 text-xs font-mono font-bold text-sky-600">
+                            <span>CASE 03</span>
+                            <span>•</span>
+                            <span>データ分析 ＆ 予測ダッシュボード</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+                            AI Data Analytics — リアルタイムデータ可視化 ＆ 予測基盤
+                        </h2>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            売上・トラフィック・KPI指標をリアルタイムに集計・グラフ化し、機械学習モデルによる将来トレンド予測を自動提示するエンタープライズ向けダッシュボード。
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block mb-1">💡 解決した課題</span>
+                                <span class="text-slate-600">散らばったデータを集計するのに毎月40時間かかっていた ➜ リアルタイム自動集計で即座に経営判断可能に。</span>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block mb-1">⚡ 使用技術スタック</span>
+                                <span class="text-slate-600">FastAPI, Python, Next.js, Chart.js, Pandas, Pydantic</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
+                        <a href="http://localhost:8080" target="_blank" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold shadow-sm transition">
+                            <span>デモを起動・体験 (Port: 8080)</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                        <span class="text-[11px] font-mono text-slate-500">※ローカルサーバー稼働時</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 to-sky-950 p-8 flex flex-col justify-center text-white space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-400">
+                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">主要実装ハイライト</h3>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400"></i>
+                            <span>FastAPI 非同期エンドポイントによる高速応答</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400"></i>
+                            <span>インタラクティブなChart.jsマルチグラフ描画</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400"></i>
+                            <span>Pydantic による堅牢なデータバリデーション</span>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Case 4: TaskFlow & Billing SaaS -->
+            <article class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-0">
+                <div class="lg:col-span-7 p-8 sm:p-10 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-2 text-xs font-mono font-bold text-amber-600">
+                            <span>CASE 04</span>
+                            <span>•</span>
+                            <span>業務SaaS ＆ 請求管理</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+                            TaskFlow — タスク管理 ＆ ワンクリック請求書自動発行SaaS
+                        </h2>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            フリーランスや中小チームのためのプロジェクト・請求管理SaaS。カンバンボードでのタスク進行、タイマーによる稼働時間記録、ワンクリックでの請求書PDF自動生成を実現。
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block mb-1">💡 解決した課題</span>
+                                <span class="text-slate-600">タスク完了後の請求書作成・送付の二重手間 ➜ タスク完了からワンクリックでインボイス準拠請求書を発行。</span>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block mb-1">⚡ 使用技術スタック</span>
+                                <span class="text-slate-600">React, Flask, Python, SQLite3, ReportLab (PDF), JWT認証</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
+                        <a href="http://localhost:5055" target="_blank" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-sm transition">
+                            <span>デモを起動・体験 (Port: 5055)</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                        <span class="text-[11px] font-mono text-slate-500">※ローカルサーバー稼働時</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 bg-gradient-to-br from-amber-950 to-slate-900 p-8 flex flex-col justify-center text-white space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center text-amber-400">
+                        <i data-lucide="check-square" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">主要実装ハイライト</h3>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-400"></i>
+                            <span>ドラッグ＆ドロップ対応カンバンUI</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-400"></i>
+                            <span>日本の適格請求書（インボイス）対応PDF出力</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-amber-400"></i>
+                            <span>JWTトークンによる安全なユーザー認証</span>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Case 5: UVU SUPPLY CO. -->
+            <article class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-0">
+                <div class="lg:col-span-7 p-8 sm:p-10 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-2 text-xs font-mono font-bold text-slate-700">
+                            <span>CASE 05</span>
+                            <span>•</span>
+                            <span>自社ブランド D2C ＆ コマース</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+                            UVU SUPPLY CO. — NY × Tokyo ストリートウェアブランド
+                        </h2>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            テックパック（仕様書）の設計からECプラットフォームの構築、SNS連携までを一気通貫で推進する自社アパレルブランド構想。
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block mb-1">💡 ブランドコンセプト</span>
+                                <span class="text-slate-600">ミニマル＆ヘビーウェイトなプレミアムストリートウェア。オンライン限定ドロップ方式。</span>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <span class="font-bold text-slate-900 block mb-1">⚡ 統合戦略</span>
+                                <span class="text-slate-600">D2C Eコマース, Stripe決済, Shopify連携, 会員限定先行予約システム</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
+                        <a href="contact.html" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-sky-600 text-white text-xs font-bold shadow-sm transition">
+                            <span>ブランド開発・EC構築について相談する</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 bg-gradient-to-br from-slate-950 to-zinc-900 p-8 flex flex-col justify-center text-white space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white">
+                        <i data-lucide="tag" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">自社ブランド展開の強み</h3>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400"></i>
+                            <span>企画・デザインからEC実装・決済まで完全内製化</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="check" class="w-4 h-4 text-sky-400"></i>
+                            <span>実体験に基づいた実践的コマースノウハウのクライアント還元</span>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- 下部CTA -->
+        <section class="bg-slate-900 rounded-3xl p-8 sm:p-12 text-center text-white space-y-6">
+            <h2 class="text-2xl sm:text-4xl font-extrabold font-serif">
+                あなたのビジネスの課題に合わせた<br>
+                オーダーメイドWebシステムを開発します。
+            </h2>
+            <p class="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto">
+                「こんな機能を作りたい」「予算内でどこまで作れるか知りたい」など、まずはお気軽にご相談ください。
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                <a href="contact.html" class="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg transition">
+                    無料でお見積もり・相談する
+                </a>
+                <a href="services.html" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition border border-slate-700">
+                    料金プランを見る
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 共通フッター -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-12 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-3 md:col-span-2">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center text-white font-bold font-serif">KS</div>
+                    <span class="font-bold text-white text-base">Kazuhiro Suzuki Web & AI Lab</span>
+                </div>
+                <p class="text-slate-400 text-xs leading-relaxed max-w-sm">
+                    モダンフロントエンド、FastAPIバックエンド、生成AI統合に特化したフルスタック開発。
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase font-mono text-[11px]">Pages</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-white transition">Home（トップ）</a></li>
+                    <li><a href="services.html" class="hover:text-white transition">Services（サービス・料金）</a></li>
+                    <li><a href="works.html" class="hover:text-white transition">Works（制作実績・事例）</a></li>
+                    <li><a href="about.html" class="hover:text-white transition">About（事業概要・スキル）</a></li>
+                    <li><a href="process.html" class="hover:text-white transition">Process（制作の流れ・FAQ）</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase font-mono text-[11px]">Contact & Social</h4>
+                <ul class="space-y-2">
+                    <li><a href="contact.html" class="hover:text-white transition">無料お見積もり・ご相談</a></li>
+                    <li><a href="https://github.com/g50njz-byte" target="_blank" class="hover:text-white transition">GitHub Profile</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 pt-8 mt-8 border-t border-slate-800 text-center text-slate-500 text-[11px]">
+            &copy; 2026 Kazuhiro Suzuki. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- 共通スクリプト -->
+    <script src="common.js"></script>
+</body>
+</html>

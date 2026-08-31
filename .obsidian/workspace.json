@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10_Concepts/SQLiteによるデータモデリング.md",
+                "file": "00_Meta/Global_Design_Systems_and_Patterns.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SQLiteによるデータモデリング"
+              "title": "Global_Design_Systems_and_Patterns"
             }
           }
         ]
@@ -190,6 +190,7 @@
   },
   "active": "c86df63c55ba3ebd",
   "lastOpenFiles": [
+    "10_Concepts/SQLiteによるデータモデリング.md",
     "push_to_github.sh",
     "10_Concepts/ポートフォリオ設計と技術選定ストーリー.md",
     "05_master_portfolio_portal/README.md",
@@ -202,7 +203,6 @@
     "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip/_vendor 2",
     "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip/_internal 2",
     "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip/__pycache__ 2",
-    "04_modern_ec_booking/venv/lib/python3.14/site-packages/pip/py 2.typed",
     "10_Concepts/Stripe決済API連携の基本フロー.md",
     "10_Concepts/オンライン予約システムの空き枠判定ロジック.md",
     "10_Concepts/ECカートと在庫管理のトランザクション設計.md",

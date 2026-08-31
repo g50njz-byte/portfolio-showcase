@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process & FAQ | Kazuhiro Suzuki Web & AI Engineering</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { 500: "#c59345", 600: "#b07b36", 700: "#92602e" },
+                        brand: { 50: "#f0f9ff", 100: "#e0f2fe", 500: "#0ea5e9", 600: "#0284c7", 700: "#0369a1", 900: "#0c4a6e" }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #ffffff; color: #0f172a; overflow-x: hidden; }
+        .subtle-hero-bg { background: radial-gradient(1000px circle at 50% 0%, rgba(224, 242, 254, 0.5), transparent 70%); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-sky-600 selection:text-white subtle-hero-bg">
+
+    <!-- 共通ナビゲーションバー -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 sm:px-12 py-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-white font-bold font-serif text-base shadow-sm group-hover:bg-sky-600 transition">
+                    KS
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-slate-900 font-sans">Kazuhiro Suzuki</span>
+                    <span class="ml-2 text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-semibold">HQ</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold text-slate-600">
+            <a href="index.html" class="nav-link hover:text-sky-600 transition">HOME</a>
+            <a href="services.html" class="nav-link hover:text-sky-600 transition">SERVICES & PRICING</a>
+            <a href="works.html" class="nav-link hover:text-sky-600 transition">WORKS & CASE STUDIES</a>
+            <a href="about.html" class="nav-link hover:text-sky-600 transition">ABOUT & SKILLS</a>
+            <a href="process.html" class="nav-link text-sky-600 font-bold transition">PROCESS & FAQ</a>
+            <a href="contact.html" class="nav-link hover:text-sky-600 transition">CONTACT</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <a href="contact.html" class="hidden sm:inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold shadow-sm transition">
+                <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                <span>無料お見積もり</span>
+            </a>
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- モバイルメニュー -->
+    <div id="mobile-menu" class="hidden md:hidden flex-col bg-white border-b border-slate-200 px-6 py-4 space-y-3 text-sm font-semibold text-slate-700 shadow-lg">
+        <a href="index.html" class="hover:text-sky-600 py-1">HOME（トップ）</a>
+        <a href="services.html" class="hover:text-sky-600 py-1">SERVICES & PRICING（サービス・料金）</a>
+        <a href="works.html" class="hover:text-sky-600 py-1">WORKS & CASE STUDIES（制作実績）</a>
+        <a href="about.html" class="hover:text-sky-600 py-1">ABOUT & SKILLS（事業概要・スキル）</a>
+        <a href="process.html" class="text-sky-600 font-bold py-1">PROCESS & FAQ（制作の流れ・FAQ）</a>
+        <a href="contact.html" class="hover:text-sky-600 py-1 text-sky-600 font-bold">CONTACT（お見積もり・相談）</a>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-1 max-w-5xl mx-auto px-6 py-12 sm:py-16 space-y-20">
+
+        <!-- ページヘッダー -->
+        <section class="text-center space-y-4 max-w-3xl mx-auto">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-xs font-mono tracking-wider text-sky-700 font-semibold shadow-sm">
+                <i data-lucide="check-square" class="w-3.5 h-3.5 text-sky-600"></i>
+                <span>Seamless Workflow & Guarantee</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-serif tracking-tight">
+                制作の流れ・安心の保証・よくある質問
+            </h1>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                初めてWeb制作やシステム開発をご依頼される方でも安心。透明性のある進行フローと充実した保証でお応えします。
+            </p>
+        </section>
+
+        <!-- 5ステップの制作の流れ -->
+        <section class="space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+                    ご相談から納品までの 5ステップ
+                </h2>
+                <p class="text-slate-600 text-xs sm:text-sm">
+                    最短ルートで高品質な成果物をお届けします。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                
+                <!-- Step 1 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-3 relative">
+                    <span class="w-7 h-7 rounded-full bg-sky-100 text-sky-700 font-mono font-bold text-xs flex items-center justify-center">01</span>
+                    <h3 class="font-bold text-slate-900 text-sm">無料ヒアリング・要件整理</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        課題やご要望、ターゲット層、希望納期などをオンライン（Zoom等）またはテキストでお伺いします。
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-3 relative">
+                    <span class="w-7 h-7 rounded-full bg-sky-100 text-sky-700 font-mono font-bold text-xs flex items-center justify-center">02</span>
+                    <h3 class="font-bold text-slate-900 text-sm">構成案・お見積もりご提示</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        サイト構成案、実装機能、明確な費用とスケジュールを記載した提案書・見積書をご提示します。
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-3 relative">
+                    <span class="w-7 h-7 rounded-full bg-sky-100 text-sky-700 font-mono font-bold text-xs flex items-center justify-center">03</span>
+                    <h3 class="font-bold text-slate-900 text-sm">UI設計 ＆ 高速開発</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        デザイン作成およびフロント/バックエンド実装。開発中のプレビュー画面を共有しながら進行します。
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-3 relative">
+                    <span class="w-7 h-7 rounded-full bg-sky-100 text-sky-700 font-mono font-bold text-xs flex items-center justify-center">04</span>
+                    <h3 class="font-bold text-slate-900 text-sm">テスト・クライアント確認</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        スマホ実機テスト、決済・予約機能の動作検証を実施。修正点があれば迅速に微調整します。
+                    </p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-3 relative">
+                    <span class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 font-mono font-bold text-xs flex items-center justify-center">05</span>
+                    <h3 class="font-bold text-slate-900 text-sm">本番公開 ＆ 納品</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        本番サーバーへの公開、操作マニュアルの共有、納品後の30日間無料修正サポートを開始します。
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3大安心保証 -->
+        <section class="bg-slate-50 border border-slate-200 rounded-3xl p-8 space-y-6">
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 text-center font-serif">
+                発注者様に選ばれる「3つの安心保証」
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-600">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-2">
+                    <div class="text-emerald-600 font-bold text-sm flex items-center space-x-2">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                        <span>納品後30日間の無償バグ修正</span>
+                    </div>
+                    <p class="leading-relaxed">
+                        納品後に見つかったプログラムの不具合や表示崩れは、納品後30日間完全無料で迅速に修正対応いたします。
+                    </p>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-2">
+                    <div class="text-sky-600 font-bold text-sm flex items-center space-x-2">
+                        <i data-lucide="dollar-sign" class="w-4 h-4"></i>
+                        <span>追加料金なしの明朗会計</span>
+                    </div>
+                    <p class="leading-relaxed">
+                        事前に合意いただいた要件の範囲内で、後から予期せぬ追加費用を請求することは一切ございません。
+                    </p>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-2">
+                    <div class="text-purple-600 font-bold text-sm flex items-center space-x-2">
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                        <span>機密保持・セキュリティ遵守</span>
+                    </div>
+                    <p class="leading-relaxed">
+                        ご提供いただいた情報やソースコードは厳重に管理し、秘密保持契約（NDA）の締結にも迅速に対応いたします。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 開閉式 FAQ (アコーディオン) -->
+        <section class="space-y-6">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+                    よくあるご質問 (FAQ)
+                </h2>
+                <p class="text-slate-600 text-xs sm:text-sm">
+                    ご不明な点がございましたら、いつでもお気軽にお問い合わせください。
+                </p>
+            </div>
+
+            <div class="space-y-3 max-w-3xl mx-auto">
+                
+                <!-- FAQ 1 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="faq-header w-full p-5 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-slate-50 transition">
+                        <span>Q. まだ具体的な要件が決まっていませんが、相談できますか？</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                        はい、大歓迎です！「売上を伸ばしたい」「予約の手間を減らしたい」といった大まかなお悩みからヒアリングを行い、最適なサイト構成やAI機能のご提案をさせていただきます。
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="faq-header w-full p-5 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-slate-50 transition">
+                        <span>Q. 納期はどのくらいかかりますか？</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                        LP（ランディングページ）であれば約7〜14営業日、予約システムやECサイトであれば約20〜35営業日が目安となります。お急ぎの場合は特急対応も可能ですのでご相談ください。
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="faq-header w-full p-5 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-slate-50 transition">
+                        <span>Q. サーバーやドメインの準備はどうすればいいですか？</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                        既にお持ちのサーバー・ドメインへの設置はもちろん、まだ取得されていない場合も取得・設定手順をわかりやすくサポートいたしますのでご安心ください。
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="faq-header w-full p-5 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-slate-50 transition">
+                        <span>Q. 生成AIを組み込む場合、ランニングコストはかかりますか？</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                        Google Gemini APIやOpenAI APIの利用料は従量課金制ですが、一般的なWebサイトのチャットボットであれば月額数百円〜数千円程度で運用可能です。無料枠を最大活用する設計もご案内します。
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                    <button class="faq-header w-full p-5 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-slate-50 transition">
+                        <span>Q. 支払い方法や請求書のタイミングについて教えてください。</span>
+                        <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                        銀行振込（日本のインボイス対応請求書を発行）または各種クラウドソーシング（クラウドワークス・ランサーズ等）経由でのエスクロー決済に対応しております。原則、着手金50%・納品後50%（または月末締め翌月末払い）となります。
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="bg-slate-900 rounded-3xl p-8 sm:p-12 text-center text-white space-y-6">
+            <h2 class="text-2xl sm:text-3xl font-bold font-serif">
+                まずは無料相談・お見積もりからお気軽にどうぞ
+            </h2>
+            <p class="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">
+                24時間以内に必ずご返信いたします。
+            </p>
+            <a href="contact.html" class="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg transition">
+                <span>お問い合わせフォームへ</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- 共通フッター -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-12 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-3 md:col-span-2">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center text-white font-bold font-serif">KS</div>
+                    <span class="font-bold text-white text-base">Kazuhiro Suzuki Web & AI Lab</span>
+                </div>
+                <p class="text-slate-400 text-xs leading-relaxed max-w-sm">
+                    モダンフロントエンド、FastAPIバックエンド、生成AI統合に特化したフルスタック開発。
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase font-mono text-[11px]">Pages</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-white transition">Home（トップ）</a></li>
+                    <li><a href="services.html" class="hover:text-white transition">Services（サービス・料金）</a></li>
+                    <li><a href="works.html" class="hover:text-white transition">Works（制作実績・事例）</a></li>
+                    <li><a href="about.html" class="hover:text-white transition">About（事業概要・スキル）</a></li>
+                    <li><a href="process.html" class="hover:text-white transition">Process（制作の流れ・FAQ）</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase font-mono text-[11px]">Contact & Social</h4>
+                <ul class="space-y-2">
+                    <li><a href="contact.html" class="hover:text-white transition">無料お見積もり・ご相談</a></li>
+                    <li><a href="https://github.com/g50njz-byte" target="_blank" class="hover:text-white transition">GitHub Profile</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 pt-8 mt-8 border-t border-slate-800 text-center text-slate-500 text-[11px]">
+            &copy; 2026 Kazuhiro Suzuki. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- 共通スクリプト -->
+    <script src="common.js"></script>
+</body>
+</html>

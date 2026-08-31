@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Skills | Kazuhiro Suzuki Web & AI Engineering</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { 500: "#c59345", 600: "#b07b36", 700: "#92602e" },
+                        brand: { 50: "#f0f9ff", 100: "#e0f2fe", 500: "#0ea5e9", 600: "#0284c7", 700: "#0369a1", 900: "#0c4a6e" }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #ffffff; color: #0f172a; overflow-x: hidden; }
+        .subtle-hero-bg { background: radial-gradient(1000px circle at 50% 0%, rgba(224, 242, 254, 0.5), transparent 70%); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-sky-600 selection:text-white subtle-hero-bg">
+
+    <!-- 共通ナビゲーションバー -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 sm:px-12 py-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-white font-bold font-serif text-base shadow-sm group-hover:bg-sky-600 transition">
+                    KS
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-slate-900 font-sans">Kazuhiro Suzuki</span>
+                    <span class="ml-2 text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-semibold">HQ</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold text-slate-600">
+            <a href="index.html" class="nav-link hover:text-sky-600 transition">HOME</a>
+            <a href="services.html" class="nav-link hover:text-sky-600 transition">SERVICES & PRICING</a>
+            <a href="works.html" class="nav-link hover:text-sky-600 transition">WORKS & CASE STUDIES</a>
+            <a href="about.html" class="nav-link text-sky-600 font-bold transition">ABOUT & SKILLS</a>
+            <a href="process.html" class="nav-link hover:text-sky-600 transition">PROCESS & FAQ</a>
+            <a href="contact.html" class="nav-link hover:text-sky-600 transition">CONTACT</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <a href="contact.html" class="hidden sm:inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold shadow-sm transition">
+                <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                <span>無料お見積もり</span>
+            </a>
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- モバイルメニュー -->
+    <div id="mobile-menu" class="hidden md:hidden flex-col bg-white border-b border-slate-200 px-6 py-4 space-y-3 text-sm font-semibold text-slate-700 shadow-lg">
+        <a href="index.html" class="hover:text-sky-600 py-1">HOME（トップ）</a>
+        <a href="services.html" class="hover:text-sky-600 py-1">SERVICES & PRICING（サービス・料金）</a>
+        <a href="works.html" class="hover:text-sky-600 py-1">WORKS & CASE STUDIES（制作実績）</a>
+        <a href="about.html" class="text-sky-600 font-bold py-1">ABOUT & SKILLS（事業概要・スキル）</a>
+        <a href="process.html" class="hover:text-sky-600 py-1">PROCESS & FAQ（制作の流れ・FAQ）</a>
+        <a href="contact.html" class="hover:text-sky-600 py-1 text-sky-600 font-bold">CONTACT（お見積もり・相談）</a>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-1 max-w-6xl mx-auto px-6 py-12 sm:py-16 space-y-20">
+
+        <!-- ページヘッダー -->
+        <section class="text-center space-y-4 max-w-3xl mx-auto">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-xs font-mono tracking-wider text-sky-700 font-semibold shadow-sm">
+                <i data-lucide="user-check" class="w-3.5 h-3.5 text-sky-600"></i>
+                <span>Engineering Philosophy & Technical Stack</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-serif tracking-tight">
+                事業概要・スキル・開発哲学
+            </h1>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                「ただ動くものを作る」のではなく、「クライアントの売上と業務効率を最大化する」プロダクト開発を提供します。
+            </p>
+        </section>
+
+        <!-- 代表プロフィール & 3大強み -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            <div class="lg:col-span-5 bg-slate-900 rounded-3xl p-8 text-white flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="w-16 h-16 rounded-2xl bg-sky-600 flex items-center justify-center text-2xl font-serif font-bold text-white shadow-lg">
+                        KS
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold font-serif">鈴木 和博</h2>
+                        <span class="text-xs font-mono text-sky-400">Kazuhiro Suzuki / Full-Stack & AI Architect</span>
+                    </div>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed pt-2">
+                        モダンWeb技術（React, Vue 3, FastAPI, Python）と生成AI技術を融合させたフルスタックエンジニア。
+                        要件定義からUI/UXデザイン、バックエンドAPI設計、AIチャットボット組み込み、Stripe決済統合までワンストップで完結させます。
+                    </p>
+                </div>
+
+                <div class="border-t border-slate-800 pt-4 space-y-2 text-xs text-slate-400 font-mono">
+                    <div class="flex justify-between">
+                        <span>拠点:</span>
+                        <span class="text-white">Tokyo, Japan (リモート対応)</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>対応領域:</span>
+                        <span class="text-white">Web開発, AI導入, EC/予約</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>稼働体制:</span>
+                        <span class="text-emerald-400 font-bold">即応可能 (Open)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3大強み -->
+            <div class="lg:col-span-7 grid grid-cols-1 gap-4">
+                
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-2 hover:border-sky-300 transition">
+                    <div class="flex items-center space-x-3 text-sky-600 font-bold text-base">
+                        <div class="w-8 h-8 rounded-lg bg-sky-50 flex items-center justify-center">
+                            <i data-lucide="zap" class="w-4 h-4"></i>
+                        </div>
+                        <h3>1. AI主導による圧倒的な開発スピード ＆ 低コスト</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed pl-11">
+                        設計・コーディング・テストの自動化パイプラインを構築しているため、一般的な制作会社と比べて**納期を約50%短縮**し、高品質かつリーズナブルな価格を実現します。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-2 hover:border-emerald-300 transition">
+                    <div class="flex items-center space-x-3 text-emerald-600 font-bold text-base">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
+                            <i data-lucide="layers" class="w-4 h-4"></i>
+                        </div>
+                        <h3>2. デザインからサーバーまで完全ワンストップ対応</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed pl-11">
+                        「デザイナー」と「プログラマー」で担当が分かれていないため、認識のズレがなくスピーディー。画面の見た目だけでなく、セキュリティやデータベース設計まで責任を持って仕上げます。
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-2 hover:border-purple-300 transition">
+                    <div class="flex items-center space-x-3 text-purple-600 font-bold text-base">
+                        <div class="w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center">
+                            <i data-lucide="trending-up" class="w-4 h-4"></i>
+                        </div>
+                        <h3>3. 「成果・成約率（CVR）」にこだわるビジネス視点</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed pl-11">
+                        ただ綺麗なサイトを作るのではなく、「問い合わせが増える導線設計」「離脱を防ぐアニメーション」「自動化による人件費削減」を最優先に設計します。
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- 技術スタック・マトリクス -->
+        <section class="space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">
+                    保有スキル・技術スタック一覧
+                </h2>
+                <p class="text-slate-600 text-xs sm:text-sm">
+                    現場で培ったモダンな開発技術を網羅しています。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Frontend -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+                    <div class="flex items-center space-x-3 text-sky-600 font-bold text-base">
+                        <i data-lucide="layout" class="w-5 h-5"></i>
+                        <h3>フロントエンド (UI/UX)</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">React</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Next.js</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Vue.js 3</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Tailwind CSS</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">GSAP (Animation)</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">TypeScript</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">HTML5 / CSS3</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        スマホ完全最適化、高速レンダリング、直感的なUIアニメーションを設計・実装します。
+                    </p>
+                </div>
+
+                <!-- Backend -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-600 font-bold text-base">
+                        <i data-lucide="server" class="w-5 h-5"></i>
+                        <h3>バックエンド (API & DB)</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Python</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">FastAPI</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Flask</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">SQLite3</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">RESTful API</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Pydantic</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        型安全で高パフォーマンスな非同期API、データベース設計、安全な認証機能を構築します。
+                    </p>
+                </div>
+
+                <!-- AI & Tools -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+                    <div class="flex items-center space-x-3 text-purple-600 font-bold text-base">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                        <h3>生成AI ＆ クラウド・決済</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Google Gemini API</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">OpenAI API</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Stripe Payment</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Git / GitHub</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Docker</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-lg font-mono font-medium">Vercel / Cloudflare</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        最新LLM連携、Stripe安全決済、CI/CD自動デプロイ環境のセットアップに対応。
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 共通フッター -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-12 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-3 md:col-span-2">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center text-white font-bold font-serif">KS</div>
+                    <span class="font-bold text-white text-base">Kazuhiro Suzuki Web & AI Lab</span>
+                </div>
+                <p class="text-slate-400 text-xs leading-relaxed max-w-sm">
+                    モダンフロントエンド、FastAPIバックエンド、生成AI統合に特化したフルスタック開発。
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase font-mono text-[11px]">Pages</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-white transition">Home（トップ）</a></li>
+                    <li><a href="services.html" class="hover:text-white transition">Services（サービス・料金）</a></li>
+                    <li><a href="works.html" class="hover:text-white transition">Works（制作実績・事例）</a></li>
+                    <li><a href="about.html" class="hover:text-white transition">About（事業概要・スキル）</a></li>
+                    <li><a href="process.html" class="hover:text-white transition">Process（制作の流れ・FAQ）</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-3 uppercase font-mono text-[11px]">Contact & Social</h4>
+                <ul class="space-y-2">
+                    <li><a href="contact.html" class="hover:text-white transition">無料お見積もり・ご相談</a></li>
+                    <li><a href="https://github.com/g50njz-byte" target="_blank" class="hover:text-white transition">GitHub Profile</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 pt-8 mt-8 border-t border-slate-800 text-center text-slate-500 text-[11px]">
+            &copy; 2026 Kazuhiro Suzuki. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- 共通スクリプト -->
+    <script src="common.js"></script>
+</body>
+</html>
