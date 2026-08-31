@@ -83,28 +83,28 @@ function initEstimateCalculator() {
         let daysMin = 7;
         let daysMax = 14;
 
-        // Base type
-        const selectedType = baseTypeSelect ? baseTypeSelect.value : 'lp';
+        // Base type (松竹梅 料金設計)
+        const selectedType = baseTypeSelect ? baseTypeSelect.value : 'standard';
         switch (selectedType) {
-            case 'lp':
-                total += 150000;
+            case 'entry': // 【梅】スモールスタート
+                total += 30000;
+                daysMin = 3; daysMax = 7;
+                break;
+            case 'standard': // 【竹】スタンダード
+                total += 80000;
                 daysMin = 7; daysMax = 14;
                 break;
-            case 'corporate':
-                total += 250000;
+            case 'custom': // 【松】予約・EC・AI統合
+                total += 180000;
                 daysMin = 14; daysMax = 25;
                 break;
-            case 'booking_ec':
-                total += 400000;
-                daysMin = 21; daysMax = 35;
-                break;
-            case 'custom_saas':
-                total += 600000;
-                daysMin = 30; daysMax = 50;
-                break;
-            case 'ai_integration':
+            case 'enterprise': // フルカスタムSaaS
                 total += 350000;
-                daysMin = 14; daysMax = 28;
+                daysMin = 20; daysMax = 40;
+                break;
+            default:
+                total += 80000;
+                daysMin = 7; daysMax = 14;
                 break;
         }
 
@@ -119,9 +119,9 @@ function initEstimateCalculator() {
 
         // Speed modifier
         if (speedSelect && speedSelect.value === 'express') {
-            total = Math.round(total * 1.25);
-            daysMin = Math.max(3, Math.round(daysMin * 0.6));
-            daysMax = Math.max(7, Math.round(daysMax * 0.6));
+            total = Math.round(total * 1.2);
+            daysMin = Math.max(2, Math.round(daysMin * 0.6));
+            daysMax = Math.max(5, Math.round(daysMax * 0.6));
         }
 
         if (resultTotal) {
@@ -139,3 +139,4 @@ function initEstimateCalculator() {
     // Run initial calculation
     calculate();
 }
+
