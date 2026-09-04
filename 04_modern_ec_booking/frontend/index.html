@@ -80,8 +80,12 @@
             </button>
         </div>
 
-        <!-- カート開閉ボタン -->
+        <!-- 作品一覧へ戻る ＆ カート開閉ボタン -->
         <div class="flex items-center space-x-3">
+            <a href="../../works.html" class="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-mono text-slate-500 hover:bg-slate-50 transition">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                <span>作品一覧へ戻る</span>
+            </a>
             <button onclick="toggleCart(true)" class="relative p-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 shadow-sm transition flex items-center">
                 <i data-lucide="shopping-cart" class="w-4 h-4"></i>
                 <span id="cart-badge" class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full bg-sky-600 text-white text-[11px] font-bold flex items-center justify-center shadow-md animate-pulse">0</span>
