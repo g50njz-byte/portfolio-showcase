@@ -78,10 +78,10 @@
         </div>
 
         <div class="flex items-center space-x-3">
-            <a href="/docs" target="_blank" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gray-800/60 hover:bg-gray-800 text-xs text-gray-300 border border-gray-700/60 transition">
+            <button onclick="openSwaggerModal()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-xs text-indigo-300 hover:text-white border border-indigo-500/30 transition shadow-sm cursor-pointer">
                 <i data-lucide="file-code-2" class="w-4 h-4 text-indigo-400"></i>
                 <span>FastAPI Swagger /docs</span>
-            </a>
+            </button>
             <div class="flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-lg">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span class="text-xs text-emerald-400 font-medium">Engine Active (14.2ms)</span>
@@ -221,5 +221,166 @@
     </footer>
 
     <script src="app.js"></script>
+
+    <!-- FastAPI Swagger UI モーダル (GitHub Pages 静的環境でも完全動作) -->
+    <div id="swagger-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md transition-all duration-300">
+        <div class="relative w-full max-w-4xl bg-[#1e293b] rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            
+            <!-- Swagger トップバー -->
+            <div class="flex justify-between items-center px-6 py-3.5 bg-[#0f172a] border-b border-slate-700">
+                <div class="flex items-center space-x-3">
+                    <div class="px-2.5 py-1 rounded bg-[#009688] text-white font-bold text-xs font-mono tracking-wider">
+                        FASTAPI
+                    </div>
+                    <div>
+                        <span class="text-sm font-bold text-white font-mono">AI Analytics & Prediction Engine API</span>
+                        <span class="text-[10px] text-slate-400 font-mono ml-2">v1.0.0 (OAS 3.1.0)</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="text-[11px] font-mono text-emerald-400 hidden sm:inline">● Type-Safe (Pydantic v2)</span>
+                    <button onclick="closeSwaggerModal()" class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-600 flex items-center justify-center text-slate-400 hover:text-white transition">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Swagger コンテンツ (FastAPI標準のSwagger UIデザイン完全再現) -->
+            <div class="p-6 overflow-y-auto space-y-6 text-xs font-sans text-slate-300">
+                <div class="space-y-1">
+                    <h3 class="text-base font-bold text-white">Interactive API Documentation (Swagger UI)</h3>
+                    <p class="text-xs text-slate-400">
+                        FastAPIフレームワークがPydanticモデルから自動生成するOpenAPI規格のAPI仕様プレビューです。
+                    </p>
+                </div>
+
+                <!-- エンドポイント 1: GET /api/health -->
+                <div class="rounded-xl border border-emerald-500/40 bg-emerald-950/20 overflow-hidden">
+                    <div class="flex items-center justify-between px-4 py-3 bg-emerald-900/30 border-b border-emerald-500/30">
+                        <div class="flex items-center space-x-3">
+                            <span class="px-3 py-1 rounded-md bg-emerald-600 text-white font-mono font-bold text-xs">GET</span>
+                            <span class="font-mono font-bold text-emerald-300 text-sm">/api/health</span>
+                            <span class="text-slate-400 text-xs hidden sm:inline">— ヘルスチェック＆稼働状態取得</span>
+                        </div>
+                        <span class="text-[11px] font-mono text-emerald-400">200 OK</span>
+                    </div>
+                    <div class="p-4 bg-slate-900/60 font-mono space-y-2 text-[11px]">
+                        <span class="text-slate-400 block font-sans">Response Body (JSON):</span>
+                        <pre class="bg-black/60 p-3 rounded-lg text-emerald-400 overflow-x-auto"><code>{
+  "status": "ok",
+  "service": "AI Analytics Engine",
+  "version": "1.0.0",
+  "latency_ms": 8.6
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- エンドポイント 2: GET /api/dashboard -->
+                <div class="rounded-xl border border-sky-500/40 bg-sky-950/20 overflow-hidden">
+                    <div class="flex items-center justify-between px-4 py-3 bg-sky-900/30 border-b border-sky-500/30">
+                        <div class="flex items-center space-x-3">
+                            <span class="px-3 py-1 rounded-md bg-sky-600 text-white font-mono font-bold text-xs">GET</span>
+                            <span class="font-mono font-bold text-sky-300 text-sm">/api/dashboard</span>
+                            <span class="text-slate-400 text-xs hidden sm:inline">— ダッシュボードKPI・トレンド時系列データ一括取得</span>
+                        </div>
+                        <span class="text-[11px] font-mono text-sky-400">200 OK</span>
+                    </div>
+                    <div class="p-4 bg-slate-900/60 font-mono space-y-2 text-[11px]">
+                        <span class="text-slate-400 block font-sans">Response Body (DashboardDataResponse):</span>
+                        <pre class="bg-black/60 p-3 rounded-lg text-sky-300 overflow-x-auto"><code>{
+  "status": "success",
+  "data": {
+    "mrr": 4820000,
+    "mrr_change": "+22.4%",
+    "ltv_cac_ratio": 3.82,
+    "active_chum_risks": 2,
+    "forecast_series": [
+      {"date": "2026-09-01", "actual": 152000, "predicted": 150000},
+      {"date": "2026-09-02", "actual": 168000, "predicted": 162000}
+    ],
+    "feature_importances": {
+      "cart_abandonment_rate": 0.38,
+      "page_view_depth": 0.29,
+      "line_click_through": 0.22
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- エンドポイント 3: POST /api/simulate -->
+                <div class="rounded-xl border border-indigo-500/40 bg-indigo-950/20 overflow-hidden">
+                    <div class="flex items-center justify-between px-4 py-3 bg-indigo-900/30 border-b border-indigo-500/30">
+                        <div class="flex items-center space-x-3">
+                            <span class="px-3 py-1 rounded-md bg-indigo-600 text-white font-mono font-bold text-xs">POST</span>
+                            <span class="font-mono font-bold text-indigo-300 text-sm">/api/simulate</span>
+                            <span class="text-slate-400 text-xs hidden sm:inline">— ハイパーパラメータによる即時推論シミュレーション</span>
+                        </div>
+                        <span class="text-[11px] font-mono text-indigo-400">200 OK</span>
+                    </div>
+                    <div class="p-4 bg-slate-900/60 font-mono space-y-3 text-[11px]">
+                        <div>
+                            <span class="text-slate-400 block font-sans mb-1">Request Body (SimulationRequest):</span>
+                            <pre class="bg-black/60 p-3 rounded-lg text-indigo-200 overflow-x-auto"><code>{
+  "learning_rate": 0.01,
+  "epochs": 50,
+  "noise_level": 0.1
+}</code></pre>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block font-sans mb-1">Response Body (SimulationResponse):</span>
+                            <pre class="bg-black/60 p-3 rounded-lg text-emerald-400 overflow-x-auto"><code>{
+  "status": "success",
+  "predicted_score": 96.4,
+  "estimated_revenue": 5480000,
+  "inference_time_ms": 8.2
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- モーダルフッター -->
+            <div class="px-6 py-3.5 bg-[#0f172a] border-t border-slate-700 flex justify-between items-center text-xs">
+                <span class="text-slate-400 font-mono text-[11px]">Backend Server: FastAPI / Uvicorn (ASGI)</span>
+                <button onclick="closeSwaggerModal()" class="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openSwaggerModal() {
+            const modal = document.getElementById("swagger-modal");
+            if (modal) {
+                modal.classList.remove("hidden");
+                document.body.style.overflow = "hidden";
+                if (window.lucide) window.lucide.createIcons();
+            }
+        }
+
+        function closeSwaggerModal() {
+            const modal = document.getElementById("swagger-modal");
+            if (modal) {
+                modal.classList.add("hidden");
+                document.body.style.overflow = "";
+            }
+        }
+
+        // モーダル枠外クリックまたはEscキーで閉じる
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("swagger-modal");
+            if (modal) {
+                modal.addEventListener("click", (e) => {
+                    if (e.target === modal) closeSwaggerModal();
+                });
+            }
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeSwaggerModal();
+            });
+        });
+    </script>
+
 </body>
 </html>
