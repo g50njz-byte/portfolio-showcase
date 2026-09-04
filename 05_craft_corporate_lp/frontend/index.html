@@ -279,14 +279,20 @@
             <!-- 画像比較 -->
             <div class="space-y-4">
                 <div class="relative h-64 sm:h-80 rounded-2xl overflow-hidden shadow-inner border border-craft-200">
-                    <img id="ba-image" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="リノベーション事例" class="w-full h-full object-cover transition duration-300">
+                    <img id="ba-image" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=80" alt="リノベーション完成後・無垢材大空間LDK" class="w-full h-full object-cover transition duration-300">
                     <div id="ba-badge" class="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-bold font-mono shadow-md">
                         AFTER: 完成後
                     </div>
                 </div>
-                <div class="flex justify-center gap-3">
-                    <button onclick="setBABefore()" id="btn-before" class="px-5 py-2 rounded-xl text-xs font-bold border border-craft-300 bg-white text-craft-700 transition hover:bg-craft-50">Before（着工前）</button>
-                    <button onclick="setBAAfter()" id="btn-after" class="px-5 py-2 rounded-xl text-xs font-bold bg-craft-800 text-white shadow-sm transition">After（再生後）</button>
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+                    <span id="ba-room-caption" class="text-xs text-craft-700 font-medium flex items-center space-x-1.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                        <span>【After】吉野スギ無垢フローリングと南向き大開口の24帖LDK</span>
+                    </span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="setBABefore()" id="btn-before" class="px-5 py-2 rounded-xl text-xs font-bold border border-craft-300 bg-white text-craft-700 transition hover:bg-craft-50 cursor-pointer shadow-sm">Before（着工前）</button>
+                        <button onclick="setBAAfter()" id="btn-after" class="px-5 py-2 rounded-xl text-xs font-bold bg-craft-800 text-white shadow-sm transition cursor-pointer">After（再生後）</button>
+                    </div>
                 </div>
             </div>
 
@@ -491,24 +497,30 @@
             });
         }
 
-        // Before/After 切り替え
-        const imgBefore = "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"; // 築古・リノベ前風
-        const imgAfter = "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80"; // 洗練リビング
+        // Before/After 切り替え (室内空間同士の劇的リノベーション比較)
+        // Before: 襖と押し入れで薄暗く仕切られていた築38年の古い和室
+        const imgBefore = "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80";
+        // After: 柱を抜き、吉野スギ無垢材の床と漆喰壁で生まれ変わった光あふれる24帖LDK
+        const imgAfter = "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=80";
 
         function setBABefore() {
             document.getElementById('ba-image').src = imgBefore;
             document.getElementById('ba-badge').className = "absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-slate-800 text-white text-xs font-bold font-mono shadow-md";
-            document.getElementById('ba-badge').innerText = "BEFORE: 着工前";
-            document.getElementById('btn-before').className = "px-5 py-2 rounded-xl text-xs font-bold bg-craft-800 text-white shadow-sm transition";
-            document.getElementById('btn-after').className = "px-5 py-2 rounded-xl text-xs font-bold border border-craft-300 bg-white text-craft-700 transition hover:bg-craft-50";
+            document.getElementById('ba-badge').innerText = "BEFORE: 着工前（薄暗い和室）";
+            document.getElementById('ba-room-caption').innerHTML = '<i data-lucide="alert-circle" class="w-3.5 h-3.5 text-amber-600"></i><span>【Before】襖で仕切られ昼間でも薄暗かった築38年の和室2室</span>';
+            document.getElementById('btn-before').className = "px-5 py-2 rounded-xl text-xs font-bold bg-craft-800 text-white shadow-sm transition cursor-pointer";
+            document.getElementById('btn-after').className = "px-5 py-2 rounded-xl text-xs font-bold border border-craft-300 bg-white text-craft-700 transition hover:bg-craft-50 cursor-pointer shadow-sm";
+            if (window.lucide) window.lucide.createIcons();
         }
 
         function setBAAfter() {
             document.getElementById('ba-image').src = imgAfter;
             document.getElementById('ba-badge').className = "absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-bold font-mono shadow-md";
-            document.getElementById('ba-badge').innerText = "AFTER: 完成後";
-            document.getElementById('btn-after').className = "px-5 py-2 rounded-xl text-xs font-bold bg-craft-800 text-white shadow-sm transition";
-            document.getElementById('btn-before').className = "px-5 py-2 rounded-xl text-xs font-bold border border-craft-300 bg-white text-craft-700 transition hover:bg-craft-50";
+            document.getElementById('ba-badge').innerText = "AFTER: 完成後（大空間LDK）";
+            document.getElementById('ba-room-caption').innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i><span>【After】吉野スギ無垢フローリングと南向き大開口の24帖LDK</span>';
+            document.getElementById('btn-after').className = "px-5 py-2 rounded-xl text-xs font-bold bg-craft-800 text-white shadow-sm transition cursor-pointer";
+            document.getElementById('btn-before').className = "px-5 py-2 rounded-xl text-xs font-bold border border-craft-300 bg-white text-craft-700 transition hover:bg-craft-50 cursor-pointer shadow-sm";
+            if (window.lucide) window.lucide.createIcons();
         }
 
         // フォーム送信
