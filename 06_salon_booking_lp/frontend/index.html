@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SALON & SPA TOKYO | 表参道・完全個室プライベートサロン＆公式LINE予約</title>
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        salon: {
+                            50: "#faf9f6",
+                            100: "#f4f1ea",
+                            200: "#e8e1d5",
+                            600: "#998064",
+                            700: "#7d664d",
+                            800: "#5c4935",
+                            900: "#3d3023"
+                        },
+                        line: {
+                            500: "#06C755",
+                            600: "#05B04B"
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', '"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Playfair Display"', '"Shippori Mincho"', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #faf9f6;
+            color: #2b2621;
+            font-family: "Noto Sans JP", sans-serif;
+            overflow-x: hidden;
+        }
+        .font-serif-en {
+            font-family: "Playfair Display", serif;
+        }
+        .soft-shadow {
+            box-shadow: 0 12px 35px -8px rgba(92, 73, 53, 0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-salon-700 selection:text-white pb-24 sm:pb-0">
+
+    <!-- LINE友だち追加限定特典バナー -->
+    <div class="bg-gradient-to-r from-emerald-700 via-line-600 to-emerald-800 text-white text-xs px-6 py-2.5 flex justify-between items-center shadow-sm">
+        <div class="flex items-center space-x-2 mx-auto sm:mx-0">
+            <span class="px-2 py-0.5 rounded bg-white text-line-600 font-bold text-[10px] font-mono">公式LINE限定</span>
+            <span>友だち追加で「全施術 20%OFF クーポン」＋「頭皮診断」無料プレゼント中</span>
+        </div>
+        <a href="#line-booking" class="hidden sm:inline-flex items-center space-x-1 font-bold text-xs hover:underline">
+            <span>友だち追加する</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </a>
+    </div>
+
+    <!-- メインナビゲーション -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-salon-200/60 px-6 sm:px-12 py-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full bg-salon-800 flex items-center justify-center text-white font-serif-en italic font-bold text-xl shadow-md">
+                    S
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl tracking-widest text-salon-900 font-serif-en">THE SALON</span>
+                    <span class="block text-[9px] font-mono tracking-widest text-salon-600 uppercase font-semibold">Omotesando Private & Spa</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold text-salon-800">
+            <a href="#concept" class="hover:text-salon-600 transition">サロンの想い</a>
+            <a href="#menu" class="hover:text-salon-600 transition">施術メニュー・料金</a>
+            <a href="#stylist" class="hover:text-salon-600 transition">スタイリスト紹介</a>
+            <a href="#booking" class="hover:text-salon-600 transition">Web即時予約</a>
+            <a href="#access" class="hover:text-salon-600 transition">アクセス・店舗情報</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <a href="#booking" class="hidden sm:inline-flex items-center space-x-1.5 px-5 py-2.5 rounded-full bg-salon-800 hover:bg-salon-900 text-white text-xs font-bold shadow-md shadow-salon-800/20 transition active:scale-95">
+                <i data-lucide="calendar" class="w-4 h-4"></i>
+                <span>空き枠Web予約</span>
+            </a>
+            <a href="../../works.html" class="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-mono text-slate-500 hover:bg-slate-50 transition">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                <span>作品一覧へ</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section id="hero" class="relative min-h-[85vh] flex items-center justify-center px-6 py-16 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=85"
+                alt="表参道プライベートサロン空間"
+                class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-salon-900/85 via-salon-900/50 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl w-full mx-auto text-white space-y-6">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur border border-white/30 text-xs tracking-widest font-mono uppercase">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>完全個室 / 1日5名様限定の贅沢な癒やし</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight font-serif-en">
+                髪と心が満たされる、<br>
+                あなただけの至高のひととき。
+            </h1>
+
+            <p class="text-sm sm:text-base text-salon-100 max-w-xl leading-relaxed font-light">
+                表参道の喧騒を離れた隠れ家サロン。全席フルフラットシャンプー台完備の完全個室で、業界トップレベルの髪質改善ヘアエステと極上ヘッドスパをお届けします。
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-4">
+                <a href="#booking" class="px-8 py-4 rounded-full bg-salon-700 hover:bg-salon-800 text-white font-bold text-sm shadow-xl shadow-salon-900/40 transition flex items-center space-x-2">
+                    <span>空き状況を確認・Web即時予約</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#line-booking" class="px-7 py-4 rounded-full bg-line-500 hover:bg-line-600 text-white font-bold text-sm shadow-lg shadow-line-500/30 transition flex items-center space-x-2">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span>LINEで20%OFF予約</span>
+                </a>
+            </div>
+
+            <!-- サロンの特徴 -->
+            <div class="grid grid-cols-3 gap-4 pt-8 max-w-lg border-t border-white/20">
+                <div>
+                    <div class="text-2xl sm:text-3xl font-bold font-serif-en text-amber-200">100%</div>
+                    <div class="text-[11px] text-salon-100 mt-0.5">完全個室プライベート</div>
+                </div>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-bold font-serif-en text-amber-200">4.96</div>
+                    <div class="text-[11px] text-salon-100 mt-0.5">口コミ平均評価</div>
+                </div>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-bold font-serif-en text-amber-200">92%</div>
+                    <div class="text-[11px] text-salon-100 mt-0.5">リピート率</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. コンセプト -->
+    <section id="concept" class="py-20 px-6 sm:px-12 max-w-5xl mx-auto space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+            <span class="text-xs font-mono font-bold tracking-widest text-salon-600 uppercase">CONCEPT</span>
+            <h2 class="text-2xl sm:text-3xl font-bold font-serif-en text-salon-900">周りの目を気にせず、深呼吸できるプライベート空間</h2>
+            <p class="text-xs sm:text-sm text-salon-700 leading-relaxed">大型サロン特有の慌ただしさや待ち時間をゼロに。マンツーマン施術であなたの理想を丁寧に引き出します。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-3xl border border-salon-200/70 soft-shadow space-y-3">
+                <div class="h-44 rounded-2xl overflow-hidden mb-2">
+                    <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=600&q=80" alt="完全個室" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-base text-salon-900">完全個室・フルフラット空間</h3>
+                <p class="text-xs text-salon-600 leading-relaxed">移動することなくシャンプーからカット、ブローまで1つの個室で完結する特別設計シート。</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl border border-salon-200/70 soft-shadow space-y-3">
+                <div class="h-44 rounded-2xl overflow-hidden mb-2">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="オーガニック薬剤" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-base text-salon-900">厳選オーガニック＆高濃度水素ケア</h3>
+                <p class="text-xs text-salon-600 leading-relaxed">頭皮への刺激を極限まで抑え、カラーやパーマを繰り返すほどに艶とハリが蘇る最高級トリートメント。</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl border border-salon-200/70 soft-shadow space-y-3">
+                <div class="h-44 rounded-2xl overflow-hidden mb-2">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" alt="極上ヘッドスパ" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-base text-salon-900">認定スパニストの頭浸浴スパ</h3>
+                <p class="text-xs text-salon-600 leading-relaxed">炭酸泉のかけ流しとツボ押しマッサージで、眼精疲労と脳の緊張をほぐす極上のリラクゼーション。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. メニュー＆プライスリスト -->
+    <section id="menu" class="py-20 bg-salon-100/60 border-y border-salon-200/60 px-6 sm:px-12">
+        <div class="max-w-5xl mx-auto space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-mono font-bold tracking-widest text-salon-600 uppercase">MENU & PRICE</span>
+                <h2 class="text-2xl sm:text-3xl font-bold font-serif-en text-salon-900">施術メニュー・料金一覧</h2>
+                <p class="text-xs text-salon-700">ロング料金なし・シャンプー＆ブロー込みの明朗会計です。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- メニュー1 -->
+                <div class="bg-white p-6 rounded-3xl border border-salon-200/80 soft-shadow flex justify-between items-start">
+                    <div class="space-y-1.5 pr-4">
+                        <span class="text-[10px] font-mono font-bold text-salon-600 bg-salon-50 px-2 py-0.5 rounded">人気No.1</span>
+                        <h3 class="font-bold text-base text-salon-900">カット ＋ 髪質改善プレミアム水素カラー</h3>
+                        <p class="text-xs text-salon-600 leading-relaxed">ダメージレスに透明感のある色味を叶え、芯から潤うシルクのような指通りへ。</p>
+                        <span class="text-xs text-slate-400 font-mono">所要時間: 120分</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xl font-bold font-mono text-salon-900">¥19,800</span>
+                        <span class="text-[10px] text-slate-400 block font-mono">(税込)</span>
+                    </div>
+                </div>
+
+                <!-- メニュー2 -->
+                <div class="bg-white p-6 rounded-3xl border border-salon-200/80 soft-shadow flex justify-between items-start">
+                    <div class="space-y-1.5 pr-4">
+                        <span class="text-[10px] font-mono font-bold text-salon-600 bg-salon-50 px-2 py-0.5 rounded">至福の癒やし</span>
+                        <h3 class="font-bold text-base text-salon-900">似合わせ骨格補正カット ＋ 炭酸頭浸浴スパ</h3>
+                        <p class="text-xs text-salon-600 leading-relaxed">骨格と毛流れを見極めた再現性の高いカットと、首肩こりを癒やす贅沢スパ。</p>
+                        <span class="text-xs text-slate-400 font-mono">所要時間: 90分</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xl font-bold font-mono text-salon-900">¥14,300</span>
+                        <span class="text-[10px] text-slate-400 block font-mono">(税込)</span>
+                    </div>
+                </div>
+
+                <!-- メニュー3 -->
+                <div class="bg-white p-6 rounded-3xl border border-salon-200/80 soft-shadow flex justify-between items-start">
+                    <div class="space-y-1.5 pr-4">
+                        <span class="text-[10px] font-mono font-bold text-salon-600 bg-salon-50 px-2 py-0.5 rounded">定番</span>
+                        <h3 class="font-bold text-base text-salon-900">骨格診断・デザインカット</h3>
+                        <p class="text-xs text-salon-600 leading-relaxed">頭の形を最も美しく見せる独自のゾーンセクションカット。翌朝のスタイリングが劇的に楽に。</p>
+                        <span class="text-xs text-slate-400 font-mono">所要時間: 60分</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xl font-bold font-mono text-salon-900">¥8,800</span>
+                        <span class="text-[10px] text-slate-400 block font-mono">(税込)</span>
+                    </div>
+                </div>
+
+                <!-- メニュー4 -->
+                <div class="bg-white p-6 rounded-3xl border border-salon-200/80 soft-shadow flex justify-between items-start">
+                    <div class="space-y-1.5 pr-4">
+                        <span class="text-[10px] font-mono font-bold text-salon-600 bg-salon-50 px-2 py-0.5 rounded">極上集中エステ</span>
+                        <h3 class="font-bold text-base text-salon-900">11工程 超音波アイロン酸熱トリートメント</h3>
+                        <p class="text-xs text-salon-600 leading-relaxed">毎秒100万回の超音波振動で毛髪深部にアミノ酸とケラチンを浸透定着。</p>
+                        <span class="text-xs text-slate-400 font-mono">所要時間: 75分</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xl font-bold font-mono text-salon-900">¥13,200</span>
+                        <span class="text-[10px] text-slate-400 block font-mono">(税込)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. スタイリスト紹介 -->
+    <section id="stylist" class="py-20 px-6 sm:px-12 max-w-5xl mx-auto space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+            <span class="text-xs font-mono font-bold tracking-widest text-salon-600 uppercase">STYLISTS</span>
+            <h2 class="text-2xl sm:text-3xl font-bold font-serif-en text-salon-900">専任スタイリスト紹介</h2>
+            <p class="text-xs text-salon-700">豊富なキャリアを持つトップアーティストがカウンセリングから仕上げまで担当します。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-3xl border border-salon-200/80 soft-shadow flex flex-col sm:flex-row gap-6 items-center">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" alt="Director RINA" class="w-32 h-32 rounded-2xl object-cover shadow-sm">
+                <div class="space-y-2 text-center sm:text-left">
+                    <span class="text-[10px] font-mono text-salon-600 font-bold uppercase bg-salon-50 px-2 py-0.5 rounded">Creative Director</span>
+                    <h3 class="font-bold text-lg text-salon-900">RINA / 澤田 里奈</h3>
+                    <p class="text-xs text-salon-600 leading-relaxed">青山有名サロンを経て独立。骨格補正カットと透明感カラーのスペシャリスト。指名料: ¥2,200</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-3xl border border-salon-200/80 soft-shadow flex flex-col sm:flex-row gap-6 items-center">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" alt="Top Stylist KEN" class="w-32 h-32 rounded-2xl object-cover shadow-sm">
+                <div class="space-y-2 text-center sm:text-left">
+                    <span class="text-[10px] font-mono text-salon-600 font-bold uppercase bg-salon-50 px-2 py-0.5 rounded">Spa Specialist & Top Stylist</span>
+                    <h3 class="font-bold text-lg text-salon-900">KEN / 中村 健</h3>
+                    <p class="text-xs text-salon-600 leading-relaxed">国際スパニスト認定保持。頭筋膜リリースマッサージと大人ショートボブが得意。指名料: ¥1,650</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 公式LINE予約導線 (キラー機能) -->
+    <section id="line-booking" class="py-16 bg-gradient-to-br from-emerald-50 via-line-500/10 to-teal-50 border-y border-emerald-200/60 px-6 sm:px-12">
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+            <div class="w-16 h-16 rounded-2xl bg-line-500 text-white flex items-center justify-center mx-auto shadow-lg shadow-line-500/30">
+                <i data-lucide="message-circle" class="w-8 h-8"></i>
+            </div>
+            <div class="space-y-2">
+                <span class="text-xs font-mono font-bold tracking-widest text-emerald-800 uppercase">OFFICIAL LINE SMART BOOKING</span>
+                <h2 class="text-2xl sm:text-3xl font-bold font-serif-en text-slate-900">公式LINEで24時間いつでも簡単予約・事前相談</h2>
+                <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+                    面倒な会員登録は不要。「LINE友だち追加」ですぐに空き枠の確認・ご予約が可能です。髪のお悩みや希望スタイルの写真もトーク画面から事前にご相談いただけます。
+                </p>
+            </div>
+
+            <div class="pt-2">
+                <a href="https://line.me" target="_blank" class="inline-flex items-center space-x-2 px-8 py-4 rounded-full bg-line-500 hover:bg-line-600 text-white font-bold text-sm shadow-xl shadow-line-500/30 transition transform hover:scale-105 active:scale-95">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>公式LINEを友だち追加して予約する (20%OFF)</span>
+                </a>
+            </div>
+            <p class="text-[11px] text-slate-400 font-mono">※ホットペッパーや外部サイトより最もお得なベストレート保証</p>
+        </div>
+    </section>
+
+    <!-- 6. Web即時予約フォーム＆空き枠カレンダー -->
+    <section id="booking" class="py-20 px-6 sm:px-12 max-w-4xl mx-auto space-y-10">
+        <div class="text-center space-y-3">
+            <span class="text-xs font-mono font-bold tracking-widest text-salon-600 uppercase">WEB RESERVATION</span>
+            <h2 class="text-2xl sm:text-3xl font-bold font-serif-en text-salon-900">オンライン即時仮予約</h2>
+            <p class="text-xs text-salon-700">ご希望のメニュー・日時を選択してください。30秒でご予約リクエストが完了します。</p>
+        </div>
+
+        <div id="salon-booking-success" class="hidden p-6 rounded-3xl bg-emerald-50 border border-emerald-200 text-emerald-800 space-y-2 text-center">
+            <i data-lucide="check-circle" class="w-10 h-10 text-emerald-600 mx-auto"></i>
+            <h3 class="font-bold text-base">ご予約リクエストを受け付けました</h3>
+            <p class="text-xs">ご入力いただいたメールアドレス宛に、予約確認メールを自動送信いたしました。当日のお越しを心よりお待ち申し上げております。</p>
+        </div>
+
+        <form id="salon-booking-form" onsubmit="submitSalonBooking(event)" class="bg-white p-8 sm:p-10 rounded-3xl border border-salon-200/80 soft-shadow space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-salon-800 mb-2">1. ご希望メニュー</label>
+                    <select id="sel-menu" class="w-full px-4 py-3 rounded-xl border border-salon-200 bg-salon-50/50 text-xs text-salon-900 focus:outline-none focus:border-salon-600">
+                        <option>カット ＋ 髪質改善プレミアム水素カラー (¥19,800)</option>
+                        <option>似合わせ骨格補正カット ＋ 炭酸頭浸浴スパ (¥14,300)</option>
+                        <option>骨格診断・デザインカット (¥8,800)</option>
+                        <option>11工程 超音波アイロン酸熱トリートメント (¥13,200)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-salon-800 mb-2">2. 担当スタイリスト</label>
+                    <select id="sel-stylist" class="w-full px-4 py-3 rounded-xl border border-salon-200 bg-salon-50/50 text-xs text-salon-900 focus:outline-none focus:border-salon-600">
+                        <option>指名なし (最短でご案内)</option>
+                        <option>RINA / 澤田 里奈 (+¥2,200)</option>
+                        <option>KEN / 中村 健 (+¥1,650)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-salon-800 mb-2">3. ご希望日</label>
+                    <input type="date" id="sel-date" value="2026-09-08" min="2026-09-05" max="2026-09-30" class="w-full px-4 py-3 rounded-xl border border-salon-200 bg-salon-50/50 text-xs text-salon-900 focus:outline-none focus:border-salon-600 font-mono">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-salon-800 mb-2">4. ご希望時間帯</label>
+                    <select id="sel-time" class="w-full px-4 py-3 rounded-xl border border-salon-200 bg-salon-50/50 text-xs text-salon-900 focus:outline-none focus:border-salon-600 font-mono">
+                        <option>10:00 - 12:00 (空きあり)</option>
+                        <option>13:00 - 15:00 (空きあり)</option>
+                        <option>15:30 - 17:30 (残り1枠)</option>
+                        <option>18:00 - 20:00 (空きあり)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="border-t border-salon-100 pt-6 space-y-4">
+                <h4 class="font-bold text-xs text-salon-900">お客様情報</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-salon-700 mb-1">お名前 <span class="text-red-500">*</span></label>
+                        <input type="text" required placeholder="例：鈴木 美咲" class="w-full px-4 py-2.5 rounded-xl border border-salon-200 bg-salon-50/50 text-xs text-salon-900 focus:outline-none focus:border-salon-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-salon-700 mb-1">お電話番号 <span class="text-red-500">*</span></label>
+                        <input type="tel" required placeholder="例：090-9876-5432" class="w-full px-4 py-2.5 rounded-xl border border-salon-200 bg-salon-50/50 text-xs text-salon-900 focus:outline-none focus:border-salon-600 font-mono">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs text-salon-700 mb-1">メールアドレス <span class="text-red-500">*</span></label>
+                    <input type="email" required placeholder="例：misaki@example.com" class="w-full px-4 py-2.5 rounded-xl border border-salon-200 bg-salon-50/50 text-xs text-salon-900 focus:outline-none focus:border-salon-600">
+                </div>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-2xl bg-salon-800 hover:bg-salon-900 active:scale-98 text-white font-bold text-sm shadow-lg shadow-salon-800/20 transition flex items-center justify-center space-x-2">
+                <span>予約リクエストを送信する</span>
+                <i data-lucide="check" class="w-4 h-4"></i>
+            </button>
+        </form>
+    </section>
+
+    <!-- 7. アクセス・店舗情報 -->
+    <section id="access" class="py-16 bg-white border-t border-salon-200/60 px-6 sm:px-12">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-4">
+                <span class="text-xs font-mono font-bold tracking-widest text-salon-600 uppercase">ACCESS & SALON INFO</span>
+                <h3 class="text-xl font-bold font-serif-en text-salon-900">THE SALON & SPA TOKYO</h3>
+                <div class="space-y-2 text-xs text-salon-700">
+                    <p>• 住所: 〒107-0062 東京都港区南青山5-8-10 表参道ルクスビル 4F</p>
+                    <p>• アクセス: 東京メトロ「表参道駅」B1出口 徒歩2分 / 骨董通りすぐ</p>
+                    <p>• 営業時間: 平日 11:00 - 21:00 / 土日祝 10:00 - 20:00</p>
+                    <p>• 定休日: 毎週火曜日 / 完全予約制</p>
+                    <p>• お支払方法: 各種クレジットカード、PayPay、交通系IC、現金</p>
+                </div>
+            </div>
+
+            <div class="h-64 rounded-3xl overflow-hidden border border-salon-200 bg-slate-100 shadow-sm relative">
+                <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80" alt="サロン外観・街並み" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-salon-900/40 flex items-center justify-center text-white">
+                    <div class="text-center p-4">
+                        <i data-lucide="map-pin" class="w-8 h-8 mx-auto text-amber-200 mb-1"></i>
+                        <span class="font-bold text-sm block">表参道駅 B1出口より徒歩2分</span>
+                        <span class="text-[11px] text-salon-100">エレベーターで4Fへ直接お越しください</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-salon-900 text-salon-200/80 text-xs py-8 px-6 text-center border-t border-salon-800">
+        <p>© 2026 THE SALON & SPA TOKYO. All Rights Reserved. / Web Engineering by Kazuhiro Suzuki</p>
+    </footer>
+
+    <!-- スマホ専用固定CTAバー -->
+    <div class="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-t border-salon-200 p-2.5 flex items-center justify-between gap-2 shadow-lg">
+        <a href="#line-booking" class="flex-1 py-2.5 rounded-xl bg-line-500 text-white font-bold text-xs flex items-center justify-center space-x-1 shadow-md shadow-line-500/20">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>LINE予約 (20%OFF)</span>
+        </a>
+        <a href="#booking" class="flex-1 py-2.5 rounded-xl bg-salon-800 text-white font-bold text-xs flex items-center justify-center space-x-1 shadow-md shadow-salon-800/30">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span>Web即時予約</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) window.lucide.createIcons();
+        });
+
+        function submitSalonBooking(e) {
+            e.preventDefault();
+            document.getElementById('salon-booking-form').classList.add('hidden');
+            document.getElementById('salon-booking-success').classList.remove('hidden');
+            if (window.lucide) window.lucide.createIcons();
+        }
+    </script>
+</body>
+</html>

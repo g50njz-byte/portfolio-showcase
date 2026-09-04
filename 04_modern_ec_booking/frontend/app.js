@@ -2,12 +2,12 @@
 const API_BASE = window.location.origin;
 
 let allProducts = [
-    { id: 1, name: "AURA Ceramic Diffuser", category: "Wellness", price: 12800, stock: 15, image_icon: "wind", description: "手仕事の温もりと超音波テクノロジーが融合した、極上アロマディフューザー。", rating: 4.9 },
-    { id: 2, name: "Titanium Coffee Dripper", category: "Lifestyle", price: 8400, stock: 22, image_icon: "coffee", description: "航空宇宙グレードの純チタンから削り出された、雑味のない至高のドリップ体験。", rating: 4.8 },
-    { id: 3, name: "Minimal Leather Folio", category: "Lifestyle", price: 16500, stock: 8, image_icon: "book-open", description: "植物タンニン鞣しイタリアンレザーを使用した、一生モノの多機能ドキュメントケース。", rating: 4.9 },
-    { id: 4, name: "Acoustic Brass Bell", category: "Wellness", price: 6200, stock: 30, image_icon: "bell", description: "心地よい倍音と長い余韻が空間を清める、真鍮削り出しの瞑想用デスクベル。", rating: 4.7 },
-    { id: 5, name: "Precision Studio Headphone", category: "Audio", price: 42000, stock: 12, image_icon: "headphones", description: "フラットな周波数特性と圧倒的な空間再現性を誇る、リファレンスモニター。", rating: 5.0 },
-    { id: 6, name: "Organic Botanical Candle", category: "Wellness", price: 4800, stock: 25, image_icon: "flame", description: "天然ソイワックスと高地ラベンダー精油を使用した、煤の出ないクリーンキャンドル。", rating: 4.6 }
+    { id: 1, name: "AURA Ceramic Aroma Diffuser", category: "Wellness", price: 12800, stock: 4, image_url: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80", image_icon: "wind", description: "美濃焼セラミックと超音波ミストが融合。天然精油の純度を損なわずに空間を包み込みます。", rating: 4.9, review_count: 128 },
+    { id: 2, name: "Titanium Pour-Over Dripper", category: "Lifestyle", price: 8400, stock: 18, image_url: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80", image_icon: "coffee", description: "純度99.6%チタン削り出し。金属臭ゼロでコーヒー豆本来の芳醇な酸味と甘みを引き出します。", rating: 4.8, review_count: 94 },
+    { id: 3, name: "Minimalist Italian Leather Folio", category: "Lifestyle", price: 16500, stock: 3, image_url: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80", image_icon: "book-open", description: "トスカーナ産フルベジタブルタンニンレザー使用。使い込むほどに深みのある艶が育つ一生モノ。", rating: 4.9, review_count: 67 },
+    { id: 4, name: "Solid Brass Meditation Bell", category: "Wellness", price: 6200, stock: 24, image_url: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=600&q=80", image_icon: "bell", description: "京都の伝統鋳造技術による真鍮削り出し。心身を整える澄んだ高周波と15秒以上の余韻。", rating: 4.7, review_count: 52 },
+    { id: 5, name: "AURA Pro Studio Monitor Headphone", category: "Audio", price: 42000, stock: 2, image_url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80", image_icon: "headphones", description: "50mmベリリウムドライバー搭載。プロエンジニア基準のフラットな解像度と極限の遮音性。", rating: 5.0, review_count: 142 },
+    { id: 6, name: "Artisanal Soy Botanical Candle", category: "Wellness", price: 4800, stock: 20, image_url: "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80", image_icon: "flame", description: "信州産ソイワックス100%と野生種ラベンダー。煤が出にくく、就寝前のマインドフルネスに最適。", rating: 4.6, review_count: 81 }
 ];
 
 let currentCategory = "All";
@@ -81,41 +81,55 @@ function renderProducts() {
     }
 
     container.innerHTML = displayList.map(p => `
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 card-ec flex flex-col justify-between shadow-sm">
+        <div class="bg-white rounded-3xl p-5 border border-slate-200/80 card-ec flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-sky-200 transition-all duration-300 group">
             <div>
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-[10px] font-mono uppercase font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
-                        ${p.category}
-                    </span>
-                    <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full ${p.stock <= 5 ? 'bg-red-50 text-red-600 border border-red-200' : 'bg-emerald-50 text-emerald-600 border border-emerald-200'}">
-                        ${p.stock <= 5 ? `残りわずか (${p.stock}点)` : `在庫あり (${p.stock}点)`}
-                    </span>
+                <!-- 商品写真 (高解像度・シズル感) -->
+                <div class="relative h-52 rounded-2xl overflow-hidden mb-4 bg-slate-100 border border-slate-100">
+                    <img
+                        src="${p.image_url}"
+                        alt="${p.name}"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        loading="lazy"
+                    />
+                    <div class="absolute top-3 left-3">
+                        <span class="text-[10px] font-mono uppercase font-bold px-2.5 py-1 rounded-full bg-white/95 backdrop-blur text-slate-700 shadow-sm border border-slate-200/60">
+                            ${p.category}
+                        </span>
+                    </div>
+                    <div class="absolute top-3 right-3">
+                        <span class="text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur shadow-sm ${p.stock <= 5 ? 'bg-red-500/90 text-white' : 'bg-emerald-600/90 text-white'}">
+                            ${p.stock <= 5 ? `残り僅か ${p.stock}点` : '即日発送'}
+                        </span>
+                    </div>
                 </div>
 
-                <div class="h-40 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-4">
-                    <i data-lucide="${p.image_icon || 'package'}" class="w-14 h-14 text-sky-500"></i>
+                <!-- 評価・レビュー数 -->
+                <div class="flex items-center space-x-1.5 text-amber-500 text-xs mb-1.5">
+                    <div class="flex">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+                    </div>
+                    <span class="font-bold font-mono text-slate-800">${p.rating}</span>
+                    <span class="text-[11px] text-slate-400">(${p.review_count || 48}件の評価)</span>
                 </div>
 
-                <div class="flex items-center space-x-1 text-amber-500 text-xs mb-1">
-                    <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                    <span class="font-bold">${p.rating}</span>
-                </div>
-
-                <h3 class="font-bold text-slate-900 text-base">${p.name}</h3>
-                <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">${p.description}</p>
+                <h3 class="font-bold text-slate-900 text-base group-hover:text-sky-600 transition-colors duration-200 leading-snug">${p.name}</h3>
+                <p class="text-xs text-slate-500 mt-2 leading-relaxed line-clamp-2">${p.description}</p>
             </div>
 
-            <div class="pt-5 border-t border-slate-100 mt-4 flex items-center justify-between">
-                <div class="font-extrabold text-slate-900 text-lg font-mono">
-                    ¥${p.price.toLocaleString()}
+            <div class="pt-4 border-t border-slate-100 mt-4 flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] text-slate-400 block font-medium">税込・送料無料</span>
+                    <div class="font-extrabold text-slate-900 text-xl font-mono tracking-tight">
+                        ¥${p.price.toLocaleString()}
+                    </div>
                 </div>
                 <button
                     onclick="addToCart(${p.id})"
                     ${p.stock <= 0 ? 'disabled' : ''}
-                    class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs transition flex items-center space-x-1.5 shadow-md shadow-sky-600/20 disabled:opacity-50"
+                    class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-sky-600 active:scale-95 text-white font-semibold text-xs transition-all duration-200 flex items-center space-x-1.5 shadow-md shadow-slate-900/10 hover:shadow-sky-600/25 disabled:opacity-50"
                 >
-                    <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
-                    <span>カートに入れる</span>
+                    <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                    <span>カートに追加</span>
                 </button>
             </div>
         </div>

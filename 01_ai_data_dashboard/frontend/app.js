@@ -6,16 +6,16 @@ let featureChartInstance = null;
 
 // モック初期データ
 const initialMetrics = [
-    { title: "月間総売上予測", value: "¥12,850,000", change: "+18.5%", trend: "up", icon: "dollar-sign" },
-    { title: "AIモデル予測精度 (AUC)", value: "94.2%", change: "+2.1%", trend: "up", icon: "target" },
-    { title: "異常検知アラート", value: "3 件", change: "-50.0%", trend: "down", icon: "alert-triangle" },
-    { title: "平均推論レイテンシ", value: "14.2 ms", change: "-4.5ms", trend: "up", icon: "zap" }
+    { title: "当月MRR（月次経常収益）", value: "¥4,820,000", change: "+22.4% MoM", trend: "up", icon: "dollar-sign" },
+    { title: "LTV / CAC 比率 (健全性)", value: "3.82x", change: "業界標準2.5x比 +52%", trend: "up", icon: "target" },
+    { title: "顧客解約リスク検知 (Churn)", value: "2 社", change: "前月比 -60.0%", trend: "down", icon: "alert-triangle" },
+    { title: "AI回帰予測レイテンシ", value: "8.6 ms", change: "FastAPI 非同期高速化", trend: "up", icon: "zap" }
 ];
 
 const initialInsights = [
-    { type: "opportunity", title: "需要ピーク予測", message: "来週末にかけて特定カテゴリの需要が通常比+35%急増する見込みです。在庫の事前補充を推奨します。", time: "10分前" },
-    { type: "warning", title: "チャーンリスク検知", message: "特定セグメントでログイン頻度低下を検出。プロモーションクーポンの自動配信を提案します。", time: "1時間前" },
-    { type: "info", title: "モデル自動再学習完了", message: "直近30日の実データを元にLightGBMモデルを再学習。予測誤差(RMSE)が3.8%改善されました。", time: "3時間前" }
+    { type: "opportunity", title: "EC購入コンバージョン急増", message: "週末夜間帯（21:00-24:00）におけるLINEリッチメニュー経由の成約率が3.8倍に跳ね上がっています。同時間帯のクーポン配信強化を推奨します。", time: "5分前" },
+    { type: "warning", title: "在庫枯渇アラート", message: "アロマディフューザーの成約ペースが予測を+42%上回っています。来週末までに在庫切れとなるリスクが88%です。", time: "45分前" },
+    { type: "info", title: "売上予測モデル自動更新", message: "直近12,000件の購買履歴データに基づきLightGBM予測モデルを更新。翌月着地予想は「¥5,480,000 (達成率108%)」と算出されました。", time: "2時間前" }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {

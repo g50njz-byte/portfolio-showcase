@@ -292,10 +292,54 @@
         </div>
 
         <!-- 2. 予約画面 (タブ切り替え) -->
-        <div id="booking-view" class="hidden max-w-4xl mx-auto space-y-8">
-            <div class="text-center max-w-xl mx-auto">
-                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Private Experience & Reservation</h1>
-                <p class="text-xs text-slate-500 mt-1.5">プライベート試聴会や抽出マスタークラスをオンラインで即時予約いただけます。</p>
+        <div id="booking-view" class="hidden max-w-5xl mx-auto space-y-8">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-[11px] font-mono tracking-widest text-sky-600 uppercase font-bold px-3 py-1 bg-sky-50 rounded-full border border-sky-100">Atelier & Salon Reservation</span>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif mt-2">プライベートセッション＆体験予約</h1>
+                <p class="text-xs text-slate-500 mt-2 leading-relaxed">南青山アトリエにて、専任コンシェルジュによる個別体験セッションをご案内いたします。空き枠カレンダーからご希望日時を選択し、30秒で即時Web予約が完了します。</p>
+            </div>
+
+            <!-- 体験セッション紹介カード3選 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-28 rounded-xl overflow-hidden mb-3">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="音響試聴">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded">AUDIO LAB</span>
+                            <span class="text-xs font-bold text-slate-900 font-mono">無料 / 60分</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mt-1">完全防音ルーム試聴会</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 leading-snug">ハイレゾ音源とアナログレコードを最高峰のフラッグシップ機材でじっくり試聴。</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-28 rounded-xl overflow-hidden mb-3">
+                            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="ドリップ">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">COFFEE LAB</span>
+                            <span class="text-xs font-bold text-slate-900 font-mono">¥3,500 / 90分</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mt-1">ハンドドリップ抽出マスター</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 leading-snug">チタンドリッパーによる抽出の極意と、焙煎度合いごとの風味の引き出し方を体験。</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-28 rounded-xl overflow-hidden mb-3">
+                            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="アロマ">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">AROMA LAB</span>
+                            <span class="text-xs font-bold text-slate-900 font-mono">無料 / 45分</span>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mt-1">パーソナル香気診断</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 leading-snug">ライフスタイルと睡眠リズムに合わせた最適なエッセンシャルオイルをご提案。</p>
+                    </div>
+                </div>
             </div>
 
             <div id="booking-alert" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center space-x-2 font-medium">

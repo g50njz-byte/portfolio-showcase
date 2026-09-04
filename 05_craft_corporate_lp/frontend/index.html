@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRAFT HOMES | 自然素材と暮らす、自由設計の注文住宅・リフォーム</title>
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        craft: {
+                            50: "#fbf9f6",
+                            100: "#f6f1ea",
+                            200: "#ede1d3",
+                            600: "#8c653f",
+                            700: "#6e4b2a",
+                            800: "#54391e",
+                            900: "#3d2714"
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', '"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Shippori Mincho"', '"Noto Serif JP"', 'serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #fbf9f6;
+            color: #2b2118;
+            font-family: "Noto Sans JP", sans-serif;
+            overflow-x: hidden;
+        }
+        .font-mincho {
+            font-family: "Shippori Mincho", serif;
+        }
+        .subtle-shadow {
+            box-shadow: 0 10px 30px -5px rgba(84, 57, 30, 0.08);
+        }
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-craft-600 selection:text-white pb-20 sm:pb-0">
+
+    <!-- トップバー -->
+    <div class="bg-craft-900 text-craft-100 text-xs px-6 py-2 flex justify-between items-center hidden sm:flex">
+        <div class="flex items-center space-x-4">
+            <span>東京都世田谷区・目黒区・武蔵野市の自由設計工務店</span>
+            <span class="text-craft-200/60">|</span>
+            <span>耐震等級3・高気密高断熱（HEAT20 G2基準）標準仕様</span>
+        </div>
+        <div class="flex items-center space-x-6 font-mono">
+            <a href="tel:0120000000" class="hover:text-white flex items-center space-x-1.5 font-bold">
+                <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+                <span>0120-123-456 (9:00 - 18:00 水曜定休)</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- メインナビゲーション -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-craft-200/60 px-6 sm:px-12 py-4 flex items-center justify-between shadow-sm">
+        <div class="flex items-center space-x-3">
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-craft-800 flex items-center justify-center text-white font-serif font-black text-xl shadow-md">
+                    匠
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl tracking-wider text-craft-900 font-mincho">CRAFT HOMES</span>
+                    <span class="block text-[9px] font-mono tracking-widest text-craft-600 uppercase font-semibold">クラフトホームズ建築設計工房</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold text-craft-800">
+            <a href="#concept" class="hover:text-craft-600 transition">家づくりのこだわり</a>
+            <a href="#works" class="hover:text-craft-600 transition">施工事例</a>
+            <a href="#before-after" class="hover:text-craft-600 transition">リノベーション事例</a>
+            <a href="#voice" class="hover:text-craft-600 transition">お施主様の声</a>
+            <a href="#company" class="hover:text-craft-600 transition">会社概要・見学会</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <a href="#contact" class="hidden sm:inline-flex items-center space-x-1.5 px-5 py-2.5 rounded-full bg-craft-700 hover:bg-craft-800 text-white text-xs font-bold shadow-md shadow-craft-700/20 transition active:scale-95">
+                <i data-lucide="book-open" class="w-4 h-4"></i>
+                <span>無料カタログ・相談予約</span>
+            </a>
+            <a href="../../works.html" class="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-mono text-slate-500 hover:bg-slate-50 transition">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                <span>作品一覧へ戻る</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section id="hero" class="relative min-h-[85vh] flex items-center justify-center px-6 py-16 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=85"
+                alt="無垢材と光あふれる住まい"
+                class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-craft-900/90 via-craft-900/60 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl w-full mx-auto text-white space-y-6">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur border border-white/30 text-xs tracking-wider font-semibold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>世田谷モデルハウス 週末無料見学会 受付中</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight font-mincho">
+                木と光が息づく、<br>
+                家族の100年住宅。
+            </h1>
+
+            <p class="text-sm sm:text-base text-craft-100 max-w-xl leading-relaxed font-light">
+                国産ヒノキ・無垢杉と漆喰壁が創り出す、深呼吸したくなる空気環境。<br class="hidden sm:inline">
+                専任の一級建築士と棟梁が、あなただけの理想の暮らしをゼロから仕立て上げます。
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-4">
+                <a href="#contact" class="px-8 py-4 rounded-full bg-craft-600 hover:bg-craft-700 text-white font-bold text-sm shadow-xl shadow-craft-900/40 transition flex items-center space-x-2">
+                    <span>無料カタログ・施工事例集をもらう</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#works" class="px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur border border-white/40 text-white font-semibold text-sm transition">
+                    実例写真ギャラリーを見る
+                </a>
+            </div>
+
+            <!-- 信頼の3大数値 -->
+            <div class="grid grid-cols-3 gap-4 pt-8 max-w-lg border-t border-white/20">
+                <div>
+                    <div class="text-2xl sm:text-3xl font-bold font-mono text-amber-300">100%</div>
+                    <div class="text-[11px] text-craft-100 mt-0.5">自然素材・無垢材仕様</div>
+                </div>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-bold font-mono text-amber-300">等級3</div>
+                    <div class="text-[11px] text-craft-100 mt-0.5">最高水準の耐震設計</div>
+                </div>
+                <div>
+                    <div class="text-2xl sm:text-3xl font-bold font-mono text-amber-300">38年</div>
+                    <div class="text-[11px] text-craft-100 mt-0.5">地域密着の施工実績</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. コンセプト・こだわり -->
+    <section id="concept" class="py-20 px-6 sm:px-12 max-w-6xl mx-auto space-y-16">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+            <span class="text-xs font-mono font-bold tracking-widest text-craft-600 uppercase">CRAFT PHILOSOPHY</span>
+            <h2 class="text-2xl sm:text-3xl font-bold font-mincho text-craft-900">クラフトホームズが選ばれる3つの理由</h2>
+            <p class="text-xs sm:text-sm text-craft-700 leading-relaxed">ただ家を建てるのではなく、住むほどに愛着が深まる「心豊かな居場所」を丁寧に紡ぎます。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-3xl p-8 border border-craft-200/70 subtle-shadow space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-craft-100 flex items-center justify-center text-craft-700">
+                    <i data-lucide="trees" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-lg font-bold text-craft-900 font-mincho">1. 厳選された国産無垢材と漆喰</h3>
+                <p class="text-xs text-craft-700 leading-relaxed">素足で歩きたくなる無垢の床、調湿・消臭効果に優れた本物の漆喰壁。化学物質を極限まで排除し、小さなお子様やペットも安心して深呼吸できる住空間を実現します。</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 border border-craft-200/70 subtle-shadow space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-craft-100 flex items-center justify-center text-craft-700">
+                    <i data-lucide="shield-check" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-lg font-bold text-craft-900 font-mincho">2. 耐震等級3 × HEAT20 G2の高気密断熱</h3>
+                <p class="text-xs text-craft-700 leading-relaxed">大地震でも構造計算に基づき倒壊ゼロを誇る「耐震等級3（最高等級）」を全棟標準。夏涼しく冬暖かい魔法瓶のような高断熱性で、光熱費を半減させます。</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 border border-craft-200/70 subtle-shadow space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-craft-100 flex items-center justify-center text-craft-700">
+                    <i data-lucide="hammer" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-lg font-bold text-craft-900 font-mincho">3. 専任棟梁による自社直接施工</h3>
+                <p class="text-xs text-craft-700 leading-relaxed">丸投げの外注下請けは一切行いません。社内専属の熟練宮大工・職人が1棟1棟に魂を込め、ミリ単位の精度で美しい収まりと長寿命な構造を造り上げます。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 施工事例ギャラリー (Works) -->
+    <section id="works" class="py-20 bg-craft-100/60 border-y border-craft-200/60 px-6 sm:px-12">
+        <div class="max-w-6xl mx-auto space-y-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div class="space-y-2">
+                    <span class="text-xs font-mono font-bold tracking-widest text-craft-600 uppercase">PORTFOLIO</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold font-mincho text-craft-900">建築実例ギャラリー</h2>
+                    <p class="text-xs text-craft-700">予算帯・坪数・工期が明記された、リアルな家づくりの参考実例です。</p>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                    <button onclick="filterWorks('all')" class="filter-btn active px-4 py-2 rounded-full bg-craft-800 text-white shadow-sm transition">すべて</button>
+                    <button onclick="filterWorks('new')" class="filter-btn px-4 py-2 rounded-full bg-white text-craft-700 border border-craft-200 hover:bg-craft-50 transition">新築・注文住宅</button>
+                    <button onclick="filterWorks('renov')" class="filter-btn px-4 py-2 rounded-full bg-white text-craft-700 border border-craft-200 hover:bg-craft-50 transition">リノベーション</button>
+                </div>
+            </div>
+
+            <!-- 事例グリッド -->
+            <div id="works-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 事例1 -->
+                <div class="work-item new bg-white rounded-3xl overflow-hidden border border-craft-200/70 subtle-shadow gallery-card group">
+                    <div class="relative h-60 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="中庭とつながる無垢リビング" class="w-full h-full object-cover transition duration-500">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-craft-900/80 backdrop-blur text-white text-[10px] font-bold">新築・世田谷区</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="font-bold text-base text-craft-900 font-mincho">中庭の光が降り注ぐ、ヒノキ無垢材の開放リビング</h3>
+                        <div class="grid grid-cols-3 gap-2 py-2 border-y border-craft-100 text-[11px] font-mono text-craft-700">
+                            <div><span class="text-craft-600 block text-[10px]">延床面積</span>34.5坪</div>
+                            <div><span class="text-craft-600 block text-[10px]">本体価格</span>2,850万円</div>
+                            <div><span class="text-craft-600 block text-[10px]">工期</span>5.5ヶ月</div>
+                        </div>
+                        <p class="text-xs text-craft-700 leading-relaxed line-clamp-2">住宅密集地でも周囲の視線を気にせず、青空と四季の風を感じられるプライベート中庭設計。</p>
+                    </div>
+                </div>
+
+                <!-- 事例2 -->
+                <div class="work-item new bg-white rounded-3xl overflow-hidden border border-craft-200/70 subtle-shadow gallery-card group">
+                    <div class="relative h-60 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80" alt="薪ストーブのある吹き抜け" class="w-full h-full object-cover transition duration-500">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-craft-900/80 backdrop-blur text-white text-[10px] font-bold">新築・武蔵野市</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="font-bold text-base text-craft-900 font-mincho">薪ストーブと大吹き抜けが家族を繋ぐ北欧モダン邸宅</h3>
+                        <div class="grid grid-cols-3 gap-2 py-2 border-y border-craft-100 text-[11px] font-mono text-craft-700">
+                            <div><span class="text-craft-600 block text-[10px]">延床面積</span>41.2坪</div>
+                            <div><span class="text-craft-600 block text-[10px]">本体価格</span>3,480万円</div>
+                            <div><span class="text-craft-600 block text-[10px]">工期</span>6ヶ月</div>
+                        </div>
+                        <p class="text-xs text-craft-700 leading-relaxed line-clamp-2">真冬でもエアコン1台で家全体が暖かい。厳選オーク材とアイアン階段の美しい調和。</p>
+                    </div>
+                </div>
+
+                <!-- 事例3 -->
+                <div class="work-item renov bg-white rounded-3xl overflow-hidden border border-craft-200/70 subtle-shadow gallery-card group">
+                    <div class="relative h-60 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="築40年フルリノベーション" class="w-full h-full object-cover transition duration-500">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-craft-600 text-white text-[10px] font-bold">リノベ・目黒区</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="font-bold text-base text-craft-900 font-mincho">築42年の木造平屋を再生。耐震補強と最新アイランドキッチン</h3>
+                        <div class="grid grid-cols-3 gap-2 py-2 border-y border-craft-100 text-[11px] font-mono text-craft-700">
+                            <div><span class="text-craft-600 block text-[10px]">施工面積</span>28.0坪</div>
+                            <div><span class="text-craft-600 block text-[10px]">工事費用</span>1,620万円</div>
+                            <div><span class="text-craft-600 block text-[10px]">工期</span>3.5ヶ月</div>
+                        </div>
+                        <p class="text-xs text-craft-700 leading-relaxed line-clamp-2">受け継いだ古民家の立派な梁を残しながら、断熱サッシと最新住宅設備で劇的な快適性を創出。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Before / After スライダー＆リノベーション実例 -->
+    <section id="before-after" class="py-20 px-6 sm:px-12 max-w-6xl mx-auto space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+            <span class="text-xs font-mono font-bold tracking-widest text-craft-600 uppercase">BEFORE & AFTER</span>
+            <h2 class="text-2xl sm:text-3xl font-bold font-mincho text-craft-900">劇的リノベーションBefore/After</h2>
+            <p class="text-xs text-craft-700">「暗い・寒い・間取りが使いづらい」築古住宅が、新築以上の温もりあふれる住まいへ生まれ変わります。</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-craft-200/80 subtle-shadow grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <!-- 画像比較 -->
+            <div class="space-y-4">
+                <div class="relative h-64 sm:h-80 rounded-2xl overflow-hidden shadow-inner border border-craft-200">
+                    <img id="ba-image" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="リノベーション事例" class="w-full h-full object-cover transition duration-300">
+                    <div id="ba-badge" class="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-bold font-mono shadow-md">
+                        AFTER: 完成後
+                    </div>
+                </div>
+                <div class="flex justify-center gap-3">
+                    <button onclick="setBABefore()" id="btn-before" class="px-5 py-2 rounded-xl text-xs font-bold border border-craft-300 bg-white text-craft-700 transition hover:bg-craft-50">Before（着工前）</button>
+                    <button onclick="setBAAfter()" id="btn-after" class="px-5 py-2 rounded-xl text-xs font-bold bg-craft-800 text-white shadow-sm transition">After（再生後）</button>
+                </div>
+            </div>
+
+            <!-- 解説 -->
+            <div class="space-y-4">
+                <span class="text-[11px] font-mono uppercase font-bold text-craft-600 bg-craft-100 px-3 py-1 rounded-full">Case Study: 世田谷区 S様邸</span>
+                <h3 class="text-xl sm:text-2xl font-bold font-mincho text-craft-900">細かく仕切られた和室を統合。<br>光と風が通り抜ける24帖大空間LDKへ。</h3>
+                <p class="text-xs text-craft-700 leading-relaxed">
+                    南向きの庭に面していながら、襖と押し入れで薄暗かった1階フロア。耐力壁を最適配置し直す構造補強を行い、柱を抜いて開放的なワンフロアへと刷新。床には厚さ30mmの吉野スギ無垢材を敷き詰めました。
+                </p>
+                <div class="bg-craft-50 p-4 rounded-2xl border border-craft-200/60 text-xs space-y-1.5 font-mono text-craft-800">
+                    <div>• 築年数: 築38年木造2階建て</div>
+                    <div>• 施工箇所: 1階全面LDK化・断熱樹脂窓ペアガラス化・キッチン水回り</div>
+                    <div>• 費用総額: ¥12,800,000（税込）</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. お客様の声 -->
+    <section id="voice" class="py-20 bg-craft-100/50 border-t border-craft-200/60 px-6 sm:px-12">
+        <div class="max-w-6xl mx-auto space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-mono font-bold tracking-widest text-craft-600 uppercase">TESTIMONIALS</span>
+                <h2 class="text-2xl sm:text-3xl font-bold font-mincho text-craft-900">お施主様の声・暮らしてみての実感</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-3xl border border-craft-200/80 subtle-shadow space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="世田谷区 I様ご家族" class="w-14 h-14 rounded-full object-cover border border-craft-200">
+                        <div>
+                            <h4 class="font-bold text-sm text-craft-900 font-mincho">世田谷区 I様ご家族（ご夫婦＋お子様2人）</h4>
+                            <div class="flex text-amber-500 text-xs mt-0.5">★★★★★ 満点の住み心地</div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-craft-700 leading-relaxed">
+                        「引き渡しから1年が経ちましたが、冬でも靴下がいらないほど床が温かいことに驚いています。子どもたちのアレルギーもすっかり落ち着き、無垢材の心地よい香りに毎日癒やされています。大工の棟梁が細部まで親身に相談に乗ってくれたのが決め手でした。」
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-craft-200/80 subtle-shadow space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="武蔵野市 M様" class="w-14 h-14 rounded-full object-cover border border-craft-200">
+                        <div>
+                            <h4 class="font-bold text-sm text-craft-900 font-mincho">武蔵野市 M様（築45年ご実家リノベーション）</h4>
+                            <div class="flex text-amber-500 text-xs mt-0.5">★★★★★ 期待以上の提案力</div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-craft-700 leading-relaxed">
+                        「大手ハウスメーカーでは『建て替えしか無理』と言われた実家でしたが、クラフトホームズさんは柱の1本1本まで精密に調査してくれ、見事な梁を生かしたリノベーションを提案してくれました。費用も新築の半分以下に抑えられ、大変満足しています。」
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 無料相談・カタログ請求フォーム (問い合わせ特化) -->
+    <section id="contact" class="py-20 px-6 sm:px-12 max-w-4xl mx-auto space-y-10">
+        <div class="text-center space-y-3">
+            <span class="text-xs font-mono font-bold tracking-widest text-craft-600 uppercase">CONTACT & CATALOG</span>
+            <h2 class="text-2xl sm:text-3xl font-bold font-mincho text-craft-900">無料カタログ請求・住まいのご相談</h2>
+            <p class="text-xs sm:text-sm text-craft-700 leading-relaxed">土地探し・資金計画・間取りの無料相談も随時承っております。しつこい営業電話は一切行いません。</p>
+        </div>
+
+        <div id="form-success" class="hidden p-6 rounded-3xl bg-emerald-50 border border-emerald-200 text-emerald-800 space-y-2 text-center">
+            <i data-lucide="check-circle" class="w-10 h-10 text-emerald-600 mx-auto"></i>
+            <h3 class="font-bold text-base">カタログ請求・ご相談を受付いたしました</h3>
+            <p class="text-xs">ご登録いただいたご住所宛に、施工事例カタログと家づくりガイドブックを3営業日以内に発送いたします。</p>
+        </div>
+
+        <form id="craft-form" onsubmit="submitCraftForm(event)" class="bg-white p-8 sm:p-10 rounded-3xl border border-craft-200/80 subtle-shadow space-y-6">
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-craft-800 mb-1.5">ご相談・ご希望内容 <span class="text-red-500">*</span></label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                        <label class="flex items-center space-x-2 p-3 rounded-xl border border-craft-200 cursor-pointer hover:bg-craft-50">
+                            <input type="radio" name="request_type" value="catalog" checked class="text-craft-700 focus:ring-craft-600">
+                            <span>施工事例カタログ請求</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-3 rounded-xl border border-craft-200 cursor-pointer hover:bg-craft-50">
+                            <input type="radio" name="request_type" value="consult" class="text-craft-700 focus:ring-craft-600">
+                            <span>個別設計相談・概算見積</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-3 rounded-xl border border-craft-200 cursor-pointer hover:bg-craft-50">
+                            <input type="radio" name="request_type" value="visit" class="text-craft-700 focus:ring-craft-600">
+                            <span>モデルハウス見学予約</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-craft-800 mb-1">お名前 <span class="text-red-500">*</span></label>
+                        <input type="text" required placeholder="例：鈴木 太郎" class="w-full px-4 py-2.5 rounded-xl border border-craft-200 bg-craft-50/50 text-xs text-craft-900 focus:outline-none focus:border-craft-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-craft-800 mb-1">フリガナ <span class="text-red-500">*</span></label>
+                        <input type="text" required placeholder="例：スズキ タロウ" class="w-full px-4 py-2.5 rounded-xl border border-craft-200 bg-craft-50/50 text-xs text-craft-900 focus:outline-none focus:border-craft-600">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-craft-800 mb-1">メールアドレス <span class="text-red-500">*</span></label>
+                        <input type="email" required placeholder="例：suzuki@example.com" class="w-full px-4 py-2.5 rounded-xl border border-craft-200 bg-craft-50/50 text-xs text-craft-900 focus:outline-none focus:border-craft-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-craft-800 mb-1">お電話番号 <span class="text-red-500">*</span></label>
+                        <input type="tel" required placeholder="例：090-1234-5678" class="w-full px-4 py-2.5 rounded-xl border border-craft-200 bg-craft-50/50 text-xs text-craft-900 focus:outline-none focus:border-craft-600 font-mono">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-craft-800 mb-1">ご送付先住所 (カタログご希望の場合)</label>
+                    <input type="text" placeholder="例：東京都世田谷区奥沢1-2-3" class="w-full px-4 py-2.5 rounded-xl border border-craft-200 bg-craft-50/50 text-xs text-craft-900 focus:outline-none focus:border-craft-600">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-craft-800 mb-1">建築・リフォームのご検討時期</label>
+                    <select class="w-full px-4 py-2.5 rounded-xl border border-craft-200 bg-craft-50/50 text-xs text-craft-900 focus:outline-none focus:border-craft-600">
+                        <option>半年以内</option>
+                        <option selected>1年以内</option>
+                        <option>2〜3年以内</option>
+                        <option>時期は未定（情報収集中）</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-2xl bg-craft-800 hover:bg-craft-900 active:scale-98 text-white font-bold text-sm shadow-lg shadow-craft-900/20 transition flex items-center justify-center space-x-2">
+                <span>無料で資料請求・相談を申し込む</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+        </form>
+    </section>
+
+    <!-- 7. 会社概要・アクセス -->
+    <section id="company" class="py-16 bg-white border-t border-craft-200/60 px-6 sm:px-12">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-4">
+                <span class="text-xs font-mono font-bold tracking-widest text-craft-600 uppercase">COMPANY PROFILE</span>
+                <h3 class="text-xl font-bold font-mincho text-craft-900">クラフトホームズ建築設計工房 株式会社</h3>
+                <div class="space-y-2 text-xs text-craft-700">
+                    <p>• 所在地: 〒158-0083 東京都世田谷区奥沢5-20-11 クラフトビル2F</p>
+                    <p>• 代表者: 代表取締役・一級建築士 鈴木 和博</p>
+                    <p>• 建設業許可: 東京都知事 許可（特-4）第123456号</p>
+                    <p>• 一級建築士事務所登録: 東京都知事登録 第65432号</p>
+                    <p>• 施工エリア: 東京都城南・城西エリア、神奈川県川崎市・横浜市北部</p>
+                </div>
+            </div>
+
+            <div class="h-64 rounded-3xl overflow-hidden border border-craft-200 bg-slate-100 shadow-sm relative">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="オフィスビル" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-craft-900/40 flex items-center justify-center text-white">
+                    <div class="text-center p-4">
+                        <i data-lucide="map-pin" class="w-8 h-8 mx-auto text-amber-300 mb-1"></i>
+                        <span class="font-bold text-sm block">自由が丘駅 徒歩5分（ショールーム併設）</span>
+                        <span class="text-[11px] text-craft-100">駐車場3台完備・キッズスペースあり</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="bg-craft-900 text-craft-200/80 text-xs py-8 px-6 text-center border-t border-craft-800">
+        <p>© 2026 CRAFT HOMES Co., Ltd. All Rights Reserved. / Web Engineering by Kazuhiro Suzuki</p>
+    </footer>
+
+    <!-- スマホ専用固定CTAバー -->
+    <div class="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-t border-craft-200 p-2.5 flex items-center justify-between gap-2 shadow-lg">
+        <a href="tel:0120000000" class="flex-1 py-2.5 rounded-xl bg-craft-100 text-craft-900 font-bold text-xs flex items-center justify-center space-x-1">
+            <i data-lucide="phone" class="w-4 h-4 text-craft-700"></i>
+            <span>電話で相談</span>
+        </a>
+        <a href="#contact" class="flex-1 py-2.5 rounded-xl bg-craft-800 text-white font-bold text-xs flex items-center justify-center space-x-1 shadow-md shadow-craft-800/30">
+            <i data-lucide="book-open" class="w-4 h-4"></i>
+            <span>無料カタログ</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) window.lucide.createIcons();
+        });
+
+        // 施工事例フィルター
+        function filterWorks(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.className = "filter-btn px-4 py-2 rounded-full bg-white text-craft-700 border border-craft-200 hover:bg-craft-50 transition";
+            });
+            event.target.className = "filter-btn active px-4 py-2 rounded-full bg-craft-800 text-white shadow-sm transition";
+
+            const items = document.querySelectorAll('.work-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Before/After 切り替え
+        const imgBefore = "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"; // 築古・リノベ前風
+        const imgAfter = "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80"; // 洗練リビング
+
+        function setBABefore() {
+            document.getElementById('ba-image').src = imgBefore;
+            document.getElementById('ba-badge').className = "absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-slate-800 text-white text-xs font-bold font-mono shadow-md";
+            document.getElementById('ba-badge').innerText = "BEFORE: 着工前";
+            document.getElementById('btn-before').className = "px-5 py-2 rounded-xl text-xs font-bold bg-craft-800 text-white shadow-sm transition";
+            document.getElementById('btn-after').className = "px-5 py-2 rounded-xl text-xs font-bold border border-craft-300 bg-white text-craft-700 transition hover:bg-craft-50";
+        }
+
+        function setBAAfter() {
+            document.getElementById('ba-image').src = imgAfter;
+            document.getElementById('ba-badge').className = "absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-bold font-mono shadow-md";
+            document.getElementById('ba-badge').innerText = "AFTER: 完成後";
+            document.getElementById('btn-after').className = "px-5 py-2 rounded-xl text-xs font-bold bg-craft-800 text-white shadow-sm transition";
+            document.getElementById('btn-before').className = "px-5 py-2 rounded-xl text-xs font-bold border border-craft-300 bg-white text-craft-700 transition hover:bg-craft-50";
+        }
+
+        // フォーム送信
+        function submitCraftForm(e) {
+            e.preventDefault();
+            document.getElementById('craft-form').classList.add('hidden');
+            document.getElementById('form-success').classList.remove('hidden');
+            if (window.lucide) window.lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
