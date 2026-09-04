@@ -247,7 +247,7 @@
                         <div class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span><span>0.02% THD+N</span></div>
                         <div class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span><span>連続48時間再生</span></div>
                     </div>
-                    <button class="w-full py-2.5 rounded-xl bg-gold-50 hover:bg-gold-600 hover:text-white text-gold-800 text-xs font-semibold border border-gold-200 transition">詳細を見る</button>
+                    <button onclick="openProductModal(1)" class="w-full py-2.5 rounded-xl bg-gold-50 hover:bg-gold-600 hover:text-white active:scale-98 text-gold-800 text-xs font-semibold border border-gold-200 transition shadow-sm flex items-center justify-center space-x-1.5"><i data-lucide="eye" class="w-3.5 h-3.5"></i><span>詳細スペックを見る</span></button>
                 </div>
             </div>
 
@@ -270,7 +270,7 @@
                         <div class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span><span>完全密閉構造</span></div>
                         <div class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span><span>銀メッキ無酸素銅ケーブル</span></div>
                     </div>
-                    <button class="w-full py-2.5 rounded-xl bg-gold-50 hover:bg-gold-600 hover:text-white text-gold-800 text-xs font-semibold border border-gold-200 transition">詳細を見る</button>
+                    <button onclick="openProductModal(2)" class="w-full py-2.5 rounded-xl bg-gold-50 hover:bg-gold-600 hover:text-white active:scale-98 text-gold-800 text-xs font-semibold border border-gold-200 transition shadow-sm flex items-center justify-center space-x-1.5"><i data-lucide="eye" class="w-3.5 h-3.5"></i><span>詳細スペックを見る</span></button>
                 </div>
             </div>
 
@@ -293,7 +293,7 @@
                         <div class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span><span>LDAC / aptX Lossless</span></div>
                         <div class="flex items-center space-x-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span><span>IPX5 防滴</span></div>
                     </div>
-                    <button class="w-full py-2.5 rounded-xl bg-gold-50 hover:bg-gold-600 hover:text-white text-gold-800 text-xs font-semibold border border-gold-200 transition">詳細を見る</button>
+                    <button onclick="openProductModal(3)" class="w-full py-2.5 rounded-xl bg-gold-50 hover:bg-gold-600 hover:text-white active:scale-98 text-gold-800 text-xs font-semibold border border-gold-200 transition shadow-sm flex items-center justify-center space-x-1.5"><i data-lucide="eye" class="w-3.5 h-3.5"></i><span>詳細スペックを見る</span></button>
                 </div>
             </div>
         </div>
@@ -332,5 +332,169 @@
     </footer>
 
     <script src="app.js"></script>
+
+    <!-- 製品詳細モーダル (洗練されたプレステージデザイン) -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md transition-all duration-300">
+        <div class="relative w-full max-w-2xl bg-white rounded-3xl border border-gold-200 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- モーダルヘッダー -->
+            <div class="flex justify-between items-center px-6 py-4 border-b border-gold-100 bg-gold-50/50">
+                <div class="flex items-center space-x-2">
+                    <span id="modal-category" class="text-[10px] uppercase font-mono px-2.5 py-0.5 rounded-full bg-gold-100 text-gold-800 border border-gold-200 font-bold">Category</span>
+                    <span id="modal-badge" class="text-[10px] font-mono text-emerald-600 font-bold">● 即納在庫あり</span>
+                </div>
+                <button onclick="closeProductModal()" class="w-8 h-8 rounded-full bg-white border border-gold-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-gold-50 transition">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <!-- モーダル本体 (スクロール可) -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6">
+                <!-- 写真 ＆ 基本情報 -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+                    <div class="h-60 rounded-2xl overflow-hidden border border-gold-100 shadow-inner bg-slate-50">
+                        <img id="modal-image" src="" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-3">
+                        <h3 id="modal-title" class="text-2xl font-bold font-serif text-gray-900"></h3>
+                        <div class="flex items-baseline space-x-2">
+                            <span id="modal-price" class="text-2xl font-extrabold font-mono text-gold-700"></span>
+                            <span class="text-xs text-gray-500 font-mono">(税込・特別桐箱パッケージ込)</span>
+                        </div>
+                        <p id="modal-desc" class="text-xs text-gray-600 leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <!-- 詳細スペック表 -->
+                <div class="bg-lux-surface rounded-2xl p-5 border border-gold-100 space-y-3">
+                    <h4 class="text-xs font-bold text-gray-900 font-mono uppercase tracking-wider flex items-center space-x-1.5">
+                        <i data-lucide="sliders" class="w-3.5 h-3.5 text-gold-600"></i>
+                        <span>Acoustic Engineering Specifications</span>
+                    </h4>
+                    <div id="modal-specs" class="grid grid-cols-2 gap-3 text-xs font-mono">
+                        <!-- スペック動的生成 -->
+                    </div>
+                </div>
+
+                <!-- 音響エンジニア推薦コメント -->
+                <div class="bg-gold-50/70 p-4 rounded-2xl border border-gold-200/70 text-xs text-gray-700 space-y-1">
+                    <div class="flex items-center space-x-1 text-gold-600 font-bold text-[11px]">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        <span>Acoustic Designer's Note</span>
+                    </div>
+                    <p id="modal-note" class="italic text-[11px] leading-relaxed text-gray-600"></p>
+                </div>
+            </div>
+
+            <!-- モーダルフッター (CTA) -->
+            <div class="px-6 py-4 bg-slate-50 border-t border-gold-100 flex flex-wrap items-center justify-between gap-3">
+                <a href="../../04_modern_ec_booking/frontend/index.html" class="px-5 py-2.5 rounded-xl bg-gold-600 hover:bg-gold-700 text-white font-bold text-xs shadow-md shadow-gold-600/20 transition flex items-center space-x-2">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>南青山アトリエで試聴予約する</span>
+                </a>
+                <button onclick="closeProductModal()" class="px-4 py-2.5 rounded-xl bg-white border border-gold-200 hover:bg-gold-50 text-gold-800 text-xs font-semibold transition">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 製品詳細モーダルデータ
+        const productData = {
+            1: {
+                title: "AURA One - Prestige Edition",
+                category: "Flagship Over-Ear",
+                price: "¥188,000",
+                image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80",
+                desc: "純度99.9%の純チタン削り出しハウジングに、特注50mmベリリウム振動板を組み込んだ旗艦モデル。微細な倍音から地の底を揺らす超低域まで、ありのままの音場を眼前に展開します。",
+                specs: [
+                    { label: "周波数特性", value: "5Hz - 52,000Hz" },
+                    { label: "インピーダンス", value: "32Ω @ 1kHz" },
+                    { label: "全高調波歪率 (THD)", value: "0.02% 以下" },
+                    { label: "ハウジング素材", value: "航空宇宙グレード Grade5 チタン" },
+                    { label: "付属ケーブル", value: "4.4mm バランス 7N-OCC銀メッキ銅線" },
+                    { label: "本体重量", value: "348g (ケーブル除く)" }
+                ],
+                note: "「コンサートホールの最前列中央に身を置いているかのような、空気の揺らぎまで聴き取れる圧倒的な分解能。静寂の美しさを知るすべての人へ。」"
+            },
+            2: {
+                title: "AURA Studio Master",
+                category: "Reference Monitor",
+                price: "¥142,000",
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+                desc: "レコーディング＆マスタリングエンジニアのために開発された極限の超高解像度モニター。着色を徹底的に排したリニアな周波数応答により、楽曲の微小なノイズや空間配置を正確無比に暴き出します。",
+                specs: [
+                    { label: "ドライバー構造", value: "平面磁界駆動型 (Planar Magnetic)" },
+                    { label: "周波数特性", value: "10Hz - 48,000Hz" },
+                    { label: "音圧感度", value: "98dB / 1mW" },
+                    { label: "イヤーパッド", value: "形状記憶高密度ウレタン ＆ アルカンターラ" },
+                    { label: "遮音性能", value: "パッシブアイソレーション -28dB" },
+                    { label: "本体重量", value: "385g" }
+                ],
+                note: "「微かなリバーブの減衰音まで完璧にモニタリング可能。プロのスタジオワークにおける確固たるリファレンス機です。」"
+            },
+            3: {
+                title: "AURA Air - True Wireless",
+                category: "True Wireless ANC",
+                price: "¥64,000",
+                image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
+                desc: "手のひらサイズの宝石のような美しさと、-45dBの強力なハイブリッド・アクティブノイズキャンセリングを両立。日常の雑踏を一瞬で静謐なプライベートリスニングルームへと変貌させます。",
+                specs: [
+                    { label: "ANC性能", value: "ハイブリッド方式 最大-45dB低減" },
+                    { label: "対応コーデック", value: "LDAC / aptX Lossless / AAC" },
+                    { label: "バッテリー駆動", value: "本体9時間 / ケース併用36時間" },
+                    { label: "防水規格", value: "IPX5 防滴対応" },
+                    { label: "充電方式", value: "Qiワイヤレス充電 ＆ USB-C急速充電" },
+                    { label: "ドライバー", value: "11mm DLC (ダイヤモンドライクカーボン)" }
+                ],
+                note: "「ワイヤレスとは思えない濃密な中音域と艶やかなボーカル。都市の喧騒から抜け出し、いつでも至福の音楽空間へ。」"
+            }
+        };
+
+        function openProductModal(id) {
+            const data = productData[id];
+            if (!data) return;
+
+            document.getElementById("modal-title").innerText = data.title;
+            document.getElementById("modal-category").innerText = data.category;
+            document.getElementById("modal-price").innerText = data.price;
+            document.getElementById("modal-image").src = data.image;
+            document.getElementById("modal-desc").innerText = data.desc;
+            document.getElementById("modal-note").innerText = data.note;
+
+            const specsContainer = document.getElementById("modal-specs");
+            specsContainer.innerHTML = data.specs.map(s => `
+                <div class="bg-white p-2.5 rounded-xl border border-gold-100">
+                    <span class="text-gray-400 block text-[10px]">${s.label}</span>
+                    <span class="text-gray-800 font-bold text-[11px]">${s.value}</span>
+                </div>
+            `).join("");
+
+            const modal = document.getElementById("product-modal");
+            modal.classList.remove("hidden");
+            if (window.lucide) window.lucide.createIcons();
+            document.body.style.overflow = "hidden"; // スクロール防止
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById("product-modal");
+            modal.classList.add("hidden");
+            document.body.style.overflow = "";
+        }
+
+        // 背景クリックやEscキーで閉じる
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("product-modal");
+            if (modal) {
+                modal.addEventListener("click", (e) => {
+                    if (e.target === modal) closeProductModal();
+                });
+            }
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeProductModal();
+            });
+        });
+    </script>
+
 </body>
 </html>
