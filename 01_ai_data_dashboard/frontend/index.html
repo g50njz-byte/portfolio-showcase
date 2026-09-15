@@ -34,6 +34,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap");
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
         body {
             font-family: "Plus Jakarta Sans", sans-serif;
             background-color: #0a0d14;
@@ -60,41 +65,46 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+<body class="min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white overflow-x-hidden w-full">
 
     <!-- ナビゲーションバー -->
-    <header class="sticky top-0 z-50 glass-card border-b border-gray-800/80 px-6 py-3.5 flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
-                <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+    <header class="sticky top-0 z-50 glass-card border-b border-gray-800/80 px-3.5 sm:px-6 py-2.5 sm:py-3.5 flex flex-wrap items-center justify-between gap-2.5">
+        <div class="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex-shrink-0 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                <i data-lucide="cpu" class="w-4 h-4 sm:w-5 sm:h-5 text-white"></i>
             </div>
-            <div>
-                <div class="flex items-center space-x-2">
-                    <span class="font-extrabold text-lg text-white tracking-tight">AI Insights Engine</span>
-                    <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono">v1.4.0</span>
+            <div class="min-w-0">
+                <div class="flex items-center space-x-1.5 sm:space-x-2">
+                    <span class="font-extrabold text-base sm:text-lg text-white tracking-tight truncate">AI Insights Engine</span>
+                    <span class="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono">v1.4.0</span>
                 </div>
-                <p class="text-xs text-gray-400">FastAPI + Next.js Stack / Real-time Analytics</p>
+                <p class="text-[11px] sm:text-xs text-gray-400 truncate">FastAPI + Next.js Stack / Real-time Analytics</p>
             </div>
         </div>
 
-        <div class="flex items-center space-x-3">
-            <a href="../../works.html" class="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg border border-slate-700 text-xs font-mono text-slate-400 hover:text-white hover:bg-slate-800 transition">
+        <div class="flex items-center flex-wrap gap-1.5 sm:gap-2.5">
+            <a href="../../works.html" class="inline-flex items-center space-x-1 px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-700 text-xs font-mono text-slate-400 hover:text-white hover:bg-slate-800 transition">
                 <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-                <span>作品一覧へ戻る</span>
+                <span class="hidden sm:inline">作品一覧へ戻る</span>
+                <span class="sm:hidden">一覧</span>
             </a>
-            <button onclick="openSwaggerModal()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-xs text-indigo-300 hover:text-white border border-indigo-500/30 transition shadow-sm cursor-pointer">
-                <i data-lucide="file-code-2" class="w-4 h-4 text-indigo-400"></i>
-                <span>FastAPI Swagger /docs</span>
+            <button onclick="openSwaggerModal()" class="flex items-center space-x-1 sm:space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-xs text-indigo-300 hover:text-white border border-indigo-500/30 transition shadow-sm cursor-pointer">
+                <i data-lucide="file-code-2" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-indigo-400"></i>
+                <span class="hidden sm:inline">FastAPI Swagger /docs</span>
+                <span class="sm:hidden">Swagger API</span>
             </button>
-            <div class="flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-lg">
+            <div class="flex items-center space-x-1.5 sm:space-x-2 bg-emerald-500/10 border border-emerald-500/20 px-2 sm:px-3 py-1.5 rounded-lg">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="text-xs text-emerald-400 font-medium">Engine Active (14.2ms)</span>
+                <span class="text-xs text-emerald-400 font-medium">
+                    <span class="hidden sm:inline">Engine Active (14.2ms)</span>
+                    <span class="sm:hidden font-mono text-[11px]">14.2ms</span>
+                </span>
             </div>
         </div>
     </header>
 
     <!-- メインコンテンツ -->
-    <main class="flex-1 p-6 max-w-7xl mx-auto w-full space-y-6">
+    <main class="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full space-y-6 overflow-x-hidden">
 
         <!-- KPI メトリクスカード一覧 -->
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="kpi-container">
@@ -109,15 +119,15 @@
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <!-- 左2カラム: トレンド予測チャート -->
             <div class="lg:col-span-2 glass-card rounded-2xl p-6 flex flex-col">
-                <div class="flex items-center justify-between mb-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                     <div>
-                        <h2 class="text-base font-bold text-white flex items-center space-x-2">
-                            <i data-lucide="trending-up" class="w-5 h-5 text-indigo-400"></i>
+                        <h2 class="text-sm sm:text-base font-bold text-white flex items-center space-x-2">
+                            <i data-lucide="trending-up" class="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400 flex-shrink-0"></i>
                             <span>リアルタイム需要予測 & トレンド推移</span>
                         </h2>
-                        <p class="text-xs text-gray-400 mt-0.5">過去実績データとAI予測区間（Upper / Lower Bound）の推移</p>
+                        <p class="text-[11px] sm:text-xs text-gray-400 mt-0.5">過去実績データとAI予測区間（Upper / Lower Bound）の推移</p>
                     </div>
-                    <button id="btn-refresh" class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 transition" title="データ再取得">
+                    <button id="btn-refresh" class="self-start sm:self-auto p-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 transition cursor-pointer" title="データ再取得">
                         <i data-lucide="refresh-cw" class="w-4 h-4"></i>
                     </button>
                 </div>
@@ -127,13 +137,13 @@
             </div>
 
             <!-- 右1カラム: 特徴量重要度 -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col">
+            <div class="glass-card rounded-2xl p-4 sm:p-6 flex flex-col">
                 <div class="mb-4">
-                    <h2 class="text-base font-bold text-white flex items-center space-x-2">
-                        <i data-lucide="bar-chart-2" class="w-5 h-5 text-violet-400"></i>
+                    <h2 class="text-sm sm:text-base font-bold text-white flex items-center space-x-2">
+                        <i data-lucide="bar-chart-2" class="w-4 h-4 sm:w-5 sm:h-5 text-violet-400 flex-shrink-0"></i>
                         <span>AIモデル特徴量重要度 (SHAP)</span>
                     </h2>
-                    <p class="text-xs text-gray-400 mt-0.5">予測寄与度の高い主要パラメータ一覧</p>
+                    <p class="text-[11px] sm:text-xs text-gray-400 mt-0.5">予測寄与度の高い主要パラメータ一覧</p>
                 </div>
                 <div class="relative flex-1 min-h-[280px]">
                     <canvas id="featureChart"></canvas>
@@ -145,7 +155,7 @@
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
             <!-- 左1カラム: インタラクティブ・パラメータシミュレーター -->
-            <div class="glass-card rounded-2xl p-6 border-indigo-500/30 glow-indigo">
+            <div class="glass-card rounded-2xl p-4 sm:p-6 border-indigo-500/30 glow-indigo">
                 <div class="flex items-center space-x-2 mb-4 pb-3 border-b border-gray-800">
                     <div class="p-2 rounded-lg bg-indigo-500/20 text-indigo-400">
                         <i data-lucide="sliders" class="w-5 h-5"></i>
@@ -202,13 +212,13 @@
             </div>
 
             <!-- 右2カラム: AIインサイト＆通知リスト -->
-            <div class="lg:col-span-2 glass-card rounded-2xl p-6 flex flex-col">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-base font-bold text-white flex items-center space-x-2">
-                        <i data-lucide="sparkles" class="w-5 h-5 text-amber-400"></i>
+            <div class="lg:col-span-2 glass-card rounded-2xl p-4 sm:p-6 flex flex-col">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2 mb-4">
+                    <h3 class="text-sm sm:text-base font-bold text-white flex items-center space-x-2">
+                        <i data-lucide="sparkles" class="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 flex-shrink-0"></i>
                         <span>AI自動生成インサイト＆アラート</span>
                     </h3>
-                    <span class="text-xs text-gray-400">Auto-Generated by LLM/Statistical Engine</span>
+                    <span class="text-[11px] sm:text-xs text-gray-400 font-mono">Auto-Generated by LLM/Statistical Engine</span>
                 </div>
 
                 <div id="insights-container" class="space-y-3 flex-1 overflow-y-auto">
